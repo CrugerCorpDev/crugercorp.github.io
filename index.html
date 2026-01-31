@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUGER CORP | Advanced Information Sovereignty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00A8E8; /* Azul Stark/Tecnológico */
+            --bg-dark: #050A14; /* Azul/Negro Profundo */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HEADER / NAV */
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            background: rgba(0, 255, 65, 0.1);
+            color: #00FF41;
+            padding: 5px 10px;
+            border: 1px solid #00FF41;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, rgba(0,168,232,0.05) 0%, transparent 70%);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #FFF, #A0AAB5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+            max-width: 600px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* BOTONES */
+        .btn {
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 168, 232, 0.4);
+        }
+
+        /* SECCIONES DE PRODUCTO */
+        .section {
+            padding: 100px 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* EL RETO */
+        .challenge-section {
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .money-text {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #FFF;
+            margin: 10px 0;
+            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            header { padding: 20px; }
+            .section { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CRUGER CORP</div>
+        <div class="status-badge">SYSTEMS ONLINE</div>
+    </header>
+
+    <section class="hero">
+        <p style="color: var(--primary-color); letter-spacing: 3px; font-size: 0.8rem; font-weight: 600;">DEFENSE GRADE ENCRYPTION</p>
+        <h1>Advanced Information<br>Sovereignty</h1>
+        <p class="tagline">
+            Recupere el control físico de sus datos. Tecnología de entropía masiva diseñada para operar en entornos hostiles.
+            Sin Nube. Sin Backdoors. Solo Física.
+        </p>
+        <a href="mailto:contacto@crugercorp.com" class="btn">Solicitar Acceso</a>
+    </section>
+
+    <section class="section">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">DARK ZONE V.2026</h2>
+            <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 0 auto;"></div>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3>01. Protocolo Titanium</h3>
+                <p>Cifrado de flujo con llaves de entropía de 8 Millones de bits. Matemáticamente superior a los estándares comerciales AES.</p>
+            </div>
+            <div class="card">
+                <h3>02. Activo Físico (SKey)</h3>
+                <p>El software valida la presencia de hardware propietario. Sin la llave física conectada, la información es inaccesible.</p>
+            </div>
+            <div class="card">
+                <h3>03. Air-Gap Operation</h3>
+                <p>Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section challenge-section">
+        <p style="color: var(--primary-color); font-weight: 600;">FIELD VALIDATION TEST</p>
+        <h2>EL DESAFÍO DE INTERCEPCIÓN</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+            Hemos liberado públicamente un archivo con fondos bancarios y su llave digital. 
+            Sin el Activo Físico, el sistema permanece invicto.
+        </p>
+        
+        <div class="money-text">$100,000 MXN</div>
+        
+        <p style="margin-top: 20px; font-size: 0.9rem;">ESTADO ACTUAL: <span style="color: #00FF41;">NO COMPROMETIDO</span></p>
+        
+        <div style="margin-top: 40px;">
+            <a href="#" style="color: #FFF; text-decoration: none; border-bottom: 1px solid #555; margin: 0 15px; font-size: 0.8rem;">DESCARGAR EVIDENCE.DARK</a>
+            <a href="#" style="color: #FFF; text-decoration: none; border-bottom: 1px solid #555; margin: 0 15px; font-size: 0.8rem;">DESCARGAR KEYFILE.KEY</a>
+        </div>
+        
+        <div style="margin-top: 20px;">
+             <a href="https://zenodo.org" target="_blank" style="color: var(--primary-color); font-size: 0.8rem; text-decoration: none;">VER METODOLOGÍA (ZENODO) &rarr;</a>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 20px; font-weight: 700; color: #FFF;">CRUGER CORP</div>
+        <p>Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited.
+        </p>
+    </footer>
+
+</body>
+  </html>
