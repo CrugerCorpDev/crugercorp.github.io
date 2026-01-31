@@ -27,7 +27,7 @@
 
         /* HEADER / NAV */
         header {
-            padding: 20px 50px;
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -40,33 +40,40 @@
             box-sizing: border-box;
         }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        .status-badge {
-            font-size: 0.7rem;
-            background: rgba(0, 255, 65, 0.1);
-            color: #00FF41;
-            padding: 5px 10px;
-            border: 1px solid #00FF41;
-            border-radius: 2px;
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
 
         /* HERO SECTION */
         .hero {
-            height: 100vh;
+            min-height: 90vh; /* Ajustado */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 100px 20px 0 20px;
             background: radial-gradient(circle at center, rgba(0,168,232,0.05) 0%, transparent 70%);
         }
 
@@ -105,6 +112,7 @@
             letter-spacing: 2px;
             position: relative;
             overflow: hidden;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -154,20 +162,32 @@
             line-height: 1.6;
         }
 
-        /* EL RETO */
-        .challenge-section {
-            background: rgba(255,255,255,0.02);
+        /* SECCIÓN CORPORATIVA (ABOUT) */
+        .about-section {
+            background: rgba(0, 0, 0, 0.3);
             border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            text-align: center;
         }
 
-        .money-text {
-            font-size: 4rem;
-            font-weight: 700;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .bio-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .role-title {
             color: #FFF;
-            margin: 10px 0;
-            text-shadow: 0 0 30px rgba(255,255,255,0.1);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            display: block;
         }
 
         /* FOOTER */
@@ -182,16 +202,24 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            header { padding: 20px; }
+            header { padding: 15px 20px; }
             .section { padding: 60px 20px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Menú simple en móvil */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">CRUGER CORP</div>
-        <div class="status-badge">SYSTEMS ONLINE</div>
+        <div class="logo-container">
+            <a href="#"><img src="logo.png" alt="CRUGER CORP" class="logo-img"></a>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="#about">Información Corporativa</a>
+            <a href="mailto:Servicios@CrugerCorp.com">Contacto</a>
+        </nav>
     </header>
 
     <section class="hero">
@@ -201,7 +229,14 @@
             Recupere el control físico de sus datos. Tecnología de entropía masiva diseñada para operar en entornos hostiles.
             Sin Nube. Sin Backdoors. Solo Física.
         </p>
-        <a href="mailto:contacto@crugercorp.com" class="btn">Solicitar Acceso</a>
+        
+        <div style="margin-top: 40px;">
+            <a href="mailto:Servicios@CrugerCorp.com" class="btn">Solicitar Acceso</a>
+            <br>
+            <a href="https://doi.org/10.5281/zenodo.18415821" target="_blank" style="display: inline-block; margin-top: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; border-bottom: 1px solid #555;">
+                LEER METODOLOGÍA (ZENODO DOI: 10.5281/zenodo.18415821)
+            </a>
+        </div>
     </section>
 
     <section class="section">
@@ -226,36 +261,53 @@
         </div>
     </section>
 
-    <section class="section challenge-section">
-        <p style="color: var(--primary-color); font-weight: 600;">FIELD VALIDATION TEST</p>
-        <h2>EL DESAFÍO DE INTERCEPCIÓN</h2>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
-            Hemos liberado públicamente un archivo con fondos bancarios y su llave digital. 
-            Sin el Activo Físico, el sistema permanece invicto.
-        </p>
-        
-        <div class="money-text">$100,000 MXN</div>
-        
-        <p style="margin-top: 20px; font-size: 0.9rem;">ESTADO ACTUAL: <span style="color: #00FF41;">NO COMPROMETIDO</span></p>
-        
-        <div style="margin-top: 40px;">
-            <a href="#" style="color: #FFF; text-decoration: none; border-bottom: 1px solid #555; margin: 0 15px; font-size: 0.8rem;">DESCARGAR EVIDENCE.DARK</a>
-            <a href="#" style="color: #FFF; text-decoration: none; border-bottom: 1px solid #555; margin: 0 15px; font-size: 0.8rem;">DESCARGAR KEYFILE.KEY</a>
-        </div>
-        
-        <div style="margin-top: 20px;">
-             <a href="https://zenodo.org" target="_blank" style="color: var(--primary-color); font-size: 0.8rem; text-decoration: none;">VER METODOLOGÍA (ZENODO) &rarr;</a>
+    <section id="about" class="section about-section">
+        <div class="about-grid">
+            <div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; text-transform: uppercase;">Corporate Intelligence</h2>
+                <div style="width: 50px; height: 2px; background: var(--primary-color); margin-bottom: 30px;"></div>
+                <p class="bio-text">
+                    <strong>Cruger Corp</strong> es propiedad de <strong>Angel Cruger</strong>, creador de metodologías de transformación digital y tecnologías avanzadas. 
+                </p>
+                <p class="bio-text">
+                    La firma opera bajo una filosofía estricta de soberanía de la información, combinando el desarrollo de software de defensa con facetas de divulgación de conocimiento a través de redes sociales y trabajos en humanidades.
+                </p>
+            </div>
+            <div class="card" style="border-left: 3px solid var(--primary-color);">
+                <h3 style="margin-bottom: 10px; color: #FFF;">ANGEL CRUGER</h3>
+                <p style="color: var(--primary-color); font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 20px;">DIRECTOR GENERAL</p>
+                
+                <p class="bio-text" style="font-size: 0.85rem;">
+                    Investigador Independiente.<br>
+                    Especialista en Ciencia y Tratamiento de Datos.
+                </p>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <a href="mailto:Admin@CrugerCorp.com" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">
+                        ✉ Admin@CrugerCorp.com
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div style="margin-bottom: 20px; font-weight: 700; color: #FFF;">CRUGER CORP</div>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        
         <p>Ensenada, Baja California, México.</p>
-        <p style="font-size: 0.7rem; opacity: 0.5;">
+        
+        <p style="margin-top: 20px; font-size: 0.9rem;">
+            <a href="mailto:Servicios@CrugerCorp.com" style="color: var(--primary-color); text-decoration: none; margin: 0 15px;">Servicios</a>
+            <a href="mailto:Admin@CrugerCorp.com" style="color: var(--text-muted); text-decoration: none; margin: 0 15px;">Administración</a>
+        </p>
+
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
             CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
-            Unauthorized reverse engineering is prohibited.
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
         </p>
     </footer>
 
 </body>
-  </html>
+</html>
