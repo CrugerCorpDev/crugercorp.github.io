@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUGER CORP | Tecnología de Defensa de Información </title>
+    <title>CRUGER CORP | Tecnología de Defensa de Información</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -25,11 +25,11 @@
             overflow-x: hidden;
         }
 
-        /* HEADER / NAV */
+        /* HEADER / NAV (Barra Superior Discreta) */
         header {
-            padding: 15px 50px;
+            padding: 15px 30px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Alineado a la derecha */
             align-items: center;
             border-bottom: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
@@ -40,21 +40,10 @@
             box-sizing: border-box;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-        }
-
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-left: 20px;
@@ -67,34 +56,58 @@
 
         /* HERO SECTION */
         .hero {
-            min-height: 90vh; /* Ajustado */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 20px 0 20px;
+            padding: 80px 20px 50px 20px;
             background: radial-gradient(circle at center, rgba(0,168,232,0.05) 0%, transparent 70%);
         }
 
+        /* ESTILO DEL LOGO CENTRAL */
+        .hero-logo {
+            max-width: 250px; /* Tamaño del logo */
+            width: 80%;
+            height: auto;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+        }
+
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin: 0;
+            margin: 0 0 20px 0;
             letter-spacing: -1px;
             background: linear-gradient(to right, #FFF, #A0AAB5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
+            line-height: 1.2;
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            margin-top: 20px;
-            max-width: 600px;
+            margin-top: 10px;
+            max-width: 800px;
             font-weight: 300;
-            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        .slogan-box {
+            margin-top: 30px;
+            padding: 15px 30px;
+            border-left: 2px solid var(--primary-color);
+            background: linear-gradient(90deg, rgba(0,168,232,0.05) 0%, transparent 100%);
+        }
+
+        .slogan-text {
+            color: #FFF;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.1rem;
         }
 
         /* BOTONES */
@@ -123,8 +136,8 @@
 
         /* SECCIONES DE PRODUCTO */
         .section {
-            padding: 100px 50px;
-            max-width: 1000px;
+            padding: 80px 30px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -162,6 +175,22 @@
             line-height: 1.6;
         }
 
+        /* CAJA DE AGENDA / CONTACTO */
+        .appointment-box {
+            background: rgba(10, 21, 37, 0.8);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .hours-text {
+            color: #00FF41; /* Verde sutil para horarios */
+            font-size: 0.85rem;
+            margin-top: 15px;
+            font-family: monospace;
+        }
+
         /* SECCIÓN CORPORATIVA (ABOUT) */
         .about-section {
             background: rgba(0, 0, 0, 0.3);
@@ -182,14 +211,6 @@
             margin-bottom: 20px;
         }
 
-        .role-title {
-            color: #FFF;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-top: 20px;
-            display: block;
-        }
-
         /* FOOTER */
         footer {
             padding: 50px;
@@ -201,34 +222,38 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            header { padding: 15px 20px; }
+            h1 { font-size: 1.8rem; }
+            .hero-logo { max-width: 180px; }
+            header { justify-content: center; }
             .section { padding: 60px 20px; }
             .about-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Menú simple en móvil */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <a href="#"><img src="logo.png" alt="CRUGER CORP" class="logo-img"></a>
-        </div>
-        
         <nav class="nav-links">
             <a href="#about">Información Corporativa</a>
-            <a href="mailto:Servicios@CrugerCorp.com">Contacto</a>
+            <a href="#contacto">Agenda y Contacto</a>
         </nav>
     </header>
 
     <section class="hero">
-        <p style="color: var(--primary-color); letter-spacing: 3px; font-size: 0.8rem; font-weight: 600;">DEFENSE GRADE ENCRYPTION</p>
-        <h1>Advanced Information<br>Sovereignty</h1>
+        
+        <img src="logo.png" alt="CRUGER CORP LOGO" class="hero-logo">
+
+        <h1>Tecnología de Defensa<br>de Información</h1>
+        
         <p class="tagline">
-            Recupere el control físico de sus datos. Tecnología de entropía masiva diseñada para operar en entornos hostiles.
-            Sin Nube. Sin Backdoors. Solo Física.
+            Trabajamos bajo estándares científicos enfocados en mejorar la tecnología defensiva y las medidas de seguridad. 
+            No usamos métodos estandarizados, sino propietarios desarrollados con rigor científico y validación del entorno. 
+            Ofreciendo el primer servicio de cifrado de alta entropía de más de 8 millones de bits superando el estándar militar tradicional AES-256.
         </p>
+
+        <div class="slogan-box">
+            <span class="slogan-text">"En Cruger Corp, si es importante para usted, es importante para nosotros."</span>
+        </div>
         
         <div style="margin-top: 40px;">
             <a href="mailto:Servicios@CrugerCorp.com" class="btn">Solicitar Acceso</a>
@@ -257,6 +282,24 @@
             <div class="card">
                 <h3>03. Air-Gap Operation</h3>
                 <p>Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <div class="appointment-box">
+            <h2 style="font-size: 1.5rem; color: #FFF; margin-bottom: 20px;">SOLICITAR ATENCIÓN ESPECIALIZADA</h2>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 30px auto;">
+                Agende una cita con nosotros para validar las necesidades de seguridad informática y de cifrado de su negocio o dependencia. 
+                Trabajamos con Corporativos, Empresas, Actores preocupados por la seguridad de su información y Dependencias de Gobierno.
+            </p>
+            
+            <a href="mailto:Servicios@CrugerCorp.com" class="btn">AGENDAR CITA</a>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #FFF; font-size: 0.9rem; font-weight: 600;">HORARIO DE ATENCIÓN</p>
+                <p class="hours-text">Lunes a Viernes: 9:30 AM - 5:00 PM (Pacífico Norte)</p>
+                <p class="hours-text" style="font-size: 0.7rem; color: #666;">*Laboramos días y horas hábiles, no días festivos.</p>
             </div>
         </div>
     </section>
