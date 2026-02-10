@@ -1,2 +1,2 @@
 # crugercorp.github.io
-Cruger Corp | Sistemas de Soberanía de Datos y Cifrado de Alta Entropía.
+Cruger Corp | Empresa desarrolladora de Software especializado en Ciberseguridad y Defensa de Información 
