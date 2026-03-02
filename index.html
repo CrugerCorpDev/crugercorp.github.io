@@ -8,6 +8,7 @@
     <link rel="canonical" href="https://crugercorp.com/" />
     <meta name="description" content="CRUGER CORP | Desarrollo de software de Ciberseguridad, Cifrado de Alta Entropía y Tecnologías de Defensa. Soberanía digital y protección de datos.">
     <meta name="robots" content="index, follow" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #00A8E8;
@@ -57,7 +58,79 @@
             color: var(--primary-color);
         }
 
-        /* HERO SECTION */
+        /* --- ESTILOS DEL NUEVO BANNER ANIMADO --- */
+        .banner-hero-container {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 550px; 
+            max-width: 1600px;
+            margin: 0 auto 40px auto; 
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+        #neural-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; 
+            pointer-events: none;
+        }
+        .banner-text-section {
+            width: 48%;
+            z-index: 20;
+            text-align: left;
+            position: relative;
+        }
+        .banner-empresa {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            letter-spacing: 4px;
+            font-weight: 600;
+        }
+        .banner-hero-container h1 {
+            font-size: clamp(2.3rem, 4vw, 3.9rem);
+            background: linear-gradient(to right, #FFF, #A0AAB5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: left;
+        }
+        .banner-hero-container p {
+            font-size: clamp(1rem, 1.4vw, 1.25rem);
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 90%;
+            font-weight: 300;
+            text-align: left;
+        }
+        .banner-core-section {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        .center-logo {
+            width: 380px; 
+            height: auto;
+            position: relative;
+            z-index: 15;
+            filter: drop-shadow(0 0 25px rgba(0, 168, 232, 0.2)); 
+        }
+
+        /* HERO SECTION GLOBAL */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -67,26 +140,6 @@
             text-align: center;
             padding: 80px 20px 50px 20px;
             background: radial-gradient(circle at center, rgba(0,168,232,0.05) 0%, transparent 70%);
-        }
-
-        .hero-logo {
-            max-width: 400px;
-            width: 80%;
-            height: auto;
-            margin-bottom: 40px;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0 0 20px 0;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #FFF, #A0AAB5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            line-height: 1.2;
         }
 
         .tagline {
@@ -187,7 +240,6 @@
             text-align: center;
         }
 
-        /* Contenedor para botones lado a lado */
         .button-group {
             display: flex;
             justify-content: center;
@@ -250,13 +302,21 @@
         }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
-            .hero-logo { max-width: 180px; }
+        @media (max-width: 968px) {
+            .banner-hero-container {
+                height: 700px; 
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+            .banner-text-section, .banner-core-section { width: 100%; }
+            .banner-text-section { align-items: center; display: flex; flex-direction: column; margin-bottom: 40px; }
+            .banner-hero-container h1 { font-size: 2.1rem; text-align: center; }
+            .banner-hero-container p { text-align: center; }
+            .center-logo { width: 280px; }
             header { justify-content: center; }
             .section { padding: 60px 20px; }
             .about-grid { grid-template-columns: 1fr; }
-            
             .profile-pic {
                 width: 60px;
                 height: 60px;
@@ -319,19 +379,28 @@
         </nav>
     </header>
 
-    <section class="hero" style="padding-top: 100px; padding-bottom: 60px;">
+    <section class="hero" style="padding-top: 80px; padding-bottom: 60px;">
         
-        <img src="logo.png" alt="CRUGER CORP LOGO" class="hero-logo">
+        <div class="banner-hero-container">
+            <canvas id="neural-canvas"></canvas>
 
-        <h1>Desarrollamos Tecnología<br>de Ciberseguridad Informática</h1>
-        
+            <div class="banner-text-section">
+                <div class="banner-empresa">CRUGER CORP - MÉXICO</div>
+                <h1>DESARROLLAMOS<br>TECNOLOGÍAS DE<br>CIBERSEGURIDAD<br>Y SOFTWARE</h1>
+                <p>Innovación para tu seguridad digital y control avanzado.</p>
+            </div>
+
+            <div class="banner-core-section">
+                <img src="logo.png" alt="Cruger Corp Logo" class="center-logo">
+            </div>
+        </div>
         <div style="
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 3px solid #00A8E8;
             padding: 40px;
-            max-width: 900px; /* ALINEACIÓN: Ancho igualado a 900px */
-            margin: 60px auto 50px auto; /* Centrado automático */
+            max-width: 900px;
+            margin: 20px auto 50px auto; 
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             text-align: left;
@@ -358,7 +427,7 @@
         <div style="
             max-width: 1100px; 
             width: 100%; 
-            margin: 50px auto; /* Espacio superior e inferior */
+            margin: 50px auto; 
             padding: 0 20px; 
             box-sizing: border-box;
         ">
@@ -376,8 +445,8 @@
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1); 
             padding: 30px; 
-            max-width: 900px; /* CAMBIO: Ajustado a 900px para alinearse con el de arriba */
-            margin: 0 auto 40px auto; /* Centrado automático */
+            max-width: 900px; 
+            margin: 0 auto 40px auto; 
             text-align: left; 
             border-left: 3px solid #00A8E8;
         ">
@@ -449,6 +518,7 @@
             </div>
 
         </div>
+    </section>
     
     <section class="section">
         <div style="text-align: center; margin-bottom: 50px;">
@@ -625,5 +695,98 @@
         </p>
     </footer>
 
+    <script>
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particleCount = 650; 
+        const particles = [];
+        
+        const boxSizeX = 2200;
+        const boxSizeY = 800;
+        const boxSizeZ = 1200;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: (Math.random() - 0.5) * boxSizeX,
+                y: (Math.random() - 0.5) * boxSizeY,
+                z: (Math.random() - 0.5) * boxSizeZ,
+
+                vx: (Math.random() - 0.5) * 1.2,
+                vy: (Math.random() - 0.5) * 1.2,
+                vz: (Math.random() - 0.5) * 1.2
+            });
+        }
+
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = 'screen';
+
+            const cx = canvas.width / 2; 
+            const cy = canvas.height / 2;
+
+            particles.forEach(p => {
+                p.x += p.vx + 0.1;
+                p.y += p.vy; 
+                p.z += p.vz;
+
+                if (p.x > boxSizeX / 2 || p.x < -boxSizeX / 2) p.vx *= -1;
+                if (p.y > boxSizeY / 2 || p.y < -boxSizeY / 2) p.vy *= -1;
+                if (p.z > boxSizeZ / 2 || p.z < -boxSizeZ / 2) p.vz *= -1;
+
+                let fov = 800;
+                let scale = fov / (fov + p.z);
+                
+                p.px = cx + p.x * scale;
+                p.py = cy + p.y * scale;
+                p.pz = p.z;
+                p.scale = scale;
+            });
+
+            particles.sort((a, b) => b.pz - a.pz);
+
+            for (let i = 0; i < particles.length; i++) {
+                const p1 = particles[i];
+
+                if (p1.scale < 0 || p1.pz > 800) continue;
+
+                const baseAlpha = p1.pz > 0 ? 0.3 : 0.85; 
+
+                ctx.beginPath();
+                ctx.arc(p1.px, p1.py, 1.5 * p1.scale, 0, Math.PI * 2);
+                ctx.fillStyle = p1.pz > 0 ? `rgba(150, 20, 20, ${baseAlpha})` : `rgba(255, 100, 30, ${baseAlpha})`;
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    
+                    let dx = p1.px - p2.px;
+                    let dy = p1.py - p2.py;
+                    let distSq = dx * dx + dy * dy;
+
+                    if (distSq < 18000) {
+                        let lineAlpha = Math.max(0.05, (0.7 - distSq / 30000) * baseAlpha);
+                        ctx.strokeStyle = `rgba(255, 80, 20, ${lineAlpha})`;
+                        ctx.lineWidth = 0.8 * p1.scale;
+                        ctx.beginPath();
+                        ctx.moveTo(p1.px, p1.py);
+                        ctx.lineTo(p2.px, p2.py);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(render);
+        }
+
+        render();
+    </script>
 </body>
 </html>
