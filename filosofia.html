@@ -86,16 +86,41 @@
         .tactical-block {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            padding: 30px 40px;
+
             margin-bottom: 40px;
             border-left: 3px solid var(--primary-color);
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            
+            display: flex;
+            align-items: center;
+            overflow: hidden;
         }
 
-        .tactical-block.warning {
-            border-left: 3px solid var(--danger-color);
+        .tactical-image {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid var(--glass-border);
         }
+
+        .tactical-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .tactical-content {
+            width: 60%;
+            padding: 30px 40px;
+            box-sizing: border-box;
+        }
+
+        .tactical-block.warning { border-left-color: var(--danger-color); }
+        .tactical-block.solution { border-left-color: #00FF41; }
 
         .tactical-block h2 {
             font-size: 1.2rem;
@@ -114,34 +139,18 @@
             text-align: justify;
         }
 
-        .tactical-block p:last-child { margin-bottom: 0; }
-
-        .highlight {
-            color: #FFF;
-            font-weight: 600;
-        }
-        
-        .highlight-danger {
-            color: var(--danger-color);
-            font-weight: 600;
-        }
-
-        blockquote {
-            margin: 30px 0;
-            padding: 20px 30px;
-            border-left: 2px solid var(--text-muted);
-            font-style: italic;
-            color: #FFF;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.02);
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            header { justify-content: center; flex-wrap: wrap; padding: 10px; }
-            .nav-links a { margin: 5px 10px; font-size: 0.7rem; }
-            .article-container { margin-top: 100px; }
-            .tactical-block { padding: 25px; }
+        @media (max-width: 968px) {
+            .tactical-block {
+                flex-direction: column;
+                height: auto;
+            }
+            .tactical-image, .tactical-content {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            .tactical-image { height: 300px; } /* Altura fija en móviles */
+            .tactical-content { padding: 25px; }
         }
     </style>
 </head>
@@ -161,39 +170,57 @@
         <div class="subtitle">El criterio humano frente a la automatización de la vulnerabilidad</div>
 
         <div class="tactical-block">
-            <h2>Nuestra Postura</h2>
-            <p>En CRUGER CORP no diseñamos tecnología basándonos en las tendencias comerciales de Silicon Valley. Desarrollamos herramientas bajo un escrutinio científico y táctico riguroso. En la actualidad, la industria tecnológica ha empujado a corporativos, gobiernos e individuos a delegar sus activos más críticos a dos paradigmas altamente inestables: <span class="highlight">La Nube</span> y la <span class="highlight">Inteligencia Artificial no supervisada</span>.</p>
-            <p>Nuestra doctrina es clara: La verdadera seguridad informática no existe si no posees el control absoluto, físico y lógico, de tu información y de los procesos que la gestionan.</p>
+            <div class="tactical-image">
+                <img src="criterio-humano.png" alt="Criterio Humano sobre Red de Datos">
+            </div>
+            <div class="tactical-content">
+                <h2>Nuestra Postura</h2>
+                <p>En CRUGER CORP no diseñamos tecnología basándonos en las tendencias comerciales de Silicon Valley. Desarrollamos herramientas bajo un escrutinio científico y táctico riguroso. En la actualidad, la industria tecnológica ha empujado a corporativos, gobiernos e individuos a delegar sus activos más críticos a dos paradigmas altamente inestables: La Nube y la Inteligencia Artificial no supervisada.</p>
+                <p>Nuestra doctrina es clara: La verdadera seguridad informática no existe si no posees el control absoluto, físico y lógico, de tu información y de los procesos que la gestionan.</p>
+            </div>
         </div>
 
         <div class="tactical-block warning">
-            <h2 style="color: var(--danger-color);">El Espejismo de la Nube</h2>
-            <p>Existe un adagio fundamental en la ciberseguridad que la industria comercial intenta silenciar: <span class="highlight">"No existe la nube, solo es la computadora de alguien más"</span>.</p>
-            <p>Almacenar y procesar información crítica en infraestructuras Cloud significa ceder la soberanía de los datos. La nube es inherentemente un entorno compartido y, por definición, hackeable. Los datos en tránsito están expuestos a intercepciones, redireccionamientos (Man-in-the-Middle) y ataques de infraestructura.</p>
-            <p>Más allá del riesgo de intrusión externa, operar en la nube implica someterse a <span class="highlight-danger">telemetría oculta</span>: rastreo de posición geográfica, monitoreo de hábitos de tráfico, indexación de metadatos y captura de datos sensibles bajo términos de servicio opacos. Cuando confías tu información a servidores de terceros, renuncias al derecho de privacidad real.</p>
+            <div class="tactical-image">
+                <img src="espejismo-nube.png" alt="La Nube como Amenaza y Fuga de Datos">
+            </div>
+            <div class="tactical-content">
+                <h2 style="color: var(--danger-color);">El Espejismo de la Nube</h2>
+                <p>Existe un adagio fundamental en la ciberseguridad que la industria comercial intenta silenciar: "No existe la nube, solo es la computadora de alguien más".</p>
+                <p>Almacenar y procesar información crítica en infraestructuras Cloud significa ceder la soberanía de los datos. La nube es inherentemente un entorno compartido y, por definición, hackeable. Los datos en tránsito están expuestos a intercepciones, redireccionamientos (Man-in-the-Middle) y ataques de infraestructura.</p>
+                <p>Más allá del riesgo de intrusión externa, operar en la nube implica someterse a telemetría oculta: rastreo de posición geográfica, monitoreo de hábitos de tráfico, indexación de metadatos y captura de datos personales sensibles bajo términos de servicio opacos. Cuando confías tu información a servidores de terceros, renuncias al derecho de privacidad real.</p>
+            </div>
         </div>
 
         <div class="tactical-block">
-            <h2>La I.A. como Herramienta, no como Árbitro</h2>
-            <p>No satanizamos el progreso tecnológico. La Inteligencia Artificial es un procesador matemático y analítico formidable. <span class="highlight">El peligro no radica en la IA misma, sino en su implementación sin criterio ni supervisión humana en infraestructuras críticas.</span></p>
-            <p>Un modelo de lenguaje o un algoritmo generativo no posee consciencia situacional. Si se le asigna la tarea de optimizar código de seguridad, su naturaleza es simplificar operaciones para cumplir la función asignada, lo que frecuentemente resulta en la eliminación de protocolos de validación y la creación involuntaria de brechas catastróficas.</p>
-            <blockquote>
-                "Delegar el control de redes eléctricas, bases de datos estratégicas, o defensas activas a una IA autónoma no es innovación; es negligencia. El software requiere criterio, y el criterio es una característica exclusivamente humana."
-            </blockquote>
-            <p>El código escrito o gestionado por máquinas debe ser auditado por humanos. Una IA no puede discernir el impacto geopolítico, corporativo o vital de una fuga de datos. El <span class="highlight">"Human in the Loop"</span> (Humano en el ciclo de decisión) no es opcional en nuestros protocolos; es el núcleo operativo.</p>
+            <div class="tactical-image">
+                <img src="ia-herramienta.png" alt="IA Supervisada por el Humano-in-the-Loop">
+            </div>
+            <div class="tactical-content">
+                <h2>La I.A. como Herramienta, no como Árbitro</h2>
+                <p>No satanizamos el progreso tecnológico. La Inteligencia Artificial es un procesador matemático y analítico formidable. El peligro no radica en la IA misma, sino en su implementación sin criterio ni supervisión humana en infraestructuras críticas.</p>
+                <p>Un modelo de lenguaje o un algoritmo generativo no posee consciencia situacional. Si se le asigna la tarea de optimizar código de seguridad, su naturaleza es simplificar operaciones para cumplir la función asignada, lo que frecuentemente resulta en la eliminación de protocolos de validación y la creación involuntaria de brechas catastróficas.</p>
+                <blockquote>
+                    "Delegar el control de redes eléctricas, bases de datos estratégicas, o defensas activas a una IA autónoma no es innovación; es negligencia. El software requiere criterio, y el criterio es una característica exclusivamente humana."
+                </blockquote>
+                <p>El código escrito o gestionado por máquinas debe ser auditado por humanos. Una IA no puede discernir el impacto geopolítico, corporativo o vital de una fuga de datos. El Human in the Loop (Humano en el ciclo de decisión) no es opcional en nuestros protocolos; es el núcleo operativo.</p>
+            </div>
         </div>
 
-        <div class="tactical-block" style="border-left-color: #00FF41;">
-            <h2 style="color: #00FF41;">El Estándar CRUGER: Air-Gap y Control Físico</h2>
-            <p>Frente a la vulnerabilidad de la interconexión constante, nuestra respuesta tecnológica es el aislamiento estratégico.</p>
-            <p>Nuestros modelos de implementación (como el protocolo <span class="highlight">DARK ZONE TITANIUM</span>) se basan en servicios y herramientas <span class="highlight">OFFLINE</span>. Operamos bajo el principio <em>Air-Gap</em>: sistemas diseñados para funcionar al 100% desconectados de internet, volviéndolos matemáticamente inmunes a ataques remotos, ransomware de red o alteraciones en la nube.</p>
-            <p>Creemos en el cifrado de altísima entropía ejecutado localmente, donde las llaves maestras existen únicamente en hardware físico (Tokens/SKey) bajo el control absoluto de nuestros clientes. Sin servidores de terceros, sin telemetría, sin "optimización" no supervisada.</p>
-            <p style="margin-top: 30px; font-weight: 600; font-size: 1rem; color: #FFF; text-align: center;">
-                En CRUGER CORP, no negociamos su seguridad. Construimos soberanía.
-            </p>
+        <div class="tactical-block solution">
+            <div class="tactical-image">
+                <img src="estandar-cruger.png" alt="DARK ZONE TITANIUM Token Key y Escudo Air-Gap">
+            </div>
+            <div class="tactical-content">
+                <h2 style="color: #00FF41;">El Estándar CRUGER: Air-Gap y Control Físico</h2>
+                <p>Frente a la vulnerabilidad de la interconexión constante, nuestra respuesta tecnológica es el aislamiento estratégico.</p>
+                <p>Nuestros modelos de implementación (como el protocolo DARK ZONE TITANIUM) se basan en servicios y herramientas OFFLINE. Operamos bajo el principio Air-Gap: sistemas diseñados para funcionar al 100% desconectados de internet, volviéndolos matemáticamente inmunes a ataques remotos, ransomware de red o alteraciones en la nube.</p>
+                <p>Creemos en el cifrado de altísima entropía ejecutado localmente, donde las llaves maestras existen únicamente en hardware físico (Tokens/SKey) bajo el control absoluto de nuestros clientes. Sin servidores de terceros, sin telemetría, sin "optimización" no supervisada.</p>
+                <p style="margin-top: 30px; font-weight: 600; font-size: 1rem; color: #FFF; text-align: center;">
+                    En CRUGER CORP, no alquilamos seguridad. Construimos soberanía.
+                </p>
+            </div>
         </div>
-
-    </div>
 
     <footer>
         <div style="margin-bottom: 20px; border-top: 1px solid var(--glass-border); padding-top: 50px;">
