@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctrina y Filosofía | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --bg-dark: #050A14;
+            --glass-bg: rgba(0, 0, 0, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+            --danger-color: #ff3b3b;
+        }
+
+        /* --- FONDO EXACTO AL INDEX --- */
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HEADER / NAV (Idéntico al index) */
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+            background: rgba(2, 4, 8, 0.8);
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+
+        /* CONTENEDOR DE LECTURA */
+        .article-container {
+            max-width: 900px;
+            margin: 120px auto 60px auto;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem); /* Tamaño ajustado y más elegante */
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            background: linear-gradient(to right, #FFF, #A0AAB5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 0.9rem; /* Más compacto */
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 20px;
+        }
+
+        /* BLOQUES DE TEXTO TÁCTICO */
+        .tactical-block {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px 40px;
+            margin-bottom: 40px;
+            border-left: 3px solid var(--primary-color);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .tactical-block.warning {
+            border-left: 3px solid var(--danger-color);
+        }
+
+        .tactical-block h2 {
+            font-size: 1.2rem; /* Tamaño de encabezado reducido */
+            color: #FFF;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* TAMAÑO DE TEXTO EXACTO AL INDEX */
+        .tactical-block p {
+            font-size: 0.9rem; 
+            line-height: 1.8;
+            color: var(--text-muted); /* Color grisáceo #A0AAB5 */
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .tactical-block p:last-child { margin-bottom: 0; }
+
+        .highlight {
+            color: #FFF;
+            font-weight: 600;
+        }
+        
+        .highlight-danger {
+            color: var(--danger-color);
+            font-weight: 600;
+        }
+
+        blockquote {
+            margin: 30px 0;
+            padding: 20px 30px;
+            border-left: 2px solid var(--text-muted);
+            font-style: italic;
+            color: #FFF;
+            font-size: 1rem; /* Cita más compacta */
+            background: rgba(255,255,255,0.02);
+            line-height: 1.8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header { justify-content: center; flex-wrap: wrap; padding: 10px; }
+            .nav-links a { margin: 5px 10px; font-size: 0.7rem; }
+            .article-container { margin-top: 100px; }
+            .tactical-block { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="filosofia.html" class="active">Doctrina y Filosofía</a>
+            <a href="index.html#about">Información Corporativa</a>
+            <a href="index.html#contacto">Agenda y Contacto</a>
+            <a href="seguridad.html">Certificados de Confianza</a>
+        </nav>
+    </header>
+
+    <div class="article-container">
+        <h1 class="page-title">Doctrina de Seguridad y Soberanía Digital</h1>
+        <div class="subtitle">El criterio humano frente a la automatización de la vulnerabilidad</div>
+
+        <div class="tactical-block">
+            <h2>Nuestra Postura</h2>
+            <p>En CRUGER CORP no diseñamos tecnología basándonos en las tendencias comerciales de Silicon Valley. Desarrollamos herramientas bajo un escrutinio científico y táctico riguroso. En la actualidad, la industria tecnológica ha empujado a corporativos, gobiernos e individuos a delegar sus activos más críticos a dos paradigmas altamente inestables: <span class="highlight">La Nube</span> y la <span class="highlight">Inteligencia Artificial no supervisada</span>.</p>
+            <p>Nuestra doctrina es clara: La verdadera seguridad informática no existe si no posees el control absoluto, físico y lógico, de tu información y de los procesos que la gestionan.</p>
+        </div>
+
+        <div class="tactical-block warning">
+            <h2 style="color: var(--danger-color);">El Espejismo de la Nube</h2>
+            <p>Existe un adagio fundamental en la ciberseguridad que la industria comercial intenta silenciar: <span class="highlight">"No existe la nube, solo es la computadora de alguien más"</span>.</p>
+            <p>Almacenar y procesar información crítica en infraestructuras Cloud significa ceder la soberanía de los datos. La nube es inherentemente un entorno compartido y, por definición, hackeable. Los datos en tránsito están expuestos a intercepciones, redireccionamientos (Man-in-the-Middle) y ataques de infraestructura.</p>
+            <p>Más allá del riesgo de intrusión externa, operar en la nube implica someterse a <span class="highlight-danger">telemetría oculta</span>: rastreo de posición geográfica, monitoreo de hábitos de tráfico, indexación de metadatos y captura de datos sensibles bajo términos de servicio opacos. Cuando confías tu información a servidores de terceros, renuncias al derecho de privacidad real.</p>
+        </div>
+
+        <div class="tactical-block">
+            <h2>La I.A. como Herramienta, no como Árbitro</h2>
+            <p>No satanizamos el progreso tecnológico. La Inteligencia Artificial es un procesador matemático y analítico formidable. <span class="highlight">El peligro no radica en la IA misma, sino en su implementación sin criterio ni supervisión humana en infraestructuras críticas.</span></p>
+            <p>Un modelo de lenguaje o un algoritmo generativo no posee consciencia situacional. Si se le asigna la tarea de optimizar código de seguridad, su naturaleza es simplificar operaciones para cumplir la función asignada, lo que frecuentemente resulta en la eliminación de protocolos de validación y la creación involuntaria de brechas catastróficas.</p>
+            <blockquote>
+                "Delegar el control de redes eléctricas, bases de datos estratégicas, o defensas activas a una IA autónoma no es innovación; es negligencia. El software requiere criterio, y el criterio es una característica exclusivamente humana."
+            </blockquote>
+            <p>El código escrito o gestionado por máquinas debe ser auditado por humanos. Una IA no puede discernir el impacto geopolítico, corporativo o vital de una fuga de datos. El <span class="highlight">"Human in the Loop"</span> (Humano en el ciclo de decisión) no es opcional en nuestros protocolos; es el núcleo operativo.</p>
+        </div>
+
+        <div class="tactical-block" style="border-left-color: #00FF41;">
+            <h2 style="color: #00FF41;">El Estándar CRUGER: Air-Gap y Control Físico</h2>
+            <p>Frente a la vulnerabilidad de la interconexión constante, nuestra respuesta tecnológica es el aislamiento estratégico.</p>
+            <p>Nuestros modelos de implementación (como el protocolo <span class="highlight">DARK ZONE TITANIUM</span>) se basan en servicios y herramientas <span class="highlight">OFFLINE</span>. Operamos bajo el principio <em>Air-Gap</em>: sistemas diseñados para funcionar al 100% desconectados de internet, volviéndolos matemáticamente inmunes a ataques remotos, ransomware de red o alteraciones en la nube.</p>
+            <p>Creemos en el cifrado de altísima entropía ejecutado localmente, donde las llaves maestras existen únicamente en hardware físico (Tokens/SKey) bajo el control absoluto de nuestros clientes. Sin servidores de terceros, sin telemetría, sin "optimización" no supervisada.</p>
+            <p style="margin-top: 30px; font-weight: 600; font-size: 1rem; color: #FFF; text-align: center;">
+                En CRUGER CORP, no negociamos su seguridad. Construimos soberanía.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 20px; border-top: 1px solid var(--glass-border); padding-top: 50px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.8rem; text-align: center;">Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; color: var(--text-muted); opacity: 0.5; margin-top: 30px; text-align: center;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+</body>
+</html>
