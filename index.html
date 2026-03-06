@@ -43,6 +43,11 @@
             box-sizing: border-box;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -55,6 +60,107 @@
 
         .nav-links a:hover {
             color: var(--primary-color);
+        }
+
+        /* --- ESTILOS DEL MENÚ LATERAL Y BOTÓN HAMBURGUESA --- */
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.8rem;
+            cursor: pointer;
+            margin-left: 30px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .menu-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(5, 10, 20, 0.95);
+            border-left: 1px solid var(--primary-color);
+            z-index: 999;
+            transition: right 0.4s ease;
+            padding: 80px 30px 30px;
+            box-sizing: border-box;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .sidebar .close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .sidebar a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+            border-bottom-color: var(--primary-color);
+        }
+
+        .sidebar-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
         }
 
         .banner-hero-container {
@@ -364,11 +470,22 @@
     <header>
         <nav class="nav-links">
             <a href="filosofia.html" style="color: #00A8E8; font-weight: 600;">Filosofía</a>
-            <a href="#about">Información Corporativa</a>
             <a href="#contacto">Agenda y Contacto</a>
-            <a href="seguridad.html">Certificados de Confianza</a>
         </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        
+        <a href="darkzone.html" style="color: #00A8E8; font-weight: bold;">► Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="#about">Información Corporativa</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
+    </div>
 
     <section class="hero" style="padding-top: 80px; padding-bottom: 60px;">
         
@@ -530,6 +647,18 @@
                 <h3>03. Air-Gap Operation</h3>
                 <p>Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red dentro del sistema del Usuario.</p>
             </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="darkzone.html" class="btn" style="
+                padding: 10px 25px; 
+                font-size: 0.75rem; 
+                border-color: rgba(255, 255, 255, 0.2); 
+                background: transparent; 
+                color: var(--text-muted);
+            " onmouseover="this.style.borderColor='var(--primary-color)'; this.style.color='#FFF'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.color='var(--text-muted)'">
+                SABER MÁS SOBRE EL SOFTWARE...
+            </a>
         </div>
     </section>
 
@@ -778,6 +907,12 @@
         }
 
         render();
+
+        // Función para abrir y cerrar el menú lateral
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
     </script>
 </body>
 </html>
