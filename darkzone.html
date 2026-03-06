@@ -223,7 +223,34 @@
             line-height: 1.6;
         }
 
-        /* --- SE AJUSTÓ EL ESPACIO AQUÍ --- */
+        .title-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .title-container h1 {
+            font-size: 2.2rem;
+            margin: 0;
+            color: #FFF;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .title-bar {
+            flex-grow: 1;
+            height: 35px;
+            background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--glass-border);
+            border-left: 3px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            box-shadow: inset 0 0 10px rgba(0, 168, 232, 0.1);
+        }
+
         .hero-split {
             display: flex;
             align-items: stretch;
@@ -344,7 +371,6 @@
             margin-top: 60px;
         }
 
-        /* --- RESPONSIVO --- */
         @media (max-width: 968px) {
             .hero-split, .algo-grid, .about-grid {
                 flex-direction: column;
@@ -357,6 +383,16 @@
             }
             .profile-card {
                 padding-top: 100px;
+            }
+            .title-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            .title-container h1 {
+                font-size: 1.8rem;
+                white-space: normal;
+                text-align: left;
             }
         }
     </style>
@@ -385,9 +421,11 @@
 
     <section class="section" style="padding-top: 120px; padding-bottom: 30px;">
         
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h1 style="font-size: 2.2rem; margin: 0; color: #FFF; letter-spacing: 2px;">SOFTWARE DARK ZONE</h1>
-            <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 15px auto 0 auto;"></div>
+        <div class="title-container">
+            <h1>SOFTWARE DARK ZONE</h1>
+            <div class="title-bar">
+                <canvas id="title-neural-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
+            </div>
         </div>
 
         <div class="hero-split">
@@ -426,7 +464,7 @@
         <div class="algo-grid">
             <div class="algo-card">
                 <div style="padding: 25px 30px 20px 30px; text-align: justify;">
-                    <strong style="color: var(--primary-color); font-size: 0.95rem;">Cifrado de flujo no lineal (Protección Activa):</strong>
+                    <strong style="color: var(--primary-color); font-size: 0.95rem;">Cifrado de Flujo No Lineal (Protección Activa):</strong>
                     <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-top: 10px; margin-bottom: 0;">
                         A través de un motor dinámico impulsado por derivación dura (Argon2) y firmas de tiempo, el usuario puede inyectar entropía masiva a cualquier archivo. El sistema desordena y transforma la topología de los datos a nivel binario, convirtiendo documentos sensibles en ruido blanco indescifrable en cuestión de segundos.
                     </p>
@@ -444,7 +482,7 @@
 
             <div class="algo-card">
                 <div style="padding: 25px 30px 20px 30px; text-align: justify;">
-                    <strong style="color: var(--primary-color); font-size: 0.95rem;">Eliminación de DATOS DoD 5220.22-M y saturación:</strong>
+                    <strong style="color: var(--primary-color); font-size: 0.95rem;">Erradicación Termodinámica DoD 5220.22-M (Destrucción Táctica):</strong>
                     <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-top: 10px; margin-bottom: 0;">
                         Eliminar un archivo de la papelera no borra la información física del disco duro. El motor de triturado de Dark Zone ejecuta múltiples iteraciones de sobrescritura vectorial y purga magnética. El usuario selecciona un activo comprometido y el sistema asfixia el rastro de los datos hasta el cero absoluto.
                     </p>
@@ -558,7 +596,7 @@
                 <p style="color: var(--primary-color); font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 25px; font-weight: 600;">(2025 - 2026)</p>
                 
                 <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; margin-bottom: 40px; text-align: justify;">
-                    Los resultados de estas simulaciones de estrés garantizan que el software operará sin fugas de memoria, colisiones o corrupción de datos bajo condiciones de uso intensivo. El documento a continuación presenta la recopilación exhaustiva de las métricas, tiempos de respuesta y análisis de rendimiento obtenidos durante el periodo de validación 2025-2026.
+                    Los resultados de estas simulaciones de estrés garantizan que el software operará sin fugas de memoria, colisiones o corrupción de datos bajo condiciones de uso intensivo. El documento a continuación presenta la recopilación exhaustiva de las métricas, tiempos de respuesta y análisis de rendimiento obtenidos durante el periodo de validación 2025-2026. EL INFORME ESTARÁ DISPONIBLE EN LAS PROXIMAS SEMANAS A ESTA PUBLICACIÓN.
                 </p>
                 
                 <div style="margin-top: auto; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
@@ -588,6 +626,72 @@
         function toggleMenu() {
             document.querySelector('.sidebar').classList.toggle('active');
             document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+
+        const tCanvas = document.getElementById('title-neural-canvas');
+        if (tCanvas) {
+            const tCtx = tCanvas.getContext('2d');
+            let tWidth, tHeight;
+            let tParticles = [];
+
+            function initTitleCanvas() {
+                tWidth = tCanvas.parentElement.offsetWidth;
+                tHeight = tCanvas.parentElement.offsetHeight;
+                tCanvas.width = tWidth;
+                tCanvas.height = tHeight;
+                tParticles = [];
+                
+                let count = Math.floor(tWidth / 15); 
+                for(let i=0; i<count; i++) {
+                    tParticles.push({
+                        x: Math.random() * tWidth,
+                        y: Math.random() * tHeight,
+                        vx: (Math.random() - 0.5) * 0.8,
+                        vy: (Math.random() - 0.5) * 0.8,
+                        size: Math.random() * 1.5 + 0.5
+                    });
+                }
+            }
+
+            window.addEventListener('resize', initTitleCanvas);
+            initTitleCanvas();
+
+            function animateTitle() {
+                tCtx.clearRect(0, 0, tWidth, tHeight);
+                tCtx.fillStyle = 'rgba(0, 168, 232, 0.8)';
+                
+                for(let i=0; i<tParticles.length; i++) {
+                    let p = tParticles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if(p.x < 0 || p.x > tWidth) p.vx *= -1;
+                    if(p.y < 0 || p.y > tHeight) p.vy *= -1;
+
+                    tCtx.beginPath();
+                    tCtx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                    tCtx.fill();
+
+                    for(let j=i+1; j<tParticles.length; j++) {
+                        let p2 = tParticles[j];
+                        let dx = p.x - p2.x;
+                        let dy = p.y - p2.y;
+                        let distSq = dx*dx + dy*dy;
+                        
+                        if(distSq < 1500) {
+                            let opacity = 1 - (distSq / 1500);
+                            tCtx.strokeStyle = `rgba(0, 168, 232, ${opacity * 0.5})`;
+                            tCtx.lineWidth = 0.5;
+                            tCtx.beginPath();
+                            tCtx.moveTo(p.x, p.y);
+                            tCtx.lineTo(p2.x, p2.y);
+                            tCtx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animateTitle);
+            }
+            animateTitle();
         }
     </script>
 </body>
