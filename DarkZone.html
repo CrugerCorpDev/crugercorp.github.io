@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARK ZONE TITANIUM | Software de Cifrado | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS BASE Y VARIABLES --- */
+        :root {
+            --primary-color: #00A8E8;
+            --bg-dark: #050A14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- MENÚ LATERAL Y BOTÓN HAMBURGUESA --- */
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.8rem;
+            cursor: pointer;
+            margin-left: 30px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .menu-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(5, 10, 20, 0.95);
+            border-left: 1px solid var(--primary-color);
+            z-index: 999;
+            transition: right 0.4s ease;
+            padding: 80px 30px 30px;
+            box-sizing: border-box;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .sidebar .close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .sidebar a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+            border-bottom-color: var(--primary-color);
+        }
+
+        .sidebar-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- CLASES GENERALES --- */
+        .section {
+            padding: 80px 30px;
+            max-width: 1200px; /* Un poco más ancho para las columnas */
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 168, 232, 0.4);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* --- ESTRUCTURAS ESPECÍFICAS DE ESTA PÁGINA --- */
+        .hero-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding-top: 120px; /* Espacio para el header fijo */
+            padding-bottom: 60px;
+        }
+
+        .hero-split-left {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-split-left img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-split-right {
+            flex: 1;
+        }
+
+        .glass-box-text {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-left: 3px solid var(--primary-color);
+            padding: 40px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .glass-box-text p {
+            text-align: justify;
+            color: #FFF;
+            font-size: 1.05rem;
+            font-weight: 400;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .algo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .algo-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .algo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--glass-border);
+            object-fit: cover;
+        }
+
+        .algo-card-text {
+            padding: 30px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .profile-card {
+            position: relative;
+        }
+
+        .square-icon {
+            position: absolute;
+            top: -30px;
+            right: 25px;
+            width: 100px;
+            height: 100px;
+            border-radius: 8px; /* Cuadrado con bordes ligeramente redondeados */
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+            background: #000;
+            box-shadow: 0 0 20px rgba(0, 168, 232, 0.3);
+        }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 60px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 968px) {
+            .hero-split, .algo-grid, .about-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            .square-icon {
+                top: 20px;
+                width: 70px;
+                height: 70px;
+            }
+            .profile-card {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
+            <a href="index.html#contacto">Agenda y Contacto</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="DarkZone.html" style="color: #00A8E8; font-weight: bold;">Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="index.html#about">Información Corporativa</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
+    </div>
+
+    <section class="section">
+        <div class="hero-split">
+            <div class="hero-split-left">
+                <img src="Interfaz DARK ZONE Carga.png" alt="Interfaz de Carga del Sistema Dark Zone" style="max-width: 800px;">
+            </div>
+            
+            <div class="hero-split-right">
+                <div class="glass-box-text">
+                    <h2 style="color: var(--primary-color); font-size: 1.5rem; margin-top: 0; margin-bottom: 20px;">SISTEMA DE CIFRADO AVANZADO</h2>
+                    <p>
+                        [Aquí irá tu texto limpio]. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; margin-bottom: 10px; color: #FFF;">ARQUITECTURA MATEMÁTICA</h2>
+            <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 0 auto;"></div>
+        </div>
+
+        <div class="algo-grid">
+            <div class="algo-card">
+                <img src="img_crypto.png" alt="Fórmula de Cifrado">
+                <div class="algo-card-text">
+                    <h3 style="color: var(--primary-color); font-size: 1.1rem; margin-top: 0;">Fórmula de cifrado Algoritmo Combinatorio propietario único en su tipo</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        [Datos de texto reservados. Explicación técnica del cifrado y generación de entropía...]
+                    </p>
+                </div>
+            </div>
+
+            <div class="algo-card">
+                <img src="img_shredder.png" alt="Algoritmo de Triturado">
+                <div class="algo-card-text">
+                    <h3 style="color: #00FF41; font-size: 1.1rem; margin-top: 0;">Algoritmo propietario de triturado de datos</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        [Datos de texto reservados. Explicación del motor de eliminación segura y sus capas...]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 40px; padding-bottom: 60px;">
+        <div style="border: 1px solid var(--glass-border); border-radius: 4px; overflow: hidden; box-shadow: 0 0 30px rgba(0, 168, 232, 0.15); margin-bottom: 40px;">
+            <img src="banner-darkzone-ops.jpg" alt="Dark Zone: Comunicación Estratégica y Operaciones Tácticas" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 500px;">
+        </div>
+
+        <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px; max-width: 900px; margin: 0 auto; text-align: left; border-left: 4px solid #00A8E8; backdrop-filter: blur(10px);">
+            <h3 style="color: #FFF; font-size: 1.5rem; margin-top: 0; text-transform: uppercase; letter-spacing: 1px;">
+                VECTORES DE IMPLEMENTACIÓN CRÍTICA
+            </h3>
+            
+            <p style="color: #A0AAB5; font-size: 1rem; line-height: 1.8; margin-bottom: 30px;">
+                El modelo de cifrado <strong>Dark Zone (Protocolo TITANIUM)</strong> no está diseñado para el usuario promedio. Su arquitectura de alta entropía está optimizada para garantizar la integridad de datos y comunicaciones en sectores donde una filtración es inaceptable. Permite Cifrar, Descifrar y Triturar datos (sin pasar por la Memoria RAM o la Papelera).
+            </p>
+
+            <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding-left: 20px; color: #FFF;">
+                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Seguridad Corporativa e Inteligencia:</strong> Protección contra espionaje industrial y filtración de secretos comerciales.</li>
+                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Gobierno y Soberanía:</strong> Blindaje de comunicaciones estratégicas y datos sensibles del estado.</li>
+                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Farmacéutica e Integridad de Datos:</strong> Protección de propiedad intelectual (IP) y datos de ensayos clínicos o patentes.</li>
+                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Manufactura Avanzada:</strong> Seguridad en planos, diseños industriales y secretos de producción.</li>
+                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Operaciones Tácticas:</strong> Comunicaciones seguras en campo sin dependencia de infraestructura de red convencional.</li>
+            </ul>
+             
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="color: #FFF; font-weight: 600; font-size: 1.1rem;">
+                    El software Dark Zone, no solo Cifra archivos y carpetas contenedoras, también descifra y elimina bajo un motor de trituración con 7 capas de datos.
+                    Superioridad matemática y algoritmica ante el estándar AES-256 o ChaCha20 (cifrado de 128/256 bits).
+                    <span style="color: var(--primary-color);">Dark Zone genera más de 8 Millones de bits de entropía. Actualmente no hay ningún otro modelo de cifrado equivalente.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="padding-top: 0;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">DARK ZONE v.24 TITANIUM</h2>
+            <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 0 auto;"></div>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3>01. Protocolo TITANIUM</h3>
+                <p>SOFTWARE Avanzado de Cifrado generador de entropía de ruido capaz de generar más de 8 Millones de bits. Matemáticamente superior a los estándares comerciales AES-256 y el Estandar MILITAR.</p>
+            </div>
+            <div class="card">
+                <h3>02. Activo Físico (TOKEN/SKey)</h3>
+                <p>El software valida la presencia de hardware propietario. Mejorando la seguridad del usuario con modelos kill switch.</p>
+            </div>
+            <div class="card">
+                <h3>03. Air-Gap Operation</h3>
+                <p>Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red dentro del sistema del Usuario.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--glass-border); margin-bottom: 60px;">
+        <div class="about-grid">
+            <div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; text-transform: uppercase;">100 DÍAS DE DATOS COMPUTADOS</h2>
+                <div style="width: 50px; height: 2px; background: var(--primary-color); margin-bottom: 30px;"></div>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
+                    En esta sección expondremos el resumen de las pruebas y el estrés al que ha sido sometido el algoritmo propietario durante un periodo de evaluación rigurosa.
+                </p>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+                    [Espacio reservado para texto explicativo sobre el rendimiento, resistencia criptográfica y validación del entorno de ejecución].
+                </p>
+            </div>
+            
+            <div class="card profile-card" style="border-left: 3px solid var(--primary-color); text-align: left;">
+                
+                <img src="icono_darkzone.png" alt="Ícono Dark Zone" class="square-icon">
+
+                <h3 style="margin-bottom: 10px; color: #FFF; padding-right: 80px; font-size: 1.3rem;">DARK ZONE v24</h3>
+                <p style="color: var(--primary-color); font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 30px; font-weight: 600;">SOFTWARE DE CIFRADO DE DATOS</p>
+                
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 40px;">
+                    [Breve explicación en construcción. Resumen de sus capacidades principales y cómo el usuario final interactúa con la plataforma para la protección de sus activos críticos.]
+                </p>
+                
+                <div style="margin-top: 20px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                    <a href="Datos_Computados_DZ24.pdf" target="_blank" class="btn" style="width: 100%; box-sizing: border-box; border-color: #FFF; color: #FFF;">
+                        DESCARGAR INFORME PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        
+        <p>Ensenada, Baja California, México.</p>
+        
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
