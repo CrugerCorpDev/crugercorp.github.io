@@ -225,28 +225,26 @@
 
         .hero-split {
             display: flex;
-            align-items: center;
+            align-items: stretch;
             justify-content: space-between;
             gap: 40px;
-            padding-top: 120px;
+            padding-top: 120px; 
             padding-bottom: 60px;
         }
 
-        .hero-split-left {
+        .hero-split-left, .hero-split-right {
             flex: 1;
-            text-align: center;
+            display: flex;
         }
 
         .hero-split-left img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             border-radius: 4px;
             border: 1px solid var(--glass-border);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-split-right {
-            flex: 1;
+            background: #000;
         }
 
         .glass-box-text {
@@ -257,20 +255,31 @@
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .glass-box-text h2 {
+            color: var(--primary-color); 
+            font-size: 1.5rem; 
+            margin-top: 0; 
+            margin-bottom: 20px;
         }
 
         .glass-box-text p {
             text-align: justify;
             color: #FFF;
-            font-size: 1.05rem;
+            font-size: 0.85rem;
             font-weight: 400;
-            line-height: 1.8;
+            line-height: 1.7; 
             margin: 0;
         }
 
         .algo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            align-items: stretch;
             gap: 40px;
             margin-top: 40px;
         }
@@ -280,6 +289,9 @@
             border: 1px solid var(--glass-border);
             border-radius: 4px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .algo-card img {
@@ -292,6 +304,10 @@
 
         .algo-card-text {
             padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-start;
         }
 
         .about-grid {
@@ -393,8 +409,8 @@
             <div class="algo-card">
                 <img src="img_crypto.png" alt="Fórmula de Cifrado Dark Zone">
                 <div class="algo-card-text">
-                    <h3 style="color: var(--primary-color); font-size: 1.1rem; margin-top: 0;">MOTOR CRIPTOGRÁFICO: MODELO DE ALTA ENTROPÍA</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; text-align: justify;">
+                    <h3 style="color: var(--primary-color); font-size: 1.1rem; margin-top: 0; margin-bottom: 15px;">MOTOR CRIPTOGRÁFICO: MODELO DE ALTA ENTROPÍA</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; text-align: justify; margin: 0;">
                         Dark Zone emplea un algoritmo propietario de flujo no lineal. El sistema no depende de llaves estáticas, sino que calcula el límite de entropía procesando el ADN del hardware del usuario (<i>H<sub>dna</sub></i>) cruzado con una firma de tiempo (<i>&tau;</i>). El resultado es mutado topológicamente (<i>&Psi;</i>) y ponderado por un derivador de memoria dura (<i>&#8496;<sub>argon</sub></i>), haciendo que los ataques de fuerza bruta resulten computacionalmente inviables.
                     </p>
                 </div>
@@ -403,8 +419,8 @@
             <div class="algo-card">
                 <img src="img_shredder.png" alt="Algoritmo de Triturado Dark Zone">
                 <div class="algo-card-text">
-                    <h3 style="color: #00FF41; font-size: 1.1rem; margin-top: 0;">MOTOR DE ERRADICACIÓN: PROTOCOLO DoD 5220.22-M</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; text-align: justify;">
+                    <h3 style="color: var(--primary-color); font-size: 1.1rem; margin-top: 0; margin-bottom: 15px;">MOTOR DE ERRADICACIÓN: PROTOCOLO DoD 5220.22-M</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; text-align: justify; margin: 0;">
                         La eliminación de archivos ordinaria deja rastros recuperables. El motor de triturado de Dark Zone aplica un modelo de termodinámica de datos. Calcula la integral del espacio ocupado y ejecuta iteraciones (<i>&lambda;</i>) de inyección de ruido y patrones diferenciales (<i>P<sub>p</sub>(t)</i>) para asfixiar la remanencia magnética (<i>&nabla;<sub>mag</sub></i>) o purgar las celdas estáticas de unidades SSD (<i>&Upsilon;<sub>trim</sub></i>), reduciendo la posibilidad de recuperación forense a cero absoluto (<i>&empty;</i>).
                     </p>
                 </div>
