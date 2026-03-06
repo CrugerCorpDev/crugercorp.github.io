@@ -223,13 +223,12 @@
             line-height: 1.6;
         }
 
+        /* --- SE AJUSTÓ EL ESPACIO AQUÍ --- */
         .hero-split {
             display: flex;
             align-items: stretch;
             justify-content: space-between;
             gap: 40px;
-            padding-top: 120px; 
-            padding-bottom: 60px;
         }
 
         .hero-split-left, .hero-split-right {
@@ -316,7 +315,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            align-items: stretch; /* Alineamos las alturas */
+            align-items: stretch; 
         }
 
         .profile-card {
@@ -384,7 +383,13 @@
         <a href="privacidad.html">Aviso de Privacidad</a>
     </div>
 
-    <section class="section">
+    <section class="section" style="padding-top: 120px; padding-bottom: 30px;">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 2.2rem; margin: 0; color: #FFF; letter-spacing: 2px;">SOFTWARE DARK ZONE</h1>
+            <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 15px auto 0 auto;"></div>
+        </div>
+
         <div class="hero-split">
             <div class="hero-split-left">
                 <img src="Interfaz DARK ZONE Carga.png" alt="Interfaz de Carga del Sistema Dark Zone" style="max-width: 800px;">
