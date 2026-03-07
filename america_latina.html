@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visión América Latina | Soberanía Digital | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --bg-dark: #050A14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.8rem;
+            cursor: pointer;
+            margin-left: 30px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
+            transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        .page-header {
+            padding: 140px 30px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            color: #FFF;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        .page-header h2 {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: var(--primary-color);
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .split-section {
+            display: flex;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 30px;
+            align-items: center;
+        }
+
+        .split-image {
+            flex: 1;
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        .split-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .split-text {
+            flex: 1;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            color: #FFF;
+            line-height: 1.7;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .quote-author {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .manifesto-body {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 30px 80px;
+        }
+
+        .manifesto-body h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .manifesto-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            text-align: justify;
+            font-weight: 400;
+        }
+
+        .manifesto-body strong {
+            color: #FFF;
+            font-weight: 600;
+        }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+
+        @media (max-width: 968px) {
+            .split-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .split-text {
+                padding-left: 0;
+                padding-top: 20px;
+                border-left: none;
+                border-top: 3px solid var(--primary-color);
+            }
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
+            <a href="index.html#contacto">Agenda y Contacto</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="darkzone.html">Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="index.html#about">Información Corporativa</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="america_latina.html" style="color: #00A8E8; font-weight: bold;">América Latina</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
+    </div>
+
+    <section class="page-header">
+        <h1>VISIÓN AMÉRICA LATINA</h1>
+        <h2>Soberanía Digital e Independencia</h2>
+    </section>
+
+    <section class="split-section">
+        <div class="split-image">
+            <img src="entrevista_latam.jpg" alt="Entrevista Angel Cruger - Visión LATAM">
+        </div>
+        <div class="split-text">
+            <div class="quote-text">
+                "El mayor riesgo de ciberseguridad en América Latina es que seguimos intentando proteger Secretos Industriales y de Estado dependiendo de software extranjero. Nuestra misión es cambiar las reglas del juego y devolverle al usuario el control absoluto de su información en un entorno 100% fuera de línea."
+            </div>
+            <div class="quote-author">
+                — Angel Cruger, CEO de Cruger Corp
+            </div>
+        </div>
+    </section>
+
+    <section class="manifesto-body">
+        
+        <p>
+            Durante nuestra reciente plática, abordamos una realidad incómoda en el sector corporativo y gubernamental: <strong>la falsa sensación de seguridad</strong>. ¿De qué sirve tener los mejores protocolos perimetrales si la información más sensible de México y América Latina sigue alojada en nubes de terceros (la computadora de alguien más) o procesada por software sobre el cual no tenemos jurisdicción ni control real?
+        </p>
+
+        <h3>La Urgencia de la Soberanía Digital</h3>
+        <p>
+            Es una realidad que aún sigue presente en muchas dependencias y gobiernos locales y extranjeros. ¿Qué tan seguros están tus datos si pueden ser abiertos por órdenes de jueces extranjeros, expuestos por analistas forenses de terceros o vulnerados por ciberdelincuentes que explotan servidores ajenos? 
+        </p>
+        <p>
+            Compartimos la visión detrás de la arquitectura de <strong>Dark Zone TITANIUM</strong> y cómo estamos demostrando que la verdadera inmunidad ante el espionaje no requiere estar hiperconectado. Por el contrario, exige un aislamiento táctico y el control absoluto del hardware por parte del usuario final.
+        </p>
+
+        <h3>El Problema de la "Etiqueta Blanca"</h3>
+        <p>
+            Por eso, firmas tecnológicas que realmente ofrezcan independencia —sin puertas traseras (backdoors) y sin dependencia de servidores externos— son vitales para la región. La oferta local en América Latina sigue estando saturada de empresas oportunistas que solo reempaquetan software extranjero bajo la modalidad de etiqueta blanca (white label). 
+        </p>
+        <p>
+            Estas prácticas representan un punto ciego masivo en la ciberseguridad de cualquier entidad seria y profesional que busque verdadera independencia y seguridad para su activo más crítico: <strong>la información</strong>. Delegar la criptografía a potencias occidentales u orientales significa ceder nuestra soberanía de datos.
+        </p>
+
+        <h3>Nuestro Compromiso Regional</h3>
+        <p>
+            En Cruger Corp creemos en el sentido de la urgencia sobre temas que realmente merecen ser abordados. Agradecemos los espacios para abrir el debate sobre el futuro de la protección de activos críticos en la región. 
+        </p>
+        <p>
+            Nuestro interés va más allá de México; buscamos apuntalar y fortalecer el bloque tecnológico de América Latina. Nuestra meta es proveer la infraestructura criptográfica de alta entropía que devuelva la independencia operativa a los gobiernos y corporativos latinoamericanos que no están dispuestos a negociar su privacidad.
+        </p>
+
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p>Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
