@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro de Confianza | CRUGER CORP</title>
     <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ESTILOS BASE */
         :root {
             --primary-color: #00A8E8;
             --bg-dark: #050A14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #FFFFFF;
             --text-muted: #A0AAB5;
         }
@@ -21,24 +23,71 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* HEADER SIMPLE */
         header {
-            padding: 20px 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
+            border-bottom: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+            background: rgba(5, 10, 20, 0.85);
         }
 
-        .logo-text { font-weight: 700; letter-spacing: 2px; color: #FFF; text-decoration: none; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
+            align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
+            transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
 
         .container {
             max-width: 900px;
-            margin: 60px auto;
-            padding: 0 20px;
+            margin: 120px auto 60px auto; /* Ajustado por el header fijo */
+            padding: 0 30px;
         }
 
         h1 {
@@ -56,9 +105,8 @@
             padding-left: 24px;
         }
 
-        /* TARJETA TÉCNICA */
         .tech-card {
-            background: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+            background: rgba(0, 0, 0, 0.4); 
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 40px;
             border-radius: 4px;
@@ -68,9 +116,9 @@
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            font-family: monospace; /* Fuente tipo código */
+            font-family: monospace; 
             font-size: 0.95rem;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .data-table td {
@@ -81,7 +129,17 @@
         .label { color: var(--text-muted); width: 35%; }
         .value { color: #00FF41; } /* Verde Terminal */
 
-        /* --- BOTÓN DE CRISTAL (GLASS BUTTON) --- */
+        .digicert-box {
+            background: rgba(10, 21, 37, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 3px solid #00A8E8;
+            padding: 25px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .glass-btn {
             display: block;
             width: 100%;
@@ -92,8 +150,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--primary-color);
-            
-            /* Efecto Cristal */
             background: rgba(0, 168, 232, 0.1); 
             border: 1px solid rgba(0, 168, 232, 0.5);
             backdrop-filter: blur(5px);
@@ -104,11 +160,10 @@
         .glass-btn:hover {
             background: var(--primary-color);
             color: #000;
-            box-shadow: 0 0 20px rgba(0, 168, 232, 0.4); /* Resplandor */
+            box-shadow: 0 0 20px rgba(0, 168, 232, 0.4); 
             transform: translateY(-2px);
         }
 
-        /* DISCLAIMER */
         .warning-box {
             margin-top: 30px;
             padding: 15px;
@@ -119,26 +174,43 @@
             line-height: 1.5;
         }
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 50px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 60px;
         }
-        .back-link:hover { color: var(--primary-color); }
 
+        @media (max-width: 768px) {
+            .digicert-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .data-table { font-size: 0.8rem; }
+            .label { width: 45%; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="logo-text">CRUGER CORP</a>
-        <span style="color: var(--primary-color); font-size: 0.75rem; border: 1px solid var(--primary-color); padding: 4px 10px; letter-spacing: 1px;">SECURE REPOSITORY</span>
+        <nav class="nav-links">
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
+            <a href="index.html#contacto">Agenda y Contacto</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="darkzone.html">Dark Zone</a>
+        <a href="seguridad.html" style="color: #00A8E8; font-weight: bold;">Certificados de Confianza</a>
+        <a href="index.html#about">Información Corporativa</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="america_latina.html">América Latina</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
+    </div>
 
     <div class="container">
         <h1>Repositorio de Confianza</h1>
@@ -171,9 +243,24 @@
                 </tr>
                 <tr>
                     <td class="label">Huella Digital (Thumbprint):</td>
-                    <td class="value" style="color: #FFF;">9D65AC47B1B15A20627156812E5616FFD7057D30</td>
+                    <td class="value" style="color: #FFF; word-break: break-all;">9D65AC47B1B15A20627156812E5616FFD7057D30</td>
                 </tr>
             </table>
+
+            <div class="digicert-box">
+                <div style="min-width: 50px;">
+                    <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#00A8E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div style="text-align: left;">
+                    <h4 style="color: #FFF; margin-top: 0; margin-bottom: 8px; font-size: 0.95rem; letter-spacing: 1px;">VALIDACIÓN POR CONTRAFIRMA (DIGICERT)</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin: 0; text-align: justify;">
+                        Aunque nuestro certificado raíz opera bajo un entorno propietario autofirmado para garantizar independencia criptográfica total, utilizamos los servicios de <strong>DigiCert, Inc.</strong> como Autoridad de Sellado de Tiempo (Time-Stamping Authority) y contrafirma. Esta medida adicional sirve como garantía cruzada, asegurando que el código no ha sido alterado desde el momento exacto de su compilación original.
+                    </p>
+                </div>
+            </div>
 
             <a href="CrugerCorp_SecurityPack.rar" class="glass-btn" download>
                 📥 Descargar Kit de Certificación (.rar)
@@ -187,9 +274,24 @@
         <div class="warning-box">
             <strong>⚠️ NOTA DE ALCANCE:</strong> Este certificado es una credencial técnica de seguridad para validar la autoría del ejecutable en entornos Windows. NO constituye ni sustituye la Licencia Comercial ni el Contrato de Servicios de la institución.
         </div>
-
-        <a href="index.html" class="back-link">← Regresar a la Página Principal</a>
     </div>
 
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p>Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
