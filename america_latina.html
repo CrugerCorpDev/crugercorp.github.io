@@ -26,6 +26,7 @@
             overflow-x: hidden;
         }
 
+        /* --- CABECERA Y MENÚ LATERAL --- */
         header {
             padding: 15px 30px;
             display: flex;
@@ -53,16 +54,9 @@
         .nav-links a:hover { color: var(--primary-color); }
 
         .menu-btn {
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-size: 1.8rem;
-            cursor: pointer;
-            margin-left: 30px;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            padding: 0;
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
+            align-items: center; padding: 0;
         }
         .menu-btn:hover { color: var(--primary-color); }
 
@@ -94,106 +88,65 @@
         }
         .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
 
-        .page-header {
-            padding: 140px 30px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: left;
+        /* --- BOTONES --- */
+        .btn {
+            padding: 15px 30px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+            color: var(--primary-color); background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--primary-color); text-decoration: none; transition: all 0.3s ease;
+            letter-spacing: 1px; position: relative; overflow: hidden; display: inline-block;
+            text-align: center; min-width: 200px;
         }
-        
-        .page-header h1 {
-            font-size: clamp(2.5rem, 4vw, 3.8rem);
-            color: #FFF;
-            margin: 0 0 10px 0;
-            line-height: 1.1;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 800;
+        .btn:hover {
+            background: var(--primary-color); color: #000; box-shadow: 0 0 20px rgba(0, 168, 232, 0.4);
         }
 
+        /* --- ESTILOS ESPECÍFICOS DE LA PÁGINA --- */
+        .page-header {
+            padding: 140px 30px 40px; max-width: 1200px; margin: 0 auto; text-align: left;
+        }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4vw, 3.8rem); color: #FFF; margin: 0 0 10px 0;
+            line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
+        }
         .page-header h2 {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
-            color: var(--primary-color);
-            margin: 0;
-            font-weight: 400;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--primary-color); margin: 0;
+            font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
         }
 
         .split-section {
-            display: flex;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 30px;
-            align-items: center;
+            display: flex; gap: 50px; max-width: 1200px; margin: 0 auto 60px;
+            padding: 0 30px; align-items: center;
         }
-
         .split-image {
-            flex: 1;
-            border: 1px solid var(--glass-border);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            flex: 1; border: 1px solid var(--glass-border); border-radius: 4px;
+            overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
-
-        .split-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
+        .split-image img { width: 100%; height: auto; display: block; }
+        
         .split-text {
-            flex: 1;
-            padding-left: 20px;
-            border-left: 3px solid var(--primary-color);
+            flex: 1; padding-left: 20px; border-left: 3px solid var(--primary-color);
         }
-
         .quote-text {
-            font-size: 1.2rem;
-            color: #FFF;
-            line-height: 1.7;
-            font-style: italic;
-            font-weight: 300;
-            margin-bottom: 20px;
+            font-size: 1.2rem; color: #FFF; line-height: 1.7; font-style: italic;
+            font-weight: 300; margin-bottom: 20px;
         }
-
         .quote-author {
-            font-size: 0.85rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 0.85rem; color: var(--primary-color); font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
         }
 
         .manifesto-body {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 0 30px 80px;
+            max-width: 850px; margin: 0 auto; padding: 0 30px 80px;
         }
-
         .manifesto-body h3 {
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--primary-color); font-size: 1.4rem; margin-top: 50px;
+            margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
         }
-
         .manifesto-body p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.9;
-            margin-bottom: 25px;
-            text-align: justify;
-            font-weight: 400;
+            color: var(--text-muted); font-size: 0.95rem; line-height: 1.9;
+            margin-bottom: 25px; text-align: justify; font-weight: 400;
         }
-
-        .manifesto-body strong {
-            color: #FFF;
-            font-weight: 600;
-        }
+        .manifesto-body strong { color: #FFF; font-weight: 600; }
 
         footer {
             padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
@@ -201,19 +154,12 @@
         }
 
         @media (max-width: 968px) {
-            .split-section {
-                flex-direction: column;
-                gap: 30px;
-            }
+            .split-section { flex-direction: column; gap: 30px; }
             .split-text {
-                padding-left: 0;
-                padding-top: 20px;
-                border-left: none;
+                padding-left: 0; padding-top: 20px; border-left: none;
                 border-top: 3px solid var(--primary-color);
             }
-            .page-header h1 {
-                font-size: 2.2rem;
-            }
+            .page-header h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -256,6 +202,18 @@
             <div class="quote-author">
                 — Angel Cruger, CEO de Cruger Corp
             </div>
+
+            <div style="margin-top: 30px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #FFF; font-size: 0.9rem; margin-top: 0; margin-bottom: 10px; font-weight: 600;">
+                    INTELIGENCIA Y AUDITORÍA
+                </p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
+                    Consulte nuestro análisis bajo metodologías OSINT y evaluación de vectores de ataque en infraestructuras críticas, disponible en nuestro repositorio académico.
+                </p>
+                <a href="https://doi.org/10.5281/zenodo.18415821" target="_blank" class="btn" style="padding: 12px 20px; font-size: 0.75rem; width: 100%; box-sizing: border-box;">
+                    LEER METODOLOGÍA DE INTELIGENCIA VOL. I
+                </a>
+            </div>
         </div>
     </section>
 
@@ -267,26 +225,26 @@
 
         <h3>La Urgencia de la Soberanía Digital</h3>
         <p>
-            Es una realidad que aún sigue presente en muchas dependencias y gobiernos locales y extranjeros. ¿Qué tan seguros están tus datos si pueden ser abiertos por órdenes de jueces extranjeros, expuestos por analistas forenses de terceros o vulnerados por ciberdelincuentes que explotan servidores ajenos? 
+            Es una realidad que aún sigue presente en muchas dependencias y gobiernos. ¿Qué tan seguros están tus datos si pueden ser abiertos por órdenes de jueces extranjeros, expuestos por analistas forenses de terceros o vulnerados por ciberdelincuentes que explotan servidores ajenos? 
         </p>
         <p>
             Compartimos la visión detrás de la arquitectura de <strong>Dark Zone TITANIUM</strong> y cómo estamos demostrando que la verdadera inmunidad ante el espionaje no requiere estar hiperconectado. Por el contrario, exige un aislamiento táctico y el control absoluto del hardware por parte del usuario final.
         </p>
 
-        <h3>El Problema de la "Etiqueta Blanca"</h3>
+        <h3>Más allá de Silicon Valley: El Tablero Geopolítico</h3>
         <p>
-            Por eso, firmas tecnológicas que realmente ofrezcan independencia —sin puertas traseras (backdoors) y sin dependencia de servidores externos— son vitales para la región. La oferta local en América Latina sigue estando saturada de empresas oportunistas que solo reempaquetan software extranjero bajo la modalidad de etiqueta blanca (white label). 
+            Nos preocupa profundamente la situación geopolítica actual. La dependencia tecnológica obliga a las naciones de la región a alinearse por defecto con el bloque occidental o el frente oriental, comprometiendo no solo su neutralidad, sino la privacidad de sus ciudadanos e industrias. La verdadera independencia exige infraestructura propia; no podemos ser soberanos si las herramientas con las que protegemos nuestros secretos responden a jurisdicciones extranjeras.
         </p>
         <p>
-            Estas prácticas representan un punto ciego masivo en la ciberseguridad de cualquier entidad seria y profesional que busque verdadera independencia y seguridad para su activo más crítico: <strong>la información</strong>. Delegar la criptografía a potencias occidentales u orientales significa ceder nuestra soberanía de datos.
+            Es fundamental entender que la innovación disruptiva y el desarrollo de tecnologías de defensa no ocurren exclusivamente en Silicon Valley. En este momento, <strong>Cruger Corp</strong> está impulsando modelos de transformación digital y desarrollando nuevas arquitecturas tecnológicas propietarias. Estas soluciones inéditas (que van más allá de nuestros sistemas de cifrado actuales) están diseñadas para mitigar vulnerabilidades críticas que el mercado corporativo tradicional ha ignorado sistemáticamente.
         </p>
 
         <h3>Nuestro Compromiso Regional</h3>
         <p>
-            En Cruger Corp creemos en el sentido de la urgencia sobre temas que realmente merecen ser abordados. Agradecemos los espacios para abrir el debate sobre el futuro de la protección de activos críticos en la región. 
+            Es momento de voltear a ver a América Latina. México cuenta ahora con una firma que apuesta sin concesiones por la soberanía de datos, operando bajo modelos de arquitectura cerrada. 
         </p>
         <p>
-            Nuestro interés va más allá de México; buscamos apuntalar y fortalecer el bloque tecnológico de América Latina. Nuestra meta es proveer la infraestructura criptográfica de alta entropía que devuelva la independencia operativa a los gobiernos y corporativos latinoamericanos que no están dispuestos a negociar su privacidad.
+            Nuestra visión no solo reacciona a las amenazas del presente, sino que está construyendo la base de la seguridad operativa de la región. Nuestro interés es proveer la infraestructura de alta entropía que devuelva la independencia tecnológica a los gobiernos y corporativos latinoamericanos que no están dispuestos a negociar su privacidad frente a los grandes bloques de poder.
         </p>
 
     </section>
