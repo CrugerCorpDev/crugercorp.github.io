@@ -27,6 +27,7 @@
             overflow-x: hidden;
         }
 
+        /* --- CABECERA Y MENÚ LATERAL ESTANDARIZADOS --- */
         header {
             padding: 15px 30px;
             display: flex;
@@ -39,20 +40,53 @@
             top: 0;
             z-index: 100;
             box-sizing: border-box;
-            background: rgba(2, 4, 8, 0.8);
+            background: rgba(5, 10, 20, 0.85);
         }
 
+        .nav-links { display: flex; align-items: center; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-left: 20px;
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px;
             transition: color 0.3s;
         }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+        .nav-links a:hover { color: var(--primary-color); }
 
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
+            align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
+            transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        /* --- ESTILOS ESPECÍFICOS DE LA PÁGINA (BLOQUES TÁCTICOS) --- */
         .article-container {
             max-width: 900px;
             margin: 120px auto 60px auto;
@@ -86,24 +120,23 @@
         .tactical-block {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-
             margin-bottom: 40px;
             border-left: 3px solid var(--primary-color);
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            
             display: flex;
-            align-items: center;
+            align-items: stretch; /* Asegura que la imagen llene la altura del texto */
             overflow: hidden;
+            border-radius: 4px;
         }
 
         .tactical-image {
             width: 40%;
-            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             border-right: 1px solid var(--glass-border);
+            background: #000;
         }
 
         .tactical-image img {
@@ -117,6 +150,9 @@
             width: 60%;
             padding: 30px 40px;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .tactical-block.warning { border-left-color: var(--danger-color); }
@@ -139,6 +175,20 @@
             text-align: justify;
         }
 
+        .tactical-block blockquote {
+            border-left: 2px solid var(--primary-color);
+            margin: 10px 0 20px 0;
+            padding: 10px 20px;
+            font-style: italic;
+            color: #FFF;
+            background: rgba(0, 168, 232, 0.05);
+        }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 60px;
+        }
+
         @media (max-width: 968px) {
             .tactical-block {
                 flex-direction: column;
@@ -149,7 +199,7 @@
                 border-right: none;
                 border-bottom: 1px solid var(--glass-border);
             }
-            .tactical-image { height: 300px; } /* Altura fija en móviles */
+            .tactical-image { height: 250px; } 
             .tactical-content { padding: 25px; }
         }
     </style>
@@ -158,12 +208,25 @@
 
     <header>
         <nav class="nav-links">
-            <a href="filosofia.html" class="active">Filosofía</a>
-            <a href="index.html#about">Información Corporativa</a>
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
             <a href="index.html#contacto">Agenda y Contacto</a>
-            <a href="seguridad.html">Certificados de Confianza</a>
         </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="filosofia.html" style="color: #00A8E8; font-weight: bold;">Filosofía Corporativa</a>
+        <a href="darkzone.html">Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="index.html#about">Información Corporativa</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="america_latina.html">América Latina</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
+    </div>
 
     <div class="article-container">
         <h1 class="page-title">Doctrina de Seguridad y Soberanía Digital</h1>
@@ -216,22 +279,29 @@
                 <p>Frente a la vulnerabilidad de la interconexión constante, nuestra respuesta tecnológica es el aislamiento estratégico.</p>
                 <p>Nuestros modelos de implementación (como el protocolo DARK ZONE TITANIUM) se basan en servicios y herramientas OFFLINE. Operamos bajo el principio Air-Gap: sistemas diseñados para funcionar al 100% desconectados de internet, volviéndolos matemáticamente inmunes a ataques remotos, ransomware de red o alteraciones en la nube.</p>
                 <p>Creemos en el cifrado de altísima entropía ejecutado localmente, donde las llaves maestras existen únicamente en hardware físico (Tokens/SKey) bajo el control absoluto de nuestros clientes. Sin servidores de terceros, sin telemetría, sin "optimización" no supervisada.</p>
-                <p style="margin-top: 30px; font-weight: 600; font-size: 1rem; color: #FFF; text-align: center;">
+                <p style="margin-top: auto; font-weight: 600; font-size: 1rem; color: #FFF; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
                     En CRUGER CORP, no alquilamos seguridad. Construimos soberanía.
                 </p>
             </div>
         </div>
+    </div>
 
     <footer>
-        <div style="margin-bottom: 20px; border-top: 1px solid var(--glass-border); padding-top: 50px;">
+        <div style="margin-bottom: 20px;">
              <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
         </div>
-        <p style="color: var(--text-muted); font-size: 0.8rem; text-align: center;">Ensenada, Baja California, México. Todas las imagenes son meramente ilustrativas.</p>
-        <p style="font-size: 0.7rem; color: var(--text-muted); opacity: 0.5; margin-top: 30px; text-align: center;">
+        <p>Ensenada, Baja California, México. Todas las imagenes son meramente ilustrativas.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
             CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
             Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
         </p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
