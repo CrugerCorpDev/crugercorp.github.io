@@ -416,6 +416,9 @@
                 flex-direction: column;
                 justify-content: center;
                 text-align: center;
+                .contact-grid { flex-direction: column; gap: 30px !important; }
+                .contact-col { border-right: none !important; padding-right: 0 !important; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 25px; }
+                .contact-col:last-child { border-bottom: none; padding-bottom: 0; }
             }
             .banner-text-section, .banner-core-section { width: 100%; }
             .banner-text-section { align-items: center; display: flex; flex-direction: column; margin-bottom: 40px; }
@@ -730,22 +733,38 @@
     </section>
 
     <section id="contacto" class="section">
-        <div class="appointment-box">
-            <h2 style="font-size: 1.5rem; color: #FFF; margin-bottom: 20px;">SOLICITAR ATENCIÓN ESPECIALIZADA</h2>
-            <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 30px auto;">
-                Agende una cita con nosotros para validar las necesidades de seguridad informática y de cifrado de su negocio o dependencia. 
-                Trabajamos con Corporativos, Empresas, Actores preocupados por la seguridad de su información y Dependencias de Gobierno.
-            </p>
+        <div class="appointment-box" style="text-align: left; padding: 40px 50px;">
             
-            <div class="button-group">
-                <a href="mailto:Admin@CrugerCorp.com?subject=Solicitud de Cita" class="btn">AGENDAR CITA</a>
-                <a href="mailto:Servicios@CrugerCorp.com?subject=Garantías y Soporte" class="btn" style="border-color: #FFF; color: #FFF;">SERVICIOS Y ATENCIÓN (GARANTÍAS)</a>
-            </div>
+            <h2 style="font-size: 1.5rem; color: #FFF; margin-top: 0; margin-bottom: 35px; text-transform: uppercase; border-left: 3px solid var(--primary-color); padding-left: 15px; letter-spacing: 1px;">
+                SOLICITAR ATENCIÓN ESPECIALIZADA
+            </h2>
+            
+            <div class="contact-grid" style="display: flex; align-items: stretch; gap: 40px;">
+                
+                <div class="contact-col" style="flex: 1.2; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 40px; display: flex; flex-direction: column; justify-content: center;">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.8; text-align: justify; margin: 0;">
+                        Desarrollamos e implementamos software especializado de cifrado y construimos arquitecturas de seguridad integral. Proveemos soluciones tácticas para el Estado, dependencias gubernamentales, corporativos de alto nivel y organizaciones estratégicas que exigen soberanía total sobre sus datos e infraestructura.
+                    </p>
+                </div>
 
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p style="color: #FFF; font-size: 0.9rem; font-weight: 600;">HORARIO DE ATENCIÓN</p>
-                <p class="hours-text">Lunes a Viernes: 9:30 AM - 5:00 PM (Pacífico Norte)</p>
-                <p class="hours-text" style="font-size: 0.7rem; color: #666;">*Laboramos días y horas hábiles, no días festivos.</p>
+                <div class="contact-col" style="flex: 0.8; border-right: 1px solid rgba(255,255,255,0.1); padding-right: 40px; display: flex; flex-direction: column; justify-content: center;">
+                    <p style="color: #FFF; font-size: 0.9rem; font-weight: 600; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">HORARIO OPERATIVO</p>
+                    <p style="color: #00FF41; font-size: 0.85rem; margin: 0 0 5px 0; font-family: monospace; font-weight: bold;">LUN - VIE: 09:30 AM - 05:00 PM</p>
+                    <p style="color: var(--primary-color); font-size: 0.8rem; margin: 0 0 15px 0; font-family: monospace;">(Tiempo del Pacífico Norte)</p>
+                    <p style="font-size: 0.75rem; color: #666; margin: 0; line-height: 1.5; font-style: italic;">
+                        * Operaciones y soporte técnico restringidos exclusivamente a días y horarios hábiles comerciales.
+                    </p>
+                </div>
+
+                <div class="contact-col" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.8; text-align: justify; margin-top: 0; margin-bottom: 25px;">
+                        Para requerimientos de servicios, atención técnica, venta de licencias o gestión de garantías, contacte a nuestro equipo para brindarle mayor información.
+                    </p>
+                    <a href="contacto.html" class="btn" style="width: 100%; box-sizing: border-box; text-align: center; padding: 15px;">
+                        CENTRO DE CONTACTO
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
