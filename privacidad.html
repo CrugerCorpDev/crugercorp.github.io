@@ -13,24 +13,89 @@
             --text-main: #FFFFFF;
             --text-muted: #A0AAB5;
             --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            background-color: var(--bg-dark);
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
             color: var(--text-muted);
             font-family: 'Montserrat', sans-serif;
             margin: 0;
-            padding: 40px;
+            padding: 0;
             line-height: 1.6;
             font-size: 0.9rem;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
+        /* --- CABECERA Y MENÚ LATERAL --- */
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+            background: rgba(5, 10, 20, 0.85);
+        }
+
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
+            align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
+            transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        /* --- CONTENIDO PRINCIPAL --- */
         .container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 120px auto 60px auto; /* Margen superior para no quedar bajo el header */
             background: var(--glass-bg);
             padding: 50px;
             border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
         }
 
         h1 {
@@ -38,6 +103,7 @@
             text-transform: uppercase;
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 20px;
+            margin-top: 0;
             margin-bottom: 40px;
         }
 
@@ -62,12 +128,35 @@
         a { color: var(--primary-color); text-decoration: none; }
 
         @media (max-width: 768px) {
-            body { padding: 20px; }
-            .container { padding: 20px; }
+            .container { 
+                padding: 30px 20px; 
+                margin: 100px 15px 40px 15px; 
+            }
         }
     </style>
 </head>
 <body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
+            <a href="index.html#contacto">Agenda y Contacto</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="darkzone.html">Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="index.html#about">Información Corporativa</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="america_latina.html">América Latina</a>
+        <a href="privacidad.html" style="color: #00A8E8; font-weight: bold;">Aviso de Privacidad</a>
+    </div>
 
     <div class="container">
         <center>
@@ -125,5 +214,11 @@
         </div>
     </div>
 
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
