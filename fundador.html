@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca del Fundador | Angel Cruger | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Angel Cruger",
+      "alternateName": ["Angel", "AngelCruger", "Miguel Ángel Figueroa Cruger"],
+      "jobTitle": "Director General (CEO) & Investigador Especialista en Ciencia y Tratamiento de Datos",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "CRUGER CORP",
+        "url": "https://www.crugercorp.com"
+      },
+      "founder": {
+        "@type": "Organization",
+        "name": "Angel Curiosidades",
+        "url": "https://angelcuriosidades.blogspot.com",
+        "sameAs": ["https://www.facebook.com/AngelCuriosidadesOficial"],
+        "alternateName": ["EDC Medios", "EDC EL DATO CURIOSO"],
+        "description": "Plataforma de divulgación científica y curiosidades."
+      },
+      "description": "Investigador Independiente, Especialista en Ciencia de Datos y Tecnologías de Defensa. Creador del protocolo de cifrado Dark Zone y metodologías de soberanía digital. Creador y desarrollador de Software de defensa.",
+      "knowsAbout": [
+        "Ciberseguridad", 
+        "Cifrado de Alta Entropía", 
+        "Ciencia de Datos", 
+        "Transformación Digital", 
+        "Tecnología de Defensa", 
+        "Artes Gráficas", 
+        "Social Media", 
+        "Divulgador Científico"
+      ],
+      "url": "https://www.crugercorp.com",
+      "sameAs": [
+        "https://doi.org/10.5281/zenodo.18415821",
+        "https://doi.org/10.5281/zenodo.18066101",
+        "https://doi.org/10.5281/zenodo.18107678",
+        "https://orcid.org/0009-0001-9216-5309",
+        "https://www.facebook.com/ColdFlameStore"
+      ]
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --bg-dark: #050A14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- CABECERA Y MENÚ LATERAL --- */
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+            background: rgba(5, 10, 20, 0.85);
+        }
+
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
+            align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
+            transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        /* --- ESTILOS ESPECÍFICOS DE LA PÁGINA --- */
+        .page-header {
+            padding: 140px 30px 40px; max-width: 1200px; margin: 0 auto; text-align: left;
+        }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4vw, 3.8rem); color: #FFF; margin: 0 0 10px 0;
+            line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
+        }
+        .page-header h2 {
+            font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--primary-color); margin: 0;
+            font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
+        }
+
+        .split-section {
+            display: flex; gap: 50px; max-width: 1200px; margin: 0 auto 60px;
+            padding: 0 30px; align-items: center;
+        }
+        .split-image {
+            flex: 1; border: 1px solid var(--glass-border); border-radius: 4px;
+            overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6); background: #000;
+        }
+        .split-image img { width: 100%; height: auto; display: block; object-fit: cover; }
+        
+        .split-text {
+            flex: 1; padding-left: 20px; border-left: 3px solid var(--primary-color);
+        }
+        .quote-text {
+            font-size: 1.2rem; color: #FFF; line-height: 1.7; font-style: italic;
+            font-weight: 300; margin-bottom: 20px;
+        }
+        .quote-author {
+            font-size: 0.85rem; color: var(--primary-color); font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        .manifesto-body {
+            max-width: 850px; margin: 0 auto; padding: 0 30px 80px;
+        }
+        .manifesto-body h3 {
+            color: var(--primary-color); font-size: 1.3rem; margin-top: 50px;
+            margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .manifesto-body p {
+            color: var(--text-muted); font-size: 0.95rem; line-height: 1.9;
+            margin-bottom: 25px; text-align: justify; font-weight: 400;
+        }
+        .manifesto-body strong { color: #FFF; font-weight: 600; }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+
+        @media (max-width: 968px) {
+            .split-section { flex-direction: column; gap: 30px; }
+            .split-text {
+                padding-left: 0; padding-top: 20px; border-left: none;
+                border-top: 3px solid var(--primary-color);
+            }
+            .page-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
+            <a href="contacto.html">Agenda y Contacto</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="darkzone.html">Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="corporativo.html">Nuestro ADN</a>
+        <a href="fundador.html" style="color: #00A8E8; font-weight: bold;">El Fundador</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="america_latina.html">América Latina</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
+    </div>
+
+    <section class="page-header">
+        <h1>ANGEL CRUGER</h1>
+        <h2>La Visión detrás de la Arquitectura</h2>
+    </section>
+
+    <section class="split-section">
+        <div class="split-image">
+            <img src="founder_placeholder.jpg" alt="Angel Cruger - CEO de Cruger Corp">
+        </div>
+        <div class="split-text">
+            <div class="quote-text">
+                "[ Aquí podemos colocar una frase que hable sobre la importancia de combinar la ciencia de datos con el entendimiento del factor humano. ]"
+            </div>
+            <div class="quote-author">
+                — Angel Cruger
+            </div>
+        </div>
+    </section>
+
+    <section class="manifesto-body">
+        
+        <p>
+            <strong>Cruger Corp</strong> no es producto de la improvisación, sino el resultado de más de una década de investigación, desarrollo e integración de múltiples disciplinas. Fundada por Angel Cruger, la firma nace de una visión polímata que entiende que la verdadera seguridad tecnológica requiere tanto de rigor científico como de una profunda comprensión de la interacción humana.
+        </p>
+
+        <h3>Arquitectura, Seguridad y Soberanía Tecnológica</h3>
+        <p>
+            La base operativa de Cruger Corp se sustenta en años de desarrollo de sistemas en entornos de alta fricción. La experiencia de su fundador abarca desde la creación de plataformas geoespaciales autónomas (offline-first) hasta el diseño de arquitecturas cognitivas y metodologías de inteligencia para la defensa de datos (Doctrina Dark Zone). Este bagaje técnico está respaldado por investigaciones formales documentadas (DOIs) enfocadas en la optimización heurística y la soberanía de la información.
+        </p>
+
+        <h3>Evolución Tecnológica y Rigor Académico</h3>
+        <p>
+            Esta trayectoria de ingeniería tiene sus raíces operativas en proyectos de desarrollo de plataformas iniciados en 2016. Las bases algorítmicas y protocolos de seguridad creados en ese entonces han evolucionado y hoy se integran directamente como el cimiento de los próximos proyectos tecnológicos de la firma. 
+        </p>
+        <p>
+            Para sostener este nivel de innovación, la empresa cuenta con un respaldo académico ininterrumpido que incluye más de 100 cursos certificados en áreas tecnocientíficas, cinco diplomados de especialización y una especialidad operativa en tratamiento de datos (actualmente cursando una segunda), garantizando una actualización absoluta frente a las amenazas modernas.
+        </p>
+
+        <h3>Perspectiva Cultural y Comunicación Estratégica</h3>
+        <p>
+            Lejos de limitarse al código y la criptografía, la trayectoria de Angel Cruger se complementa con casi diez años de experiencia en la dirección creativa, la ilustración y la divulgación digital. A través de la gestión de estudios multimedia y proyectos culturales de largo alcance, ha cultivado una capacidad excepcional para la comunicación visual, el diseño de identidad y la conexión con audiencias masivas.
+        </p>
+
+        <h3>La Síntesis: Cruger Corp</h3>
+        <p>
+            Es precisamente esta convergencia entre la ingeniería de sistemas complejos y la sensibilidad del diseño humanista lo que define el ADN de nuestra empresa. Entendemos que la tecnología más robusta carece de valor si no responde a necesidades reales. Por ello, en Cruger Corp combinamos el determinismo matemático y la ciberseguridad defensiva con un enfoque ético, estructurado y centrado en el usuario, ofreciendo soluciones tecnológicas que no solo protegen, sino que trascienden.
+        </p>
+
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p>Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
