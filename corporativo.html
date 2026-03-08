@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Corporativa | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --bg-dark: #050A14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- CABECERA Y MENÚ LATERAL --- */
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+            background: rgba(5, 10, 20, 0.85);
+        }
+
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
+            align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
+            display: flex; flex-direction: column; gap: 15px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
+            transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        /* --- ESTILOS DE ESTA PÁGINA --- */
+        .page-header {
+            padding: 140px 30px 40px; max-width: 1100px; margin: 0 auto; text-align: left;
+        }
+        .page-header h1 {
+            font-size: clamp(2.2rem, 4vw, 3.5rem); color: #FFF; margin: 0 0 10px 0;
+            line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
+        }
+        .page-header h2 {
+            font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--primary-color); margin: 0;
+            font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
+        }
+
+        .slogan-box {
+            margin: 30px 0; padding: 20px 30px; border-left: 2px solid var(--primary-color);
+            background: linear-gradient(90deg, rgba(0,168,232,0.05) 0%, transparent 100%);
+            text-align: center;
+        }
+        .slogan-text { color: #FFF; font-style: italic; font-weight: 500; font-size: 1.2rem; }
+
+        .about-section {
+            background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--glass-border);
+            padding: 80px 30px; max-width: 1100px; margin: 60px auto 0 auto;
+        }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+        }
+        .bio-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; }
+        
+        .profile-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 40px;
+            backdrop-filter: blur(5px); position: relative; border-left: 3px solid var(--primary-color);
+        }
+        .profile-pic {
+            position: absolute; top: 25px; right: 25px; width: 120px; height: 120px;
+            border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 168, 232, 0.3);
+        }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+
+        @media (max-width: 968px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .profile-pic { width: 80px; height: 80px; top: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
+            <a href="contacto.html">Agenda y Contacto</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="darkzone.html">Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="corporativo.html" style="color: #00A8E8; font-weight: bold;">Información Corporativa</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="america_latina.html">América Latina</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
+    </div>
+
+    <section class="page-header">
+        <h1>NUESTRO ADN</h1>
+        <h2>Filosofía y Respuesta Estratégica</h2>
+    </section>
+
+    <section style="max-width: 1100px; margin: 0 auto; padding: 0 30px;">
+        <div style="margin-bottom: 40px;">
+            <img src="CCEmpresarial.png" alt="Entorno Corporativo de Alta Seguridad" style="width: 100%; height: auto; display: block; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+        </div>
+
+        <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px; text-align: left; border-left: 3px solid #00A8E8;">
+            
+            <p style="color: #A0AAB5; font-size: 0.95rem; line-height: 1.9; margin-bottom: 20px; text-align: justify;">
+                <strong style="color: #FFF;">CRUGER CORP</strong> nace como una respuesta contundente ante una crisis invisible pero devastadora: la pérdida total de control sobre la información crítica. 
+                En una era definida por la vigilancia masiva, el espionaje industrial y la dependencia tecnológica de infraestructuras extranjeras o tecnologías inseguras como la <strong>NUBE</strong>, hemos asumido la misión de restaurar la soberanía digital de los activos importantes.
+            </p>
+
+            <div class="slogan-box">
+                <span class="slogan-text">"Si es importante para usted, es importante para nosotros."</span>
+            </div>
+
+            <p style="color: #A0AAB5; font-size: 0.95rem; line-height: 1.9; margin-bottom: 20px; text-align: justify;">
+                No somos una empresa de software convencional; somos <strong>arquitectos de entornos tecnológicos de defensa pasiva</strong>. 
+                Entendemos que la verdadera seguridad no reside en "contraseñas complejas", sino en la posesión física y exclusiva de las llaves de cifrado. 
+                Nuestra tecnología <strong>Dark Zone (Protocolo TITANIUM)</strong> elimina la dependencia de terceros, haciendo que sus secretos permanezcan matemáticamente inaccesibles.
+            </p>
+
+            <p style="color: #A0AAB5; font-size: 0.95rem; line-height: 1.9; margin-bottom: 20px; text-align: justify;">
+                Operamos bajo un estricto régimen de <strong>Exclusividad y Legalidad</strong>. Ofrecemos acompañamiento y asesoría en todas nuestras operaciones, reservándonos el derecho de admisión para trabajar únicamente con instituciones y corporativos que comprendan el valor real de la privacidad.
+            </p>
+
+            <p style="color: #A0AAB5; font-size: 0.95rem; line-height: 1.9; text-align: justify;">
+                En un mundo donde la vulnerabilidad es la norma, <strong>DARK ZONE</strong> no busca competir con aplicaciones de mensajería; busca reemplazarlas en entornos donde el error no es una opción. 
+                 <span style="color: #00A8E8; font-weight: 600;">Bienvenido a la Zona Oscura. Donde sus secretos permanecen secretos.</span>
+            </p>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-grid">
+            <div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 20px; text-transform: uppercase; color: #FFF;">Corporate Intelligence</h2>
+                <div style="width: 50px; height: 2px; background: var(--primary-color); margin-bottom: 30px;"></div>
+                <p class="bio-text" style="text-align: justify;">
+                    <strong>Cruger Corp</strong> es propiedad de <strong>Angel Cruger</strong>, creador de metodologías de transformación digital y tecnologías avanzadas. 
+                </p>
+                <p class="bio-text" style="text-align: justify;">
+                    La firma opera bajo una filosofía estricta de soberanía de la información, combinando el desarrollo de software de defensa con facetas de divulgación de conocimiento a través de redes sociales y trabajos en humanidades.
+                </p>
+            </div>
+            
+            <div class="profile-card">
+                <img src="angel.png" alt="Angel Cruger" class="profile-pic">
+
+                <h3 style="margin-top: 0; margin-bottom: 10px; color: #FFF; padding-right: 40px; font-size: 1.4rem;">ANGEL CRUGER</h3>
+                <p style="color: var(--primary-color); font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 60px; font-weight: 600;">DIRECTOR GENERAL / CEO</p>
+                
+                <p class="bio-text" style="font-size: 0.85rem;">
+                    Investigador Independiente.<br>
+                    Especialista en Ciencia y Tratamiento de Datos.<br>
+                    Fundador de plataformas de Divulgación Digital.<br>
+                    Artista Conceptual e Ilustrador Digital.<br>
+                    Creador de plataformas como MOVAIL y MIRACLE (desde 2016)
+                </p>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <a href="mailto:Admin@CrugerCorp.com" style="color: var(--text-muted); text-decoration: none; font-size: 0.8rem;">
+                        ✉ Admin@CrugerCorp.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p>Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
