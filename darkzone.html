@@ -508,6 +508,31 @@
             </p>
         </div>
 
+        <div style="margin-top: 40px; padding: 40px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-top: 3px solid var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <h3 style="color: #FFF; font-size: 1.3rem; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+                Arquitectura Criptográfica Propietaria: El Estándar <span style="color: var(--primary-color);">.dark</span>
+            </h3>
+            
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; text-align: justify;">
+                Dark Zone no utiliza contenedores genéricos, librerías open-source recicladas ni algoritmos de empaquetado comerciales. Para garantizar la soberanía absoluta de los datos y demostrar nuestro desarrollo tecnológico autónomo, <strong>Angel Cruger es el creador y arquitecto exclusivo de los formatos propietarios .dark, .dzr y .inst</strong>.
+            </p>
+            
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                A diferencia de los sistemas de cifrado tradicionales que dependen de contraseñas memorizables, nuestro motor de cifrado genera un ecosistema binario asimétrico. Cada vez que se protege un documento, el sistema crea dos componentes inseparables:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div style="background: rgba(0,0,0,0.4); padding: 20px; border-left: 2px solid var(--primary-color);">
+                    <strong style="color: #FFF; font-size: 1rem; display: block; margin-bottom: 5px;">El Archivo .dark</strong>
+                    <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.6; margin: 0;">El contenedor blindado que alberga la información cifrada mediante matrices tensoriales de sustitución dinámica.</p>
+                </div>
+                <div style="background: rgba(0,0,0,0.4); padding: 20px; border-left: 2px solid #00FF41;">
+                    <strong style="color: #FFF; font-size: 1rem; display: block; margin-bottom: 5px;">La Llave de Entropía .key</strong>
+                    <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.6; margin: 0;">Un archivo de ruido estático puro con más de 8 millones de bits de entropía (1 MB), generado algorítmicamente en el instante exacto del cifrado.</p>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <section class="section" style="padding-top: 40px; padding-bottom: 60px;">
@@ -538,6 +563,84 @@
                     Superioridad matemática y algoritmica ante el estándar AES-256 o ChaCha20 (cifrado de 128/256 bits).
                     <span style="color: var(--primary-color);">Dark Zone genera más de 8 Millones de bits de entropía. Actualmente no hay ningún otro modelo de cifrado equivalente.</span>
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="about-grid" style="align-items: center;">
+            
+            <div style="padding-right: 20px;">
+                <h2 style="font-size: 1.6rem; margin-bottom: 15px; text-transform: uppercase; color: #FFF;">Especificaciones y Requisitos de Despliegue</h2>
+                <div style="width: 50px; height: 2px; background: var(--primary-color); margin-bottom: 25px;"></div>
+                
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; text-align: justify;">
+                    Dark Zone está diseñado bajo una filosofía de <strong>Despliegue Táctico Unitario Plug-and-Play</strong>. No requiere instalaciones complejas en red, servidores externos ni dependencias de nube. El sistema es totalmente portátil y opera de manera autónoma (Offline-First) en entornos de alta seguridad (Air-Gapped).
+                </p>
+                
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; text-align: justify;">
+                    Operamos en exclusividad bajo el entorno Windows por ser el estándar global adoptado en oficinas, dependencias gubernamentales, plantas de energía, instalaciones hídricas, laboratorios de defensa y laptops de uso rudo. Sin embargo, debido a la extrema densidad de nuestros motores criptográficos, el sistema exige entornos modernos.
+                </p>
+            </div>
+
+            <div class="card profile-card" style="border-left: 3px solid var(--primary-color); padding: 40px; background: rgba(0, 0, 0, 0.6);">
+                
+                <img src="icono_darkzone.png" alt="Requisitos Dark Zone" class="square-icon">
+
+                <h3 style="margin-top: 0; margin-bottom: 20px; color: #FFF; font-size: 1.2rem; padding-right: 70px;">HARDWARE & SISTEMA</h3>
+                
+                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: var(--primary-color); font-size: 0.85rem; display: block;">SISTEMA OPERATIVO</strong>
+                        <span style="color: #A0AAB5; font-size: 0.85rem;">Windows 10 o Windows 11 (Exclusivamente arquitectura de 64-bits). Los sistemas legados (Win 7/8) no son soportados debido a la falta de protocolos de seguridad de memoria modernos.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: var(--primary-color); font-size: 0.85rem; display: block;">PROCESAMIENTO (CPU & RAM)</strong>
+                        <span style="color: #A0AAB5; font-size: 0.85rem;">Soportado desde Intel Celeron y AMD Turion x2. Se recomiendan 8GB de RAM. Opera con 4GB (puede presentar cuellos de botella en renderizado, sin afectar la integridad del cifrado o triturado).</span>
+                    </li>
+                    <li>
+                        <strong style="color: var(--primary-color); font-size: 0.85rem; display: block;">PUERTOS DE AUTENTICACIÓN</strong>
+                        <span style="color: #A0AAB5; font-size: 0.85rem;">Puertos USB tipo A/C funcionales y sin restricciones de lectura básicas para el emparejamiento físico del TOKEN táctico.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #FFF; text-transform: uppercase;">Adquisición y Modelo Comercial</h2>
+            <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 0 auto 20px auto;"></div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                El modelo de negocio de Dark Zone <strong>no se basa en descargas masivas de internet</strong>, sino en la entrega física y el control riguroso de los activos. Se proporciona como una solución corporativa "Llave en Mano", lista para operar en el momento de su entrega.
+            </p>
+        </div>
+
+        <div class="grid-container" style="margin-top: 30px;">
+            <div class="card" style="border-top: 3px solid #00A8E8; border-left: 1px solid var(--glass-border);">
+                <h3 style="font-size: 1.1rem; margin-top: 0;">LICENCIAMIENTO UNITARIO</h3>
+                <p style="text-align: justify; margin-bottom: 15px;">Cada licencia adquirida corresponde a un (1) <strong>"Activo Operativo"</strong>, el cual consta de:</p>
+                <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 15px; margin: 0; line-height: 1.6;">
+                    <li>Motor Dark Zone compilado y sellado.</li>
+                    <li>TOKEN Físico de Autenticación emparejado.</li>
+                    <li>Archivo maestro de validación de vigencia.</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #ff3b3b; border-left: 1px solid var(--glass-border);">
+                <h3 style="font-size: 1.1rem; margin-top: 0; color: #ff3b3b;">VIGENCIA Y RENOVACIÓN (365)</h3>
+                <p style="text-align: justify; margin-bottom: 0;">
+                    Para garantizar la integridad del esquema de seguridad y el soporte a contramedidas de nueva generación, las licencias se emiten con una vigencia estricta de <strong>365 días</strong>. Al término, la corporación debe realizar la renovación para obtener el archivo de reactivación <strong>(.dzr)</strong>, evitando la vulnerabilidad de su infraestructura.
+                </p>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #00FF41; border-left: 1px solid var(--glass-border);">
+                <h3 style="font-size: 1.1rem; margin-top: 0; color: #00FF41;">ESCALABILIDAD TÁCTICA</h3>
+                <p style="text-align: justify; margin-bottom: 15px;">Modelos de escalabilidad para Fiscalías, Industrias y Corporativos:</p>
+                <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 15px; margin: 0; line-height: 1.6;">
+                    <li><strong>Ejecutivo:</strong> Unidades aisladas para altos directivos.</li>
+                    <li><strong>Volumen (50 a 100+ licencias):</strong> Despliegues estructurados con mejoras de precio contractuales en el ciclo fiscal.</li>
+                </ul>
             </div>
         </div>
     </section>
