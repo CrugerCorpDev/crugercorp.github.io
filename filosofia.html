@@ -123,7 +123,7 @@
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             display: flex;
-            align-items: stretch; /* Asegura que la imagen llene la altura del texto */
+            align-items: stretch;
             overflow: hidden;
             border-radius: 4px;
         }
@@ -187,6 +187,75 @@
             color: var(--text-muted); font-size: 0.8rem; margin-top: 60px;
         }
 
+        .editorial-block {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-top: 4px solid var(--primary-color);
+            padding: 45px;
+            margin-bottom: 60px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .editorial-title {
+            font-size: 1.6rem;
+            color: #FFF;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .editorial-content {
+            column-count: 2;
+            column-gap: 50px;
+            column-rule: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .editorial-content h3 {
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            margin-top: 0; 
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            break-inside: avoid;
+        }
+
+        .editorial-content p {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .dropcap {
+            float: left;
+            font-size: 4rem;
+            line-height: 0.7;
+            padding-top: 8px;
+            padding-right: 10px;
+            color: var(--primary-color);
+            font-weight: 800;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .editorial-content ul {
+            padding-left: 20px;
+            margin-bottom: 25px;
+            break-inside: avoid;
+        }
+
+        .editorial-content li {
+            margin-bottom: 12px;
+        }
+
         @media (max-width: 968px) {
             .tactical-block {
                 flex-direction: column;
@@ -199,6 +268,9 @@
             }
             .tactical-image { height: 250px; } 
             .tactical-content { padding: 25px; }
+            
+            .editorial-content { column-count: 1; column-rule: none; }
+            .editorial-block { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -231,6 +303,55 @@
     <div class="article-container">
         <h1 class="page-title">Doctrina de Seguridad y Soberanía Digital</h1>
         <div class="subtitle">El criterio humano frente a la automatización de la vulnerabilidad</div>
+
+        <div class="editorial-block">
+            <h2 class="editorial-title">El Mito de la Transparencia Absoluta:<br><span style="color: var(--primary-color); font-size: 1.2rem;">Por qué el Secreto Industrial es el Verdadero Estándar de Seguridad</span></h2>
+            
+            <div class="editorial-content">
+                <p>
+                    <span class="dropcap">E</span>xiste una narrativa contemporánea que intenta dictar que la seguridad informática solo puede validarse a través del modelo de código abierto (Open Source) y la transparencia absoluta. Bajo esta premisa teórica, ocultar la arquitectura o el código fuente se clasifica erróneamente como una "mala práctica".
+                </p>
+                <p>
+                    En Cruger Corp, rechazamos categóricamente esta visión cuando se trata de salvaguardar activos de importancia crítica. La historia y la realidad corporativa demuestran exactamente lo contrario.
+                </p>
+
+                <h3>La Verdad sobre el Ecosistema Global</h3>
+                <p>
+                    Si la exposición pública del código fuera el estándar definitivo de seguridad y éxito, los conglomerados tecnológicos más grandes del mundo, los motores de búsqueda dominantes, los gigantes de la inteligencia artificial y las agencias de seguridad nacional publicarían sus algoritmos centrales. La realidad es que no lo hacen, y nadie cuestiona la eficacia de sus plataformas.
+                </p>
+                <p>
+                    Mantener el secreto industrial y la opacidad estructural es lo que sostiene la infraestructura crítica global. Obligar a los sistemas de alta seguridad a ser transparentes bajo la bandera del "código abierto" genera consecuencias devastadoras:
+                </p>
+                
+                <ul>
+                    <li><strong style="color: #FFF;">Armatización Inversa:</strong> Se entregan los planos estructurales a cibercriminales, permitiéndoles diseñar ciberataques, troyanos y vulnerabilidades a la medida.</li>
+                    <li><strong style="color: #FFF;">Caos y Clonación:</strong> Se facilita la creación de copias idénticas e incontrolables, diluyendo la autenticidad y disparando el fraude de identidad corporativa.</li>
+                    <li><strong style="color: #FFF;">Competencia Depredadora:</strong> Las organizaciones invierten años en I+D solo para regalar su innovación, creando a sus propios competidores o propiciando el colapso de su modelo operativo.</li>
+                </ul>
+
+                <h3>La Doctrina del Aislamiento Físico (Air-Gapping)</h3>
+                <p>
+                    Más allá del debate del software, la medida de ciberseguridad más inquebrantable conocida por la humanidad sigue siendo una ley física: No existe algoritmo, Inteligencia Artificial, ni potencia de cómputo que pueda hackear remotamente un activo que literalmente no está conectado a la red.
+                </p>
+                <p>
+                    "Dark Zone" fue concebido bajo esta doctrina de Soberanía Física. Al ser un sistema de despliegue unitario, diseñado para operar de manera 100% Offline en equipos locales, neutraliza de tajo los vectores de ataque de la era digital: vulnerabilidades de nube, intercepción de tráfico, y exfiltración remota.
+                </p>
+
+                <h3>Opacidad Táctica: Multiplicador de Fuerza</h3>
+                <p>
+                    La "Seguridad por Oscuridad" suele ser criticada cuando se usa para esconder matemáticas débiles. Sin embargo, en la arquitectura de Dark Zone, la opacidad técnica opera como la primera línea de un perímetro infranqueable.
+                </p>
+                <p>
+                    Cuando fusionas un código fuente estrictamente clasificado con una llave de 8 millones de bits de entropía pura, creas un ecosistema asimétrico y devastador para el atacante: Al no tener el código, el atacante no sabe cómo está construida la cerradura; y al enfrentarse a un millón de bytes de ruido blanco, carece de la física computacional para forzarla.
+                </p>
+                <p style="color: #FFF; font-weight: 600; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 20px;">
+                    Para Cruger Corp, la transparencia pública es útil para herramientas colaborativas de bajo riesgo. Pero cuando la supervivencia y la soberanía de los datos de una organización están en juego, el secreto, el aislamiento y la fuerza matemática bruta son el único estándar aceptable.
+                </p>
+            </div>
+        </div>
+        ```
+
+¡Con esto, la página de filosofía iniciará con un impacto visual fuertísimo! La letra "E" gigante al principio (Dropcap) y la división en dos columnas le dan un aire de editorial de la revista *Wired* o *Forbes*. ¡Pruébalo y me cuentas qué te parece!
 
         <div class="tactical-block">
             <div class="tactical-image">
