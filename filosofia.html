@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filosofía | CRUGER CORP</title>
+    <title>Bitácora y Repositorio | CRUGER CORP</title>
     <link rel="icon" type="image/png" href="logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #00A8E8;
             --bg-dark: #050A14;
-            --glass-bg: rgba(0, 0, 0, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #FFFFFF;
             --text-muted: #A0AAB5;
-            --danger-color: #ff3b3b;
         }
 
         body {
@@ -28,249 +27,111 @@
         }
 
         header {
-            padding: 15px 30px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-sizing: border-box;
-            background: rgba(5, 10, 20, 0.85);
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
         }
-
         .nav-links { display: flex; align-items: center; }
         .nav-links a {
             color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
-            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px;
-            transition: color 0.3s;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--primary-color); }
-
         .menu-btn {
             background: none; border: none; color: var(--text-main); font-size: 1.8rem;
-            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
-            align-items: center; padding: 0;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
         }
         .menu-btn:hover { color: var(--primary-color); }
-
         .sidebar-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
             z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
         }
         .sidebar-overlay.active { opacity: 1; visibility: visible; }
-
+        
         .sidebar {
             position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
             background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
             z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
-            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
-            display: flex; flex-direction: column; gap: 15px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
         }
         .sidebar.active { right: 0; }
         .sidebar .close-btn {
             position: absolute; top: 20px; right: 25px; background: none; border: none;
-            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
-            transition: color 0.3s; line-height: 1;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
         }
         .sidebar .close-btn:hover { color: var(--primary-color); }
         .sidebar a {
             color: var(--text-main); text-decoration: none; font-size: 0.85rem;
-            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
             border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
         }
         .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+        
+        .sidebar::-webkit-scrollbar { width: 6px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
 
-        .article-container {
-            max-width: 900px;
-            margin: 120px auto 60px auto;
-            padding: 0 30px;
-            box-sizing: border-box;
+        .btn {
+            padding: 12px 25px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            color: var(--primary-color); background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--primary-color); text-decoration: none; transition: all 0.3s ease;
+            letter-spacing: 1px; display: inline-block; text-align: center;
+        }
+        .btn:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 15px rgba(0, 168, 232, 0.4); }
+
+        .page-header { padding: 140px 30px 40px; max-width: 1100px; margin: 0 auto; text-align: left; }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4vw, 3.8rem); color: #FFF; margin: 0 0 10px 0;
+            line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
         }
 
-        .page-title {
-            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 15px;
-            line-height: 1.2;
-            background: linear-gradient(to right, #FFF, #A0AAB5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .feed-container { max-width: 1100px; margin: 0 auto 80px auto; padding: 0 30px; }
+
+        .news-card {
+            display: flex; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--primary-color); margin-bottom: 40px; border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: transform 0.3s, border-color 0.3s;
+            overflow: hidden; min-height: 260px; align-items: stretch;
+        }
+        .news-card:hover { transform: translateX(5px); border-color: rgba(0, 168, 232, 0.4); }
+
+        .news-image { flex: 0 0 33%; background: #000; position: relative; }
+        .news-image img {
+            width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top: 0; left: 0;
         }
 
-        .subtitle {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 20px;
+        .news-content {
+            flex: 1; padding: 35px 40px; display: flex; flex-direction: column; justify-content: flex-start;
         }
-
-        .tactical-block {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            margin-bottom: 40px;
-            border-left: 3px solid var(--primary-color);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: stretch;
-            overflow: hidden;
-            border-radius: 4px;
+        .news-category {
+            color: #A0AAB5; font-size: 0.75rem; font-family: monospace;
+            letter-spacing: 2px; margin-bottom: 10px; display: block; font-weight: 600;
         }
-
-        .tactical-image {
-            width: 40%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-right: 1px solid var(--glass-border);
-            background: #000;
+        .news-content h3 { 
+            margin: 0 0 15px 0; font-size: 1.4rem; color: #FFF; 
+            text-transform: uppercase; letter-spacing: 1px; line-height: 1.3;
         }
-
-        .tactical-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.9;
+        .news-content p { 
+            color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; 
+            margin: 0 0 20px 0; text-align: justify; font-weight: 400;
         }
-
-        .tactical-content {
-            width: 60%;
-            padding: 30px 40px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .tactical-block.warning { border-left-color: var(--danger-color); }
-        .tactical-block.solution { border-left-color: #00FF41; }
-
-        .tactical-block h2 {
-            font-size: 1.2rem;
-            color: #FFF;
-            margin-top: 0;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tactical-block p {
-            font-size: 0.9rem; 
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .tactical-block blockquote {
-            border-left: 2px solid var(--primary-color);
-            margin: 10px 0 20px 0;
-            padding: 10px 20px;
-            font-style: italic;
-            color: #FFF;
-            background: rgba(0, 168, 232, 0.05);
-        }
+        
+        .news-footer { margin-top: auto; display: flex; justify-content: flex-end; }
 
         footer {
             padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
-            color: var(--text-muted); font-size: 0.8rem; margin-top: 60px;
-        }
-
-        .editorial-block {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-top: 4px solid var(--primary-color);
-            padding: 45px;
-            margin-bottom: 60px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-        }
-
-        .editorial-title {
-            font-size: 1.6rem;
-            color: #FFF;
-            margin-top: 0;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 25px;
-            line-height: 1.4;
-        }
-
-        .editorial-content {
-            column-count: 2;
-            column-gap: 50px;
-            column-rule: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .editorial-content h3 {
-            color: var(--primary-color);
-            font-size: 1.05rem;
-            margin-top: 0; 
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            break-inside: avoid;
-        }
-
-        .editorial-content p {
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .dropcap {
-            float: left;
-            font-size: 4rem;
-            line-height: 0.7;
-            padding-top: 8px;
-            padding-right: 10px;
-            color: var(--primary-color);
-            font-weight: 800;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
-        .editorial-content ul {
-            padding-left: 20px;
-            margin-bottom: 25px;
-            break-inside: avoid;
-        }
-
-        .editorial-content li {
-            margin-bottom: 12px;
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
         }
 
         @media (max-width: 968px) {
-            .tactical-block {
-                flex-direction: column;
-                height: auto;
-            }
-            .tactical-image, .tactical-content {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid var(--glass-border);
-            }
-            .tactical-image { height: 250px; } 
-            .tactical-content { padding: 25px; }
-            
-            .editorial-content { column-count: 1; column-rule: none; }
-            .editorial-block { padding: 30px 20px; }
+            .news-card { flex-direction: column; }
+            .news-image { flex: auto; height: 200px; }
+            .news-image img { position: relative; }
+            .news-footer { justify-content: stretch; }
+            .news-footer .btn { width: 100%; box-sizing: border-box; }
+            .page-header h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -289,7 +150,7 @@
         <button class="close-btn" onclick="toggleMenu()">×</button>
         <div class="sidebar-title">MENÚ</div>
         <a href="index.html">► Inicio</a>
-        <a href="filosofia.html" style="color: #00A8E8; font-weight: bold;">Filosofía</a>
+        <a href="bitacora.html" style="color: #00A8E8; font-weight: bold;">Bitácora</a>
         <a href="darkzone.html">Dark Zone</a>
         <a href="seguridad.html">Certificados de Confianza</a>
         <a href="corporativo.html">Información Corporativa</a>
@@ -300,115 +161,103 @@
         <a href="privacidad.html">Aviso de Privacidad</a>
     </div>
 
-    <div class="article-container">
-        <h1 class="page-title">Doctrina de Seguridad y Soberanía Digital</h1>
-        <div class="subtitle">El criterio humano frente a la automatización de la vulnerabilidad</div>
+    <section class="page-header">
+        <span style="color: var(--text-muted); font-size: 0.85rem; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block;">Sección de Noticias...</span>
+        <h1>BITÁCORA Y COMUNICADOS</h1>
+        <h2 style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--primary-color); margin: 0; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;">Repositorio de Información</h2>
+        <p style="color: var(--text-muted); max-width: 800px; margin-top: 20px; line-height: 1.8; font-size: 0.95rem;">
+            Espacio dedicado a compartir nuestras últimas noticias, entrevistas, investigaciones documentadas en PDF y análisis generales sobre el panorama tecnológico actual.
+        </p>
+    </section>
 
-        <div class="editorial-block">
-            <h2 class="editorial-title">El Mito de la Transparencia Absoluta:<br><span style="color: var(--primary-color); font-size: 1.2rem;">Por qué el Secreto Industrial es el Verdadero Estándar de Seguridad</span></h2>
-            
-            <div class="editorial-content">
-                <p>
-                    <span class="dropcap">E</span>xiste una narrativa contemporánea que intenta dictar que la seguridad informática solo puede validarse a través del modelo de código abierto (Open Source) y la transparencia absoluta. Bajo esta premisa teórica, ocultar la arquitectura o el código fuente se clasifica erróneamente como una "mala práctica".
-                </p>
-                <p>
-                    En Cruger Corp, rechazamos categóricamente esta visión cuando se trata de salvaguardar activos de importancia crítica. La historia y la realidad corporativa demuestran exactamente lo contrario.
-                </p>
+    <section class="feed-container">
 
-                <h3>La Verdad sobre el Ecosistema Global</h3>
+        <div class="news-card" style="border-left-color: #00FF41;">
+            <div class="news-image" style="display: flex; align-items: center; justify-content: center; background: #050A14; border-right: 1px solid var(--glass-border);">
+                <span style="font-size: 4rem; text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);">🛠️</span>
+            </div>
+            <div class="news-content">
+                <span class="news-category" style="color: #00FF41;">14 MARZO 2026 | ACTUALIZACIÓN</span>
+                <h3>Actualización del Catálogo Freeware</h3>
                 <p>
-                    Si la exposición pública del código fuera el estándar definitivo de seguridad y éxito, los conglomerados tecnológicos más grandes del mundo, los motores de búsqueda dominantes, los gigantes de la inteligencia artificial y las agencias de seguridad nacional publicarían sus algoritmos centrales. La realidad es que no lo hacen, y nadie cuestiona la eficacia de sus plataformas.
+                    Se ha actualizado nuestra sección de utilidades gratuitas financiadas por el Fondo I+D de Cruger Corp. Hemos añadido las herramientas en desarrollo <strong>"Bracket System"</strong> (gestión avanzada de unidades y reconstrucción de sistemas) y <strong>"Eliminación Profunda"</strong> (sanitización de bajo nivel).
                 </p>
+                <div class="news-footer">
+                    <a href="freeware.html" class="btn" style="border-color: #00FF41; color: #00FF41;">VER HERRAMIENTAS</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-image">
+                <img src="founder_placeholder.jpg" alt="Angel Cruger">
+            </div>
+            <div class="news-content">
+                <span class="news-category">09 MARZO 2026 | PERFIL CORPORATIVO</span>
+                <h3>La Visión Detrás de Cruger Corp</h3>
                 <p>
-                    Mantener el secreto industrial y la opacidad estructural es lo que sostiene la infraestructura crítica global. Obligar a los sistemas de alta seguridad a ser transparentes bajo la bandera del "código abierto" genera consecuencias devastadoras:
+                    "Mirar atrás no significa voltear al pasado, significa saber de dónde vienes, quién eres y qué esperas de tu futuro." Conozca la trayectoria técnica, el rigor académico y la filosofía de resiliencia de Angel Cruger, creador de los protocolos de defensa que dan vida a nuestra firma.
                 </p>
-                
-                <ul>
-                    <li><strong style="color: #FFF;">Armatización Inversa:</strong> Se entregan los planos estructurales a cibercriminales, permitiéndoles diseñar ciberataques, troyanos y vulnerabilidades a la medida.</li>
-                    <li><strong style="color: #FFF;">Caos y Clonación:</strong> Se facilita la creación de copias idénticas e incontrolables, diluyendo la autenticidad y disparando el fraude de identidad corporativa.</li>
-                    <li><strong style="color: #FFF;">Competencia Depredadora:</strong> Las organizaciones invierten años en I+D solo para regalar su innovación, creando a sus propios competidores o propiciando el colapso de su modelo operativo.</li>
-                </ul>
-
-                <h3>La Doctrina del Aislamiento Físico (Air-Gapping)</h3>
-                <p>
-                    Más allá del debate del software, la medida de ciberseguridad más inquebrantable conocida por la humanidad sigue siendo una ley física: No existe algoritmo, Inteligencia Artificial, ni potencia de cómputo que pueda hackear remotamente un activo que literalmente no está conectado a la red.
-                </p>
-                <p>
-                    "Dark Zone" fue concebido bajo esta doctrina de Soberanía Física. Al ser un sistema de despliegue unitario, diseñado para operar de manera 100% Offline en equipos locales, neutraliza de tajo los vectores de ataque de la era digital: vulnerabilidades de nube, intercepción de tráfico, y exfiltración remota.
-                </p>
-
-                <h3>Opacidad Táctica: Multiplicador de Fuerza</h3>
-                <p>
-                    La "Seguridad por Oscuridad" suele ser criticada cuando se usa para esconder matemáticas débiles. Sin embargo, en la arquitectura de Dark Zone, la opacidad técnica opera como la primera línea de un perímetro infranqueable.
-                </p>
-                <p>
-                    Cuando fusionas un código fuente estrictamente clasificado con una llave de 8 millones de bits de entropía pura, creas un ecosistema asimétrico y devastador para el atacante: Al no tener el código, el atacante no sabe cómo está construida la cerradura; y al enfrentarse a un millón de bytes de ruido blanco, carece de la física computacional para forzarla.
-                </p>
-                <p style="color: #FFF; font-weight: 600; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 20px;">
-                    Para Cruger Corp, la transparencia pública es útil para herramientas colaborativas de bajo riesgo. Pero cuando la supervivencia y la soberanía de los datos de una organización están en juego, el secreto, el aislamiento y la fuerza matemática bruta son el único estándar aceptable.
-                </p>
+                <div class="news-footer">
+                    <a href="fundador.html" class="btn">LEER PERFIL</a>
+                </div>
             </div>
         </div>
 
-        <div class="tactical-block">
-            <div class="tactical-image">
-                <img src="criterio-humano.png" alt="Criterio Humano sobre Red de Datos">
+        <div class="news-card">
+            <div class="news-image">
+                <img src="entrevista_latam.jpg" alt="Entrevista Soberanía Digital">
             </div>
-            <div class="tactical-content">
-                <h2>Nuestra Postura</h2>
-                <p>En CRUGER CORP no diseñamos tecnología basándonos en las tendencias comerciales de Silicon Valley. Desarrollamos herramientas bajo un escrutinio científico y táctico riguroso. En la actualidad, la industria tecnológica ha empujado a corporativos, gobiernos e individuos a delegar sus activos más críticos a dos paradigmas altamente inestables: La Nube y la Inteligencia Artificial no supervisada.</p>
-                <p>Nuestra doctrina es clara: La verdadera seguridad informática no existe si no posees el control absoluto, físico y lógico, de tu información y de los procesos que la gestionan.</p>
-            </div>
-        </div>
-
-        <div class="tactical-block warning">
-            <div class="tactical-image">
-                <img src="espejismo-nube.png" alt="La Nube como Amenaza y Fuga de Datos">
-            </div>
-            <div class="tactical-content">
-                <h2 style="color: var(--danger-color);">El Espejismo de la Nube</h2>
-                <p>Existe un adagio fundamental en la ciberseguridad que la industria comercial intenta silenciar: "No existe la nube, solo es la computadora de alguien más".</p>
-                <p>Almacenar y procesar información crítica en infraestructuras Cloud significa ceder la soberanía de los datos. La nube es inherentemente un entorno compartido y, por definición, hackeable. Los datos en tránsito están expuestos a intercepciones, redireccionamientos (Man-in-the-Middle) y ataques de infraestructura.</p>
-                <p>Más allá del riesgo de intrusión externa, operar en la nube implica someterse a telemetría oculta: rastreo de posición geográfica, monitoreo de hábitos de tráfico, indexación de metadatos y captura de datos personales sensibles bajo términos de servicio opacos. Cuando confías tu información a servidores de terceros, renuncias al derecho de privacidad real.</p>
-            </div>
-        </div>
-
-        <div class="tactical-block">
-            <div class="tactical-image">
-                <img src="ia-herramienta.png" alt="IA Supervisada por el Humano-in-the-Loop">
-            </div>
-            <div class="tactical-content">
-                <h2>La I.A. como Herramienta, no como Árbitro</h2>
-                <p>No satanizamos el progreso tecnológico. La Inteligencia Artificial es un procesador matemático y analítico formidable. El peligro no radica en la IA misma, sino en su implementación sin criterio ni supervisión humana en infraestructuras críticas.</p>
-                <p>Un modelo de lenguaje o un algoritmo generativo no posee consciencia situacional. Si se le asigna la tarea de optimizar código de seguridad, su naturaleza es simplificar operaciones para cumplir la función asignada, lo que frecuentemente resulta en la eliminación de protocolos de validación y la creación involuntaria de brechas catastróficas.</p>
-                <blockquote>
-                    "Delegar el control de redes eléctricas, bases de datos estratégicas, o defensas activas a una IA autónoma no es innovación; es negligencia. El software requiere criterio, y el criterio es una característica exclusivamente humana."
-                </blockquote>
-                <p>El código escrito o gestionado por máquinas debe ser auditado por humanos. Una IA no puede discernir el impacto geopolítico, corporativo o vital de una fuga de datos. El Human in the Loop (Humano en el ciclo de decisión) no es opcional en nuestros protocolos; es el núcleo operativo.</p>
-            </div>
-        </div>
-
-        <div class="tactical-block solution">
-            <div class="tactical-image">
-                <img src="estandar-cruger.png" alt="DARK ZONE TITANIUM Token Key y Escudo Air-Gap">
-            </div>
-            <div class="tactical-content">
-                <h2 style="color: #00FF41;">El Estándar CRUGER: Air-Gap y Control Físico</h2>
-                <p>Frente a la vulnerabilidad de la interconexión constante, nuestra respuesta tecnológica es el aislamiento estratégico.</p>
-                <p>Nuestros modelos de implementación (como el protocolo DARK ZONE TITANIUM) se basan en servicios y herramientas OFFLINE. Operamos bajo el principio Air-Gap: sistemas diseñados para funcionar al 100% desconectados de internet, volviéndolos matemáticamente inmunes a ataques remotos, ransomware de red o alteraciones en la nube.</p>
-                <p>Creemos en el cifrado de altísima entropía ejecutado localmente, donde las llaves maestras existen únicamente en hardware físico (Tokens/SKey) bajo el control absoluto de nuestros clientes. Sin servidores de terceros, sin telemetría, sin "optimización" no supervisada.</p>
-                <p style="margin-top: auto; font-weight: 600; font-size: 1rem; color: #FFF; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-                    En CRUGER CORP, no alquilamos seguridad. Construimos soberanía.
+            <div class="news-content">
+                <span class="news-category">06 MARZO 2026 | ENTREVISTA</span>
+                <h3>Visión América Latina y la Soberanía Digital</h3>
+                <p>
+                    "El mayor riesgo de ciberseguridad en América Latina es que seguimos intentando proteger Secretos Industriales y de Estado dependiendo de software extranjero". Compartimos nuestra reciente charla donde abordamos la urgencia de migrar a infraestructuras operadas localmente.
                 </p>
+                <div class="news-footer">
+                    <a href="america_latina.html" class="btn">SEGUIR LEYENDO</a>
+                </div>
             </div>
         </div>
-    </div>
 
+        <div class="news-card">
+            <div class="news-image">
+                <img src="criterio-humano.png" alt="Doctrina de Seguridad">
+            </div>
+            <div class="news-content">
+                <span class="news-category">02 MARZO 2026 | DOCTRINA</span>
+                <h3>Doctrina de Seguridad y Soberanía Digital</h3>
+                <p>
+                    El mito de la transparencia absoluta y por qué el secreto industrial es el verdadero estándar de seguridad. En Cruger Corp rechazamos la dependencia de la nube y la Inteligencia Artificial no supervisada, apostando por el control físico y el modelo Air-Gap.
+                </p>
+                <div class="news-footer">
+                    <a href="filosofia.html" class="btn">LEER DOCTRINA</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="news-image">
+                <img src="MetodologiasInteligencia1.jpg" alt="Metodología de Inteligencia Vol 1" style="object-fit: contain; background: #050A14; padding: 15px; box-sizing: border-box;">
+            </div>
+            <div class="news-content">
+                <span class="news-category">29 ENERO 2026 | INVESTIGACIÓN DOC.</span>
+                <h3>Metodología de Inteligencia Volumen I (OSINT)</h3>
+                <p>
+                    Consulte nuestro análisis documentado bajo metodologías OSINT y la evaluación de vectores de ataque en infraestructuras críticas. Este documento forma parte de nuestro repositorio académico y está disponible para su lectura y descarga gratuita.
+                </p>
+                <div class="news-footer">
+                    <a href="https://doi.org/10.5281/zenodo.18415821" target="_blank" class="btn">LEER EN ZENODO</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
     <footer>
         <div style="margin-bottom: 20px;">
              <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
         </div>
-        <p>Ensenada, Baja California, México. Todas las imagenes son meramente ilustrativas.</p>
+        <p>Ensenada, Baja California, México.</p>
         <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
             CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
             Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
