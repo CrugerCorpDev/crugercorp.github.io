@@ -162,29 +162,6 @@
 </head>
 <body>
 
-    <header>
-        <nav class="nav-links">
-            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
-            <a href="contacto.html">Agenda y Contacto</a>
-        </nav>
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </header>
-
-    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
-    <div class="sidebar">
-        <button class="close-btn" onclick="toggleMenu()">×</button>
-        <div class="sidebar-title">MENÚ</div>
-        <a href="index.html">► Inicio</a>
-        <a href="darkzone.html">Dark Zone</a>
-        <a href="seguridad.html">Certificados de Confianza</a>
-        <a href="corporativo.html">Información Corporativa</a>
-        <a href="fundador.html">El Fundador</a>
-        <a href="freeware.html">Software Freeware</a>
-        <a href="america_latina.html"style="color: #00A8E8; font-weight: bold;">América Latina</a>
-        <a href="contacto.html" >Agenda y Contacto</a>
-        <a href="privacidad.html">Aviso de Privacidad</a>
-    </div>
-
     <section class="page-header">
         <h1>VISIÓN AMÉRICA LATINA</h1>
         <h2>Soberanía Digital e Independencia</h2>
@@ -256,7 +233,6 @@
         <p>
             Nuestro interés va más allá de México; buscamos apuntalar y fortalecer el bloque tecnológico de América Latina. Nuestra meta es proveer la infraestructura criptográfica de alta entropía que devuelva la independencia operativa a los gobiernos y corporativos latinoamericanos que no están dispuestos a negociar su privacidad.
         </p>
-        <p>
 
         <h3>El Costo de la Innovación y la Fuga de Talento</h3>
         <p>
@@ -268,7 +244,6 @@
         <p>
             A una década de chocar con esa realidad, la asimetría se mantiene y agrava la crisis de fuga de talento. Mientras Estados Unidos financia su talento a través de brazos de inversión como In-Q-Tel; Israel impulsa a sus desarrolladores desde unidades de élite como el Fondo 8200; Brasil implementa políticas nacionales de desarrollo soberano; y Chile promulga su Ley Marco de Ciberseguridad para blindar su ecosistema, en México el talento tecnológico sobrevive a la intemperie.
         </p>
-        <p>
 
         <h3>El Riesgo Operativo y Nuestra Postura de Integridad</h3>
         <p>
@@ -297,11 +272,6 @@
         </p>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            document.querySelector('.sidebar').classList.toggle('active');
-            document.querySelector('.sidebar-overlay').classList.toggle('active');
-        }
-    </script>
+    <script src="menu.js"></script>
 </body>
 </html>
