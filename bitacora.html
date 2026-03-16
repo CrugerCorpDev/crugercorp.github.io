@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora y Comunicados | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --bg-dark: #050A14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); display: flex; flex-direction: column; gap: 15px;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        .btn {
+            padding: 12px 25px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            color: var(--primary-color); background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--primary-color); text-decoration: none; transition: all 0.3s ease;
+            letter-spacing: 1px; display: inline-block; text-align: center;
+        }
+        .btn:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 15px rgba(0, 168, 232, 0.4); }
+
+        .page-header { padding: 140px 30px 40px; max-width: 1100px; margin: 0 auto; text-align: left; }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4vw, 3.8rem); color: #FFF; margin: 0 0 10px 0;
+            line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
+        }
+        .page-header h2 {
+            font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--primary-color); margin: 0;
+            font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
+        }
+
+        .feed-container {
+            max-width: 1100px; margin: 0 auto 80px auto; padding: 0 30px;
+        }
+
+        .news-card {
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 40px;
+            border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s, border-color 0.3s;
+            overflow: hidden; /* Esto asegura que la imagen no se salga de los bordes redondeados */
+            min-height: 260px; /* Altura mínima para que se vea como banner */
+            align-items: stretch;
+        }
+        .news-card:hover { 
+            transform: translateX(5px); 
+            border-color: rgba(0, 168, 232, 0.4); 
+        }
+
+        .news-image {
+            flex: 0 0 33%;
+            background: #000;
+            position: relative;
+        }
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+        }
+
+        .news-content {
+            flex: 1;
+            padding: 35px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .news-category {
+            color: #A0AAB5; font-size: 0.75rem; font-family: monospace;
+            letter-spacing: 2px; margin-bottom: 10px; display: block; font-weight: 600;
+        }
+        .news-content h3 { 
+            margin: 0 0 15px 0; font-size: 1.4rem; color: #FFF; 
+            text-transform: uppercase; letter-spacing: 1px; line-height: 1.3;
+        }
+        .news-content p { 
+            color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; 
+            margin: 0 0 20px 0; text-align: justify; font-weight: 400;
+        }
+        
+        .news-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
+        }
+
+        @media (max-width: 968px) {
+            .news-card { flex-direction: column; }
+            .news-image { flex: auto; height: 200px; }
+            .news-image img { position: relative; }
+            .news-footer { justify-content: stretch; }
+            .news-footer .btn { width: 100%; box-sizing: border-box; }
+            .page-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html" style="color: #00A8E8; font-weight: 600;">Inicio</a>
+            <a href="contacto.html">Agenda y Contacto</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="sidebar-title">MENÚ</div>
+        <a href="index.html">► Inicio</a>
+        <a href="bitacora.html" style="color: #00A8E8; font-weight: bold;">Bitácora</a>
+        <a href="darkzone.html">Dark Zone</a>
+        <a href="seguridad.html">Certificados de Confianza</a>
+        <a href="corporativo.html">Información Corporativa</a>
+        <a href="fundador.html">El Fundador</a>
+        <a href="freeware.html">Software Freeware</a>
+        <a href="america_latina.html">América Latina</a>
+        <a href="contacto.html">Agenda y Contacto</a>
+    </div>
+
+    <section class="page-header">
+        <h1>BITÁCORA OPERATIVA</h1>
+        <h2>Comunicados y Actualizaciones</h2>
+        <p style="color: var(--text-muted); max-width: 800px; margin-top: 20px; line-height: 1.8; font-size: 0.95rem;">
+            Registro centralizado de actividades de CRUGER CORP. Consulte las últimas noticias, entrevistas, despliegues de tecnología y acuerdos estratégicos en materia de ciberseguridad.
+        </p>
+    </section>
+
+    <section class="feed-container">
+        
+        <div class="news-card">
+            <div class="news-image">
+                <img src="entrevista_latam.jpg" alt="Entrevista Soberanía Digital">
+            </div>
+            <div class="news-content">
+                <span class="news-category">16 MARZO 2026 | ENTREVISTA</span>
+                <h3>Visión América Latina y la Soberanía Digital</h3>
+                <p>
+                    "El mayor riesgo de ciberseguridad en América Latina es que seguimos intentando proteger Secretos Industriales y de Estado dependiendo de software extranjero". En nuestra más reciente entrevista, abordamos la urgencia de migrar a infraestructuras operadas localmente y sin puertas traseras.
+                </p>
+                <div class="news-footer">
+                    <a href="america_latina.html" class="btn">SEGUIR LEYENDO</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="news-image">
+                <img src="banner-darkzone-ops.jpg" alt="Dark Zone Protocol">
+            </div>
+            <div class="news-content">
+                <span class="news-category">02 FEBRERO 2026 | ACTUALIZACIÓN TÉCNICA</span>
+                <h3>Despliegue de Dark Zone Protocolo TITANIUM</h3>
+                <p>
+                    Anunciamos la disponibilidad del nuevo estándar de cifrado de alta entropía enfocado a corporativos y gobierno. Con capacidad de generar llaves ofuscadas de más de 8 millones de bits, este protocolo supera las deficiencias comerciales del estándar AES-256 operando 100% fuera de línea.
+                </p>
+                <div class="news-footer">
+                    <a href="darkzone.html" class="btn">SEGUIR LEYENDO</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p>Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-overlay').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
