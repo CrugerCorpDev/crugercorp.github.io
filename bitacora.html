@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitácora y Comunicados | CRUGER CORP</title>
+    <title>Bitácora y Repositorio | CRUGER CORP</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -26,6 +26,7 @@
             overflow-x: hidden;
         }
 
+        /* --- HEADER Y SIDEBAR --- */
         header {
             padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
             border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
@@ -48,11 +49,14 @@
             z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
         }
         .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        /* Sidebar con Scroll Integrado */
         .sidebar {
             position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
             background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
             z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
-            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); display: flex; flex-direction: column; gap: 15px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
         }
         .sidebar.active { right: 0; }
         .sidebar .close-btn {
@@ -62,11 +66,17 @@
         .sidebar .close-btn:hover { color: var(--primary-color); }
         .sidebar a {
             color: var(--text-main); text-decoration: none; font-size: 0.85rem;
-            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
             border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
         }
         .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+        
+        /* Personalización Scrollbar Sidebar */
+        .sidebar::-webkit-scrollbar { width: 6px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
 
+        /* --- BOTONES GENERALES --- */
         .btn {
             padding: 12px 25px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
             color: var(--primary-color); background: rgba(0, 168, 232, 0.05);
@@ -75,58 +85,32 @@
         }
         .btn:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 15px rgba(0, 168, 232, 0.4); }
 
+        /* --- CABECERA DE PÁGINA --- */
         .page-header { padding: 140px 30px 40px; max-width: 1100px; margin: 0 auto; text-align: left; }
         .page-header h1 {
             font-size: clamp(2.5rem, 4vw, 3.8rem); color: #FFF; margin: 0 0 10px 0;
             line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
         }
-        .page-header h2 {
-            font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--primary-color); margin: 0;
-            font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
-        }
 
-        .feed-container {
-            max-width: 1100px; margin: 0 auto 80px auto; padding: 0 30px;
-        }
+        /* --- CONTENEDOR DEL MURO (FEED) --- */
+        .feed-container { max-width: 1100px; margin: 0 auto 80px auto; padding: 0 30px; }
 
+        /* --- ESTRUCTURA DE LA NOTA (BANNER 1/3 - 2/3) --- */
         .news-card {
-            display: flex;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--glass-border);
-            border-left: 4px solid var(--primary-color);
-            margin-bottom: 40px;
-            border-radius: 4px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            transition: transform 0.3s, border-color 0.3s;
-            overflow: hidden; /* Esto asegura que la imagen no se salga de los bordes redondeados */
-            min-height: 260px; /* Altura mínima para que se vea como banner */
-            align-items: stretch;
+            display: flex; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--primary-color); margin-bottom: 40px; border-radius: 4px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: transform 0.3s, border-color 0.3s;
+            overflow: hidden; min-height: 260px; align-items: stretch;
         }
-        .news-card:hover { 
-            transform: translateX(5px); 
-            border-color: rgba(0, 168, 232, 0.4); 
-        }
+        .news-card:hover { transform: translateX(5px); border-color: rgba(0, 168, 232, 0.4); }
 
-        .news-image {
-            flex: 0 0 33%;
-            background: #000;
-            position: relative;
-        }
+        .news-image { flex: 0 0 33%; background: #000; position: relative; }
         .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            position: absolute;
-            top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top: 0; left: 0;
         }
 
         .news-content {
-            flex: 1;
-            padding: 35px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            flex: 1; padding: 35px 40px; display: flex; flex-direction: column; justify-content: flex-start;
         }
         .news-category {
             color: #A0AAB5; font-size: 0.75rem; font-family: monospace;
@@ -141,11 +125,7 @@
             margin: 0 0 20px 0; text-align: justify; font-weight: 400;
         }
         
-        .news-footer {
-            margin-top: auto;
-            display: flex;
-            justify-content: flex-end;
-        }
+        .news-footer { margin-top: auto; display: flex; justify-content: flex-end; }
 
         footer {
             padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
@@ -185,13 +165,15 @@
         <a href="freeware.html">Software Freeware</a>
         <a href="america_latina.html">América Latina</a>
         <a href="contacto.html">Agenda y Contacto</a>
+        <a href="privacidad.html">Aviso de Privacidad</a>
     </div>
 
     <section class="page-header">
-        <h1>BITÁCORA OPERATIVA</h1>
-        <h2>Comunicados y Actualizaciones</h2>
+        <span style="color: var(--text-muted); font-size: 0.85rem; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block;">Sección de Noticias...</span>
+        <h1>BITÁCORA Y COMUNICADOS</h1>
+        <h2 style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--primary-color); margin: 0; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;">Repositorio de Información</h2>
         <p style="color: var(--text-muted); max-width: 800px; margin-top: 20px; line-height: 1.8; font-size: 0.95rem;">
-            Registro centralizado de actividades de CRUGER CORP. Consulte las últimas noticias, entrevistas, despliegues de tecnología y acuerdos estratégicos en materia de ciberseguridad.
+            Espacio dedicado a compartir nuestras últimas noticias, entrevistas, investigaciones documentadas en PDF y análisis generales sobre el panorama tecnológico actual.
         </p>
     </section>
 
@@ -202,10 +184,10 @@
                 <img src="entrevista_latam.jpg" alt="Entrevista Soberanía Digital">
             </div>
             <div class="news-content">
-                <span class="news-category">16 MARZO 2026 | ENTREVISTA</span>
+                <span class="news-category">06 MARZO 2026 | ENTREVISTA</span>
                 <h3>Visión América Latina y la Soberanía Digital</h3>
                 <p>
-                    "El mayor riesgo de ciberseguridad en América Latina es que seguimos intentando proteger Secretos Industriales y de Estado dependiendo de software extranjero". En nuestra más reciente entrevista, abordamos la urgencia de migrar a infraestructuras operadas localmente y sin puertas traseras.
+                    "El mayor riesgo de ciberseguridad en América Latina es que seguimos intentando proteger Secretos Industriales y de Estado dependiendo de software extranjero". Compartimos nuestra reciente charla donde abordamos la urgencia de migrar a infraestructuras operadas localmente.
                 </p>
                 <div class="news-footer">
                     <a href="america_latina.html" class="btn">SEGUIR LEYENDO</a>
@@ -215,16 +197,16 @@
 
         <div class="news-card">
             <div class="news-image">
-                <img src="banner-darkzone-ops.jpg" alt="Dark Zone Protocol">
+                <img src="MetodologiasInteligencia1.jpg" alt="Metodología de Inteligencia Vol 1" style="object-fit: contain; background: #050A14; padding: 15px; box-sizing: border-box;">
             </div>
             <div class="news-content">
-                <span class="news-category">02 FEBRERO 2026 | ACTUALIZACIÓN TÉCNICA</span>
-                <h3>Despliegue de Dark Zone Protocolo TITANIUM</h3>
+                <span class="news-category">29 ENERO 2026 | INVESTIGACIÓN DOC.</span>
+                <h3>Metodología de Inteligencia Volumen I (OSINT)</h3>
                 <p>
-                    Anunciamos la disponibilidad del nuevo estándar de cifrado de alta entropía enfocado a corporativos y gobierno. Con capacidad de generar llaves ofuscadas de más de 8 millones de bits, este protocolo supera las deficiencias comerciales del estándar AES-256 operando 100% fuera de línea.
+                    Consulte nuestro análisis documentado bajo metodologías OSINT y la evaluación de vectores de ataque en infraestructuras críticas. Este documento forma parte de nuestro repositorio académico y está disponible para su lectura y descarga gratuita.
                 </p>
                 <div class="news-footer">
-                    <a href="darkzone.html" class="btn">SEGUIR LEYENDO</a>
+                    <a href="https://doi.org/10.5281/zenodo.18415821" target="_blank" class="btn">LEER EN ZENODO</a>
                 </div>
             </div>
         </div>
