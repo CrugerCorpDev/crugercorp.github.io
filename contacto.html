@@ -27,32 +27,20 @@
         }
 
         header {
-            padding: 15px 30px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-sizing: border-box;
-            background: rgba(5, 10, 20, 0.85);
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
         }
-
         .nav-links { display: flex; align-items: center; }
         .nav-links a {
-            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
-            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px;
-            transition: color 0.3s;
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--primary-color); }
 
         .menu-btn {
             background: none; border: none; color: var(--text-main); font-size: 1.8rem;
-            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex;
-            align-items: center; padding: 0;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
         }
         .menu-btn:hover { color: var(--primary-color); }
 
@@ -73,158 +61,56 @@
         .sidebar.active { right: 0; }
         .sidebar .close-btn {
             position: absolute; top: 20px; right: 25px; background: none; border: none;
-            color: var(--text-muted); font-size: 2.5rem; cursor: pointer;
-            transition: color 0.3s; line-height: 1;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
         }
         .sidebar .close-btn:hover { color: var(--primary-color); }
         .sidebar a {
-            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
-            text-transform: uppercase; letter-spacing: 2px; padding: 12px 0;
-            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 2px; padding: 12px 0; border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
         }
         .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
 
         .form-container {
-            max-width: 800px;
-            margin: 120px auto 60px auto;
-            background: var(--glass-bg);
-            padding: 50px;
-            border: 1px solid var(--glass-border);
-            border-top: 4px solid var(--primary-color);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 4px;
+            max-width: 800px; margin: 120px auto 60px auto; background: var(--glass-bg); padding: 50px;
+            border: 1px solid var(--glass-border); border-top: 4px solid var(--primary-color);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); border-radius: 4px;
         }
+        .form-header { text-align: center; margin-bottom: 40px; }
+        .form-header img { width: 300px; height: auto; margin-bottom: 25px; filter: drop-shadow(0 0 25px rgba(0, 168, 232, 0.4)); }
+        .form-header h1 { font-size: 1.8rem; color: #FFF; margin: 0 0 10px 0; letter-spacing: 2px; text-transform: uppercase; }
+        .form-header p { color: var(--text-muted); font-size: 0.9rem; margin: 0; line-height: 1.6; }
 
-        .form-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .form-header img {
-            width: 300px;
-            height: auto;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 0 25px rgba(0, 168, 232, 0.4));
-        }
-
-        .form-header h1 {
-            font-size: 1.8rem;
-            color: #FFF;
-            margin: 0 0 10px 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .form-header p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 20px; }
+        .form-group.full-width { grid-column: 1 / -1; }
 
         label {
-            color: var(--primary-color);
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            color: var(--primary-color); font-size: 0.8rem; font-weight: 600; margin-bottom: 8px;
+            letter-spacing: 1px; text-transform: uppercase;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        select,
-        textarea {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #FFF;
-            padding: 15px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            border-radius: 4px;
-            transition: all 0.3s;
+        input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+            background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.15); color: #FFF;
+            padding: 15px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; border-radius: 4px; transition: all 0.3s;
         }
-
         input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 10px rgba(0, 168, 232, 0.2);
-            background: rgba(0, 0, 0, 0.8);
+            outline: none; border-color: var(--primary-color); box-shadow: 0 0 10px rgba(0, 168, 232, 0.2); background: rgba(0, 0, 0, 0.8);
         }
+        select option { background: #0A1525; color: #FFF; }
+        textarea { resize: vertical; min-height: 150px; }
 
-        select option {
-            background: #0A1525;
-            color: #FFF;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            margin-top: 4px;
-            accent-color: var(--primary-color);
-        }
-
-        .checkbox-group label {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            font-weight: 400;
-            text-transform: none;
-            letter-spacing: normal;
-        }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; }
+        .checkbox-group input[type="checkbox"] { margin-top: 4px; accent-color: var(--primary-color); }
+        .checkbox-group label { color: var(--text-muted); font-size: 0.8rem; font-weight: 400; text-transform: none; letter-spacing: normal; }
 
         .btn-submit {
-            width: 100%;
-            padding: 18px;
-            margin-top: 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--primary-color);
-            background: rgba(0, 168, 232, 0.05);
-            border: 1px solid var(--primary-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 2px;
+            width: 100%; padding: 18px; margin-top: 30px; font-size: 1rem; font-weight: 700; text-transform: uppercase;
+            color: var(--primary-color); background: rgba(0, 168, 232, 0.05); border: 1px solid var(--primary-color);
+            cursor: pointer; transition: all 0.3s ease; letter-spacing: 2px;
         }
+        .btn-submit:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 20px rgba(0, 168, 232, 0.4); }
 
-        .btn-submit:hover {
-            background: var(--primary-color);
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 168, 232, 0.4);
-        }
-
-        footer {
-            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
-            color: var(--text-muted); font-size: 0.8rem;
-        }
+        footer { padding: 50px; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.8rem; }
 
         @media (max-width: 768px) {
             .form-grid { grid-template-columns: 1fr; }
@@ -233,29 +119,6 @@
     </style>
 </head>
 <body>
-
-    <header>
-        <nav class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="filosofia.html">Filosofía</a>
-        </nav>
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </header>
-
-    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
-    <div class="sidebar">
-        <button class="close-btn" onclick="toggleMenu()">×</button>
-        <div class="sidebar-title">MENÚ</div>
-        <a href="index.html">► Inicio</a>
-        <a href="darkzone.html">Dark Zone</a>
-        <a href="seguridad.html">Certificados de Confianza</a>
-        <a href="corporativo.html">Información Corporativa</a>
-        <a href="fundador.html">El Fundador</a>
-        <a href="freeware.html">Software Freeware</a>
-        <a href="america_latina.html">América Latina</a>
-        <a href="contacto.html" style="color: #00A8E8; font-weight: bold;">Agenda y Contacto</a>
-        <a href="privacidad.html">Aviso de Privacidad</a>
-    </div>
 
     <div class="form-container">
         <div class="form-header">
@@ -393,11 +256,6 @@
     </footer>
 
     <script>
-        function toggleMenu() {
-            document.querySelector('.sidebar').classList.toggle('active');
-            document.querySelector('.sidebar-overlay').classList.toggle('active');
-        }
-
         function toggleOtroCampo() {
             var selectBox = document.getElementById("tipo_atencion");
             var divOtro = document.getElementById("div_otro_atencion");
@@ -450,5 +308,7 @@
             window.location.href = mailtoLink;
         }
     </script>
+
+    <script src="menu.js"></script>
 </body>
 </html>
