@@ -137,18 +137,18 @@
             border: 1px solid var(--glass-border); border-radius: 4px;
             overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6); background: #000;
         }
-
+        
         .founder-image-column img { 
-            width: 100%; height: auto; display: block; 
+            width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; 
         }
         
         .founder-text-column {
-            flex: 1;
-            display: flex; flex-direction: column; justify-content: center;
+            flex: 1; 
+            display: flex; flex-direction: column; justify-content: center; 
             background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); 
             padding: 40px; border-radius: 4px; backdrop-filter: blur(5px);
         }
-
+        
         .quote-box {
             padding-left: 20px; border-left: 3px solid var(--primary-color); margin-bottom: 25px;
         }
@@ -162,10 +162,25 @@
         }
 
         .manifesto-lead-para {
-            color: var(--text-muted); font-size: 0.95rem; line-height: 1.9;
-            margin: 0; text-align: justify; font-weight: 400; padding-top: 10px;
+            color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;
+            margin: 0 0 15px 0; text-align: justify; font-weight: 400; padding-top: 5px;
         }
         .manifesto-lead-para strong { color: #FFF; font-weight: 600; }
+
+        .doi-list {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .doi-list ul {
+            list-style-type: none; padding-left: 0; margin: 0;
+        }
+        .doi-list li {
+            font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;
+            margin-bottom: 10px; padding-left: 15px; border-left: 2px solid var(--glass-border);
+            text-align: justify;
+        }
+        .doi-list li strong { color: var(--primary-color); }
 
         .manifesto-body {
             max-width: 850px; margin: 0 auto; padding: 0 30px 80px;
@@ -187,7 +202,7 @@
 
         @media (max-width: 968px) {
             .founder-hero-container { flex-direction: column; gap: 30px; align-items: center;}
-            .founder-image-column { width: 100%; max-width: 350px; }
+            .founder-image-column { width: 100%; max-width: 350px; height: 500px; } 
             .quote-box { padding-left: 0; padding-top: 20px; border-left: none; border-top: 3px solid var(--primary-color); }
             .founder-text-column { padding: 30px 20px; }
             .page-header h1 { font-size: 2.2rem; }
@@ -221,11 +236,26 @@
             </div>
 
             <p class="manifesto-lead-para">
-                <strong>Cruger Corp</strong> no es producto de la improvisación, sino el resultado de más de una década de investigación, desarrollo e integración de múltiples disciplinas. Fundada por Angel Cruger, la firma nace de una visión polímata que entiende que la verdadera seguridad tecnológica requiere tanto de rigor científico como de una profunda comprensión de la interacción humana.
+                <strong>Cruger Corp</strong> es una firma tecnológica que no nace de la improvisación, sino que es el resultado de más de una década de investigación, desarrollo e integración de múltiples disciplinas. Fundada por Angel Cruger, la firma surge de una visión polímata que entiende que la verdadera seguridad tecnológica requiere tanto de rigor científico como de una profunda comprensión de la interacción humana y cultural.
             </p>
+
+            <p class="manifesto-lead-para">
+                Mucho antes de la era comercial de la Inteligencia Artificial, Angel se consolidó como creador de plataformas de divulgación de conocimiento. Hoy acumula una base sólida de más de <strong>30,000 seguidores</strong> en sus plataformas de contenidos y un tráfico registrado de entre <strong>400,000 a 2 millones de visitas mensuales</strong>. Esta capacidad analítica y comunicativa lo ha llevado a ser invitado en diversos proyectos para implementar fórmulas de crecimiento y estructuración en nuevas páginas y negocios que buscan impulsar su marca.
+            </p>
+
+            <div class="doi-list">
+                <strong style="color: var(--primary-color); font-size: 0.8rem; display:block; margin-bottom:10px; letter-spacing: 1px;">PUBLICACIONES ACADÉMICAS DESTACADAS (DOI):</strong>
+                <ul>
+                    <li><strong>[1]</strong> LA DICTADURA DE LA LUZ: Implicaciones Neurobiológicas, Económicas y Psicosociales de la Transición a la Iluminación de Espectro Frío.</li>
+                    <li><strong>[2]</strong> IMPLEMENTACIÓN DE ALGORITMOS COMBINATORIOS DE ALTA EFICIENCIA EN ENTORNOS DE CÓMPUTO NO CONVENCIONALES SOBRE PLATAFORMAS PROPIETARIAS: De la Soberanía Geoespacial (Movail) a la Cognición Sintética (OSSAI).</li>
+                    <li><strong>[3]</strong> Estudio de implementación MOVAIL - Reducción de complejidad algorítmica de probabilística a determinista (Actualización v.2.0 / 2025).</li>
+                    <li><strong>[4]</strong> Metodología de Inteligencia Vol. I: Vulnerabilidades Sistémicas y un Nuevo Paradigma de la Soberanía Digital basada en Hardware.</li>
+                </ul>
+            </div>
 
         </div>
     </section>
+
     <section class="manifesto-body">
         
         <h3>Arquitectura, Seguridad y Soberanía Tecnológica</h3>
@@ -239,11 +269,6 @@
         </p>
         <p>
             Para sostener este nivel de innovación, la empresa cuenta con un respaldo académico ininterrumpido que incluye más de 100 cursos certificados en áreas tecnocientíficas, cinco diplomados entre los que se incluye Inteligencia de Negocios (BI), Cloud Computing, BIG DATA, e Informática  y una Especialidad Operativa en Tratamiento de DATOS (actualmente cursando una segunda Especialidad en IoT e I.A.), garantizando una actualización absoluta frente a las amenazas modernas.
-        </p>
-
-        <h3>Perspectiva Cultural y Comunicación Estratégica</h3>
-        <p>
-            Lejos de limitarse al código y la criptografía, la trayectoria de Angel Cruger se complementa con casi diez años de experiencia en la dirección creativa, la ilustración y la divulgación digital. A través de la gestión de estudios multimedia y proyectos culturales de largo alcance, ha cultivado una capacidad excepcional para la comunicación visual, el diseño de identidad y la conexión con audiencias masivas.
         </p>
 
         <h3>El Catalizador: Resiliencia y Disrupción</h3>
