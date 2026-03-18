@@ -126,28 +126,31 @@
             line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
         }
 
-        .unified-header-split {
+        .founder-hero-container {
             display: flex; gap: 30px; max-width: 1200px; margin: 0 auto 50px;
-            padding: 0 30px; align-items: center; /* Centra la frase verticalmente con la foto */
+            padding: 0 30px; align-items: stretch;
         }
         
-        .unified-image-block {
+        .founder-image-column {
             width: 350px; 
-            flex: 0 0 auto; /* Evita que la imagen cambie de tamaño */
+            flex: 0 0 auto;
             border: 1px solid var(--glass-border); border-radius: 4px;
             overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6); background: #000;
         }
-        
-        .unified-image-block img { 
-            width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; 
+
+        .founder-image-column img { 
+            width: 100%; height: auto; display: block; 
         }
         
-        .unified-quote-block {
+        .founder-text-column {
             flex: 1;
+            display: flex; flex-direction: column; justify-content: center;
+            background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); 
+            padding: 40px; border-radius: 4px; backdrop-filter: blur(5px);
         }
 
-        .quote-container {
-            padding-left: 25px; border-left: 3px solid var(--primary-color);
+        .quote-box {
+            padding-left: 20px; border-left: 3px solid var(--primary-color); margin-bottom: 25px;
         }
         .quote-text {
             font-size: 0.85rem; color: #FFF; line-height: 1.7; font-style: italic;
@@ -157,6 +160,12 @@
             font-size: 0.75rem; color: var(--primary-color); font-weight: 700;
             letter-spacing: 1px; text-transform: uppercase; text-align: right;
         }
+
+        .manifesto-lead-para {
+            color: var(--text-muted); font-size: 0.95rem; line-height: 1.9;
+            margin: 0; text-align: justify; font-weight: 400; padding-top: 10px;
+        }
+        .manifesto-lead-para strong { color: #FFF; font-weight: 600; }
 
         .manifesto-body {
             max-width: 850px; margin: 0 auto; padding: 0 30px 80px;
@@ -177,9 +186,10 @@
         }
 
         @media (max-width: 968px) {
-            .unified-header-split { flex-direction: column; gap: 30px; align-items: center;}
-            .unified-image-block { width: 100%; max-width: 350px; } /* Imagen se centra en móvil */
-            .quote-container { padding-left: 0; padding-top: 20px; border-left: none; border-top: 3px solid var(--primary-color); }
+            .founder-hero-container { flex-direction: column; gap: 30px; align-items: center;}
+            .founder-image-column { width: 100%; max-width: 350px; }
+            .quote-box { padding-left: 0; padding-top: 20px; border-left: none; border-top: 3px solid var(--primary-color); }
+            .founder-text-column { padding: 30px 20px; }
             .page-header h1 { font-size: 2.2rem; }
         }
     </style>
@@ -193,14 +203,15 @@
         </h2>
     </section>
 
-    <section class="unified-header-split">
+    <section class="founder-hero-container">
         
-        <div class="unified-image-block">
-            <img src="Angel_Cruger_LA.jpg" alt="Angel Cruger - CEO de Cruger Corp">
+        <div class="founder-image-column">
+            <img src="Angel Cruger LA.jpg" alt="Angel Cruger - CEO de Cruger Corp">
         </div>
         
-        <div class="unified-quote-block">
-            <div class="quote-container">
+        <div class="founder-text-column">
+            
+            <div class="quote-box">
                 <div class="quote-text">
                     "Mirar atrás no significa voltear al pasado, significa saber de dónde vienes, quién eres y qué esperas de tu futuro en base a tus experiencias. Me gusta pensar que, hoy miro atrás y de haber continuado en el mismo lugar y situación, no habría nacido Cruger Corp. Las personas que realmente cambian al mundo, son los que están dispuestos a hacer más; mientras otros duermen, se preparan, mientras otros pierden el tiempo, algunos crean lo que los demás solo sueñan. Esa es la diferencia, y el momento a veces no espera a que estés listo, te empuja sabiendo que eres capaz de lograr lo que otros consideran imposible."
                 </div>
@@ -208,14 +219,15 @@
                     — Angel Cruger
                 </div>
             </div>
+
+            <p class="manifesto-lead-para">
+                <strong>Cruger Corp</strong> no es producto de la improvisación, sino el resultado de más de una década de investigación, desarrollo e integración de múltiples disciplinas. Fundada por Angel Cruger, la firma nace de una visión polímata que entiende que la verdadera seguridad tecnológica requiere tanto de rigor científico como de una profunda comprensión de la interacción humana.
+            </p>
+
         </div>
     </section>
     <section class="manifesto-body">
         
-        <p>
-            <strong>Cruger Corp</strong> no es producto de la improvisación, sino el resultado de más de una década de investigación, desarrollo e integración de múltiples disciplinas. Fundada por Angel Cruger, la firma nace de una visión polímata que entiende que la verdadera seguridad tecnológica requiere tanto de rigor científico como de una profunda comprensión de la interacción humana.
-        </p>
-
         <h3>Arquitectura, Seguridad y Soberanía Tecnológica</h3>
         <p>
             La base operativa de Cruger Corp se sustenta en años de desarrollo de sistemas en entornos de alta fricción. La experiencia de su fundador abarca desde la creación de plataformas geoespaciales autónomas (offline-first) hasta el diseño de arquitecturas cognitivas y metodologías de inteligencia para la defensa de datos (Doctrina Dark Zone). Este bagaje técnico está respaldado por investigaciones formales documentadas (DOIs) enfocadas en la optimización heurística y la soberanía de la información.
@@ -244,7 +256,7 @@
 
         <h3>La Síntesis: Cruger Corp</h3>
         <p>
-            Es precisamente esta convergencia entre la ingeniería de sistemas complexes, la resiliencia probada y la sensibilidad del diseño humanista lo que define el ADN de nuestra empresa. Entendemos que la tecnología más robusta carece de valor si no responde a necesidades reales. Por ello, en Cruger Corp combinamos el determinismo matemático y la ciberseguridad defensiva con un enfoque ético, estructurado y centrado en el usuario, ofreciendo soluciones tecnológicas que no solo protegen, sino que trascienden.
+            Es precisamente esta convergencia entre la ingeniería de sistemas complejos, la resiliencia probada y la sensibilidad del diseño humanista lo que define el ADN de nuestra empresa. Entendemos que la tecnología más robusta carece de valor si no responde a necesidades reales. Por ello, en Cruger Corp combinamos el determinismo matemático y la ciberseguridad defensiva con un enfoque ético, estructurado y centrado en el usuario, ofreciendo soluciones tecnológicas que no solo protegen, sino que trascienden.
         </p>
 
     </section>
