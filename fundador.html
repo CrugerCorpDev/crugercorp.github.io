@@ -197,10 +197,25 @@
         }
         .doi-list li {
             font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;
-            margin-bottom: 15px; padding-left: 15px; border-left: 2px solid var(--glass-border);
+            margin-bottom: 20px; padding-left: 15px; border-left: 2px solid var(--glass-border);
             text-align: justify;
         }
         .doi-list li:last-child { margin-bottom: 0; }
+        
+        .doi-link {
+            display: block;
+            margin-top: 6px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .doi-link:hover {
+            color: #FFF;
+        }
 
         footer {
             padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
@@ -290,10 +305,22 @@
             <h4>Publicaciones Académicas Destacadas (DOI)</h4>
             <div class="doi-list">
                 <ul>
-                    <li><strong>[1]</strong> LA DICTADURA DE LA LUZ: Implicaciones Neurobiológicas, Económicas y Psicosociales de la Transición a la Iluminación de Espectro Frío.</li>
-                    <li><strong>[2]</strong> IMPLEMENTACIÓN DE ALGORITMOS COMBINATORIOS DE ALTA EFICIENCIA EN ENTORNOS DE CÓMPUTO NO CONVENCIONALES SOBRE PLATAFORMAS PROPIETARIAS: De la Soberanía Geoespacial (Movail) a la Cognición Sintética (OSSAI).</li>
-                    <li><strong>[3]</strong> Estudio de implementación MOVAIL - Reducción de complejidad algorítmica de probabilística a determinista (Actualización v.2.0 / 2025).</li>
-                    <li><strong>[4]</strong> Metodología de Inteligencia Vol. I: Vulnerabilidades Sistémicas y un Nuevo Paradigma de la Soberanía Digital basada en Hardware.</li>
+                    <li>
+                        <strong>[1]</strong> LA DICTADURA DE LA LUZ: Implicaciones Neurobiológicas, Económicas y Psicosociales de la Transición a la Iluminación de Espectro Frío.
+                        <a href="https://doi.org/10.5281/zenodo.18066101" target="_blank" class="doi-link">► Consultar Publicación (Zenodo)</a>
+                    </li>
+                    <li>
+                        <strong>[2]</strong> IMPLEMENTACIÓN DE ALGORITMOS COMBINATORIOS DE ALTA EFICIENCIA EN ENTORNOS DE CÓMPUTO NO CONVENCIONALES SOBRE PLATAFORMAS PROPIETARIAS: De la Soberanía Geoespacial (Movail) a la Cognición Sintética (OSSAI).
+                        <a href="https://doi.org/10.5281/zenodo.18107678" target="_blank" class="doi-link">► Consultar Publicación (Zenodo)</a>
+                    </li>
+                    <li>
+                        <strong>[3]</strong> Estudio de implementación MOVAIL - Reducción de complejidad algorítmica de probabilística a determinista (Actualización v.2.0 / 2025).
+                        <a href="https://doi.org/10.5281/zenodo.18107678" target="_blank" class="doi-link">► Consultar Publicación (Zenodo)</a>
+                    </li>
+                    <li>
+                        <strong>[4]</strong> Metodología de Inteligencia Vol. I: Vulnerabilidades Sistémicas y un Nuevo Paradigma de la Soberanía Digital basada en Hardware.
+                        <a href="https://doi.org/10.5281/zenodo.18415821" target="_blank" class="doi-link">► Consultar Publicación (Zenodo)</a>
+                    </li>
                 </ul>
             </div>
         </div>
