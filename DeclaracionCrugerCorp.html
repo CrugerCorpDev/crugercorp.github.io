@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Variables del sitio corporativo */
         :root {
             --primary-color: #00A8E8;
             --glass-bg: rgba(255, 255, 255, 0.05);
@@ -17,9 +16,8 @@
             --text-muted: #A0AAB5;
         }
 
-        /* Estilos base: Fondo negro conservado */
         body {
-            background-color: #0a0a0a; /* Fondo negro intacto */
+            background-color: #0a0a0a;
             color: #d1d5db;
             font-family: 'Montserrat', sans-serif;
             line-height: 1.7;
@@ -28,9 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* ========================================= */
-        /* NAVEGACIÓN SUPERIOR Y MENÚ LATERAL        */
-        /* ========================================= */
         header {
             padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
             border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
@@ -68,6 +63,12 @@
             color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
         }
         .sidebar .close-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-title {
+            color: var(--primary-color); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;
+            text-transform: uppercase; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 10px;
+        }
+
         .sidebar a {
             color: var(--text-main); text-decoration: none; font-size: 0.85rem;
             text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
@@ -75,13 +76,10 @@
         }
         .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
 
-        /* ========================================= */
-        /* CONTENIDO DE LA DECLARACIÓN               */
-        /* ========================================= */
         .content-wrapper {
             max-width: 850px;
             margin: 0 auto;
-            padding: 120px 20px 50px 20px; /* Padding superior para que el header no tape el contenido */
+            padding: 120px 20px 50px 20px; /* Padding superior para el header dinámico */
         }
 
         img.logo {
@@ -132,9 +130,6 @@
         li { margin-bottom: 15px; text-align: justify; }
         strong { color: #ffffff; }
 
-        /* ========================================= */
-        /* PIE DE PÁGINA (FOOTER)                    */
-        /* ========================================= */
         footer {
             padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
             color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
@@ -143,25 +138,6 @@
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="bitacora (1).html">Bitácora</a>
-            </div>
-        <button class="menu-btn" id="menuBtn">☰</button>
-    </header>
-
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    
-    <nav class="sidebar" id="sidebar">
-        <button class="close-btn" id="closeBtn">&times;</button>
-        <a href="index.html">Inicio</a>
-        <a href="bitacora (1).html">Bitácora y Repositorio</a>
-        <a href="freeware.html">Freeware</a>
-        <a href="fundador.html">Perfil Corporativo</a>
-        <a href="filosofia.html">Doctrina de Seguridad</a>
-    </nav>
 
     <main class="content-wrapper">
         <img src="logo.png" alt="Cruger Corp Logo" class="logo">
