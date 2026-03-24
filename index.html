@@ -484,6 +484,147 @@
       ]
     }
     </script>
+
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables y estilos del Cronómetro y Recuadro de Anuncio */
+        :root {
+            --eva-red: #f40000;
+            --eva-orange-glow: #ff7300;
+        }
+
+        .announcement-wrapper {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .announcement-content {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .announcement-logo-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .announcement-text h3 {
+            color: #FFF;
+            margin: 0 0 5px 0;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .announcement-text .date {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .announcement-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Estilos del Cronómetro NERV adaptados */
+        .timer-container {
+            width: 400px;
+            max-width: 100%;
+            height: 150px;
+            background: rgba(10, 0, 0, 0.9);
+            border: 3px solid var(--eva-red);
+            font-family: 'Share Tech Mono', monospace;
+            box-shadow: 0 0 15px rgba(244, 0, 0, 0.7), inset 0 0 25px rgba(244, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .timer-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.15;
+            background-image:
+                linear-gradient(rgba(244, 0, 0, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 0, 0, 0.3) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .timer-header {
+            z-index: 1;
+            display: flex;
+            width: 270px;
+            justify-content: space-between;
+            color: #aa0000;
+            font-size: 16px;
+            margin-bottom: 4px;
+            margin-right: 60px;
+        }
+
+        .timer-segments {
+            z-index: 1;
+            color: var(--eva-orange-glow);
+            text-shadow: 0 0 10px var(--eva-orange-glow), 0 0 20px #ff0000;
+            font-size: 40px; 
+            font-weight: bold;
+            display: flex;
+            align-items: baseline;
+            white-space: nowrap;
+        }
+
+        .separator {
+            color: var(--eva-red);
+            opacity: 0.8;
+            margin: 0 4px;
+            font-size: 36px;
+        }
+
+        .miliseconds-decimal {
+            font-size: 24px;
+            color: #ff5555;
+            margin-left: 4px;
+        }
+
+        @media (max-width: 968px) {
+            .announcement-wrapper { flex-direction: column; text-align: center; }
+            .announcement-content { flex-direction: column; text-align: center; }
+            .announcement-text p { text-align: center; }
+            .timer-container { transform: scale(0.85); margin-top: -10px; }
+        }
+    </style>
+    
 </head>
 <body>
 
@@ -670,6 +811,95 @@
         </div>
     </section>
 
+    <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+        <div class="announcement-wrapper">
+            
+            <div class="announcement-content">
+                <div class="announcement-logo-box">
+                    <img src="logo.png" alt="Cruger Corp Logo Mini" style="width: 70px; height: auto;">
+                </div>
+                <div class="announcement-text">
+                    <h3>Declaraciones Cruger Corp</h3>
+                    <div class="date">23 de Marzo de 2026</div>
+                    <p>Ante los recientes eventos de conformidad en el análisis de proyección estratégica de la empresa para la operatividad comercial en el plan 2026 y la visión de la firma tecnológica Cruger Corp.</p>
+                    <a href="DeclaracionCrugerCorp.html" class="btn" style="padding: 10px 25px; font-size: 0.75rem; min-width: auto;">SEGUIR LEYENDO</a>
+                </div>
+            </div>
+
+            <div class="timer-container">
+                <div class="timer-header">
+                    <span>DÍA</span>
+                    <span>HR</span>
+                    <span>MIN</span>
+                    <span>SEC</span>
+                </div>
+                <div class="timer-segments" id="segments-container">
+                    <span id="d">00</span><span class="separator">:</span>
+                    <span id="h">00</span><span class="separator">:</span>
+                    <span id="m">00</span><span class="separator">:</span>
+                    <span id="s">00</span><span class="miliseconds-decimal">.<span id="ms">000</span></span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    ```
+
+### 3. Agrega la lógica del Cronómetro (JavaScript)
+Ve hasta el fondo de tu archivo, justo arriba de donde se cierra la etiqueta `</body>` (debajo del script del canvas neuronal que ya tienes). Agrega este bloque para darle vida al contador:
+
+```html
+    <script>
+        // Lógica del Cronómetro NERV
+        const elD = document.getElementById('d');
+        const elH = document.getElementById('h');
+        const elM = document.getElementById('m');
+        const elS = document.getElementById('s');
+        const elMs = document.getElementById('ms');
+        const segmentsContainer = document.getElementById('segments-container');
+
+        // Fecha objetivo: 14 de Abril de 2026 a las 00:00:00
+        const targetDate = new Date('2026-04-14T00:00:00').getTime();
+
+        function pad(number, digits) {
+            return number.toString().padStart(digits, '0');
+        }
+
+        function updateClock() {
+            const now = Date.now();
+            let difference = targetDate - now;
+
+            if (difference <= 0) {
+                difference = 0;
+                if(segmentsContainer) {
+                    segmentsContainer.style.color = '#ff0000';
+                    segmentsContainer.style.textShadow = '0 0 15px #ff0000';
+                }
+                renderTime(0);
+                return; 
+            }
+
+            renderTime(difference);
+            requestAnimationFrame(updateClock);
+        }
+
+        function renderTime(difference) {
+            if(!elD) return; // Evitar errores si no carga el DOM
+            const d = Math.floor(difference / 86400000);
+            const h = Math.floor((difference % 86400000) / 3600000);
+            const m = Math.floor((difference % 3600000) / 60000);
+            const s = Math.floor((difference % 60000) / 1000);
+            const ms = Math.floor(difference % 1000); 
+
+            elD.innerText = pad(d, 2);
+            elH.innerText = pad(h, 2);
+            elM.innerText = pad(m, 2);
+            elS.innerText = pad(s, 2);
+            elMs.innerText = pad(ms, 3);
+        }
+        requestAnimationFrame(updateClock);
+    </script>
+        
     <section id="contacto" class="section">
         <div class="appointment-box" style="text-align: left; padding: 40px 50px;">
             
