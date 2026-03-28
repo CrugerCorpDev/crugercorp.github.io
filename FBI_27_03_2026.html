@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración sobre hackeo al director del FBI | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #d1d5db;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navegación para menu.js */
+        header {
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-title {
+            color: var(--primary-color); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;
+            text-transform: uppercase; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 120px 20px 50px 20px;
+        }
+
+        img.logo {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .fecha {
+            text-align: center;
+            color: #9ca3af;
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        p { margin-bottom: 20px; text-align: justify; }
+        
+        .fuentes {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.85em;
+            color: #9ca3af;
+            word-break: break-all;
+        }
+        .fuentes p {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
+            background-color: #050A14;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="content-wrapper">
+        <img src="logo.png" alt="Cruger Corp Logo" class="logo">
+
+        <h1>Declaración sobre hackeo al director del FBI</h1>
+        <div class="fecha">27 de Marzo de 2026</div>
+
+        <p>En Cruger Corp entendemos el alcance sobre el ataque que sufrió el día de hoy 27 de Marzo de 2026 Kash Patel, actual director del FBI (Federal Bureau of Investigation). Aunque se ha informado que la naturaleza de la filtración de información que involucra el correo electrónico personal con cerca de entre 300 correos con un peso de alrededor a 800 MB de información, y datos que se han considerado sin agraviantes o críticos al ser de naturaleza histórica, lo cierto es que responde a una necesidad que nuestra postura ya había advertido.</p>
+        
+        <p>La información crítica debe permanecer segura, aunque se trate de información personal sigue revelando información que terceros podrían usar de manera malintencionada, debemos generar la conciencia de reducir las brechas de ciberseguridad que permitan la exfiltración de información. Los modelos de ataque realizados por actores malintencionados son cada vez más refinados, por ello, la importancia de proteger todos los activos es vital, y eso incluye el más importante de todos y que muchas veces se deja de lado, "la información".</p>
+        
+        <p>Cruger Corp refuerza su postura sobre concientizar sobre amenazas y la importancia de proteger la información privada, personal y crítica. Nuestra Firma Tecnológica responde a una necesidad real que es desaprovechada por la burocracia, nuestra Firma no vende chalecos antibalas, equipos blindados o armas, por qué sabemos que hay algo más importante ocurriendo en un campo que muchas organizaciones no consideran todavía estratégico, "el digital". Puedes ponerle un chaleco a una computadora, pero simplemente eso no la va a proteger de ataques cibernéticos o exfiltración de datos, entender sobre los riesgos reales de los datos filtrados y los incidentes que puede tener el acceso a infraestructura critica por terceros no autorizados en instalaciones donde la seguridad debería ser el primer filtro de defensa es crucial.</p>
+        
+        <p>Es por ello que, estamos evaluando el modelo de seguridad y la viabilidad de un enfoque que nos permita analizar con datos estructurados el incidente, así como una vía futura de cooperación comercial a través de los medios dispuestos para ofrecer nuestras herramientas de protección de datos y nuestra postura sobre manejo de ciberseguridad, siempre y cuando estos medios no supongan una brecha de seguridad o una auditoria de terceros, lo que supondría una falla en el sistema de custodia de seguridad y una contradicción de nuestra filosofía que nuestra Firma no está dispuesta a negociar.</p>
+        
+        <p>Entendemos que lo publicó y expuesto no se puede corregir una vez que ha salido a la luz, pero, podemos mitigar los riesgos futuros a través de implementación de herramientas que favorezcan mejores prácticas y métodos seguro de proteger la información. La realidad sobre exfiltración de datos es que tanto daño puede tener según su modelo de alcance y su cadena de necesidad que responden a procesos críticos ya sea de infraestructura, del orden de seguridad nacional o bien, sobre la vida misma. Evaluar los riesgos es una de las principales razones para implementar procesos clave dentro de las cadenas de procedimiento de seguridad, y que responden a una naturaleza de protección de activos seguros que solo cuando son expuestos se puede cuantificar el daño real de una exposición.</p>
+        
+        <p>Protocolos como Dark Zone TITANIUM o PHANTOM están diseñados para mitigar y neutralizar riesgos incluso en canales de comunicación inseguros (como los dispuestos por la industria y terceros, estos incluyen redes sociales, correos electrónicos, mensajería instantánea, entre otros).  El caso del director Kash Patel, es solo una muestra de lo que ocurre diariamente alrededor del mundo, en diferentes ámbitos y giros, en este caso fue una agencia de seguridad nacional (aunque se trato de un tema sobre datos personales existe una brecha y una falta de protocolos al personal para mitigar los riesgos), pero podría ocurrir a directores de operación de plantas de energía, sistemas bancarios, sistemas energéticos o empresarios cuya información es vital proteger.</p>
+        
+        <p>Activos de nuestra Firma que se encargan de proteger la seguridad de la información, tienen realmente un coso simbólico en comparación con la información y el daño de imagen, de patentes o de negocios que se pierden al ser expuestos. Sin dejar de lado temas críticos que son el principal pilar de la filosofía de nuestra Firma. Esto se ha evidenciado en nuestro MANUAL DE INTELIGENCIA VOL. I publicado en nuestra página y vinculado a ZENODO, donde se exponen diferentes fallas basadas en metodologías de análisis de información OSINT y otros modelos de vinculación cruzada y de patrones de información.</p>
+        
+        <p>Actualmente trabajamos en PhT cuya versión ha mejorado significativamente para la mitigación de riesgos de seguridad, e implementamos platicas sobre concientización de métodos de prevención de ataques.</p>
+
+        <div class="fuentes">
+            <p>N+ Univision y AP (27/03/2025). Kash Patel, director del FBI, es víctima de hackeo; grupo proiraní se atribuye el ciberataque. Recuperado el 27/03/2025. De N+ Univision y AP. Website: https://www.univision.com/noticias/estados-unidos/kash-patel-director-del-fbi-es-victima-de-hackeo-grupo-proirani-se-atribuye-el-ciberataque</p>
+            <p>EL FINANCIERO (27/03/2025). ‘Ventilan’ a Kash Patel: Hackers de Irán vulneran correo electrónico del director del FBI. Recuperado el 27/03/2025. De EL FINANCIERO. Website: https://www.univision.com/noticias/estados-unidos/kash-patel-director-del-fbi-es-victima-de-hackeo-grupo-proirani-se-atribuye-el-ciberataque</p>
+        </div>
+    </main>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>
