@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postura Oficial: Software Dark Zone | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #d1d5db;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navegación para menu.js */
+        header {
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-title {
+            color: var(--primary-color); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;
+            text-transform: uppercase; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 120px 20px 50px 20px;
+        }
+
+        img.logo {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .fecha {
+            text-align: center;
+            color: #9ca3af;
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 1.15em;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        p { margin-bottom: 20px; text-align: justify; }
+        
+        .web-link {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .web-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .web-link a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
+            background-color: #050A14;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="content-wrapper">
+        <img src="logo.png" alt="Cruger Corp Logo" class="logo">
+
+        <h1>Postura: Dudas del sistema de Software Dark Zone</h1>
+        <div class="fecha">Sábado 28 de Marzo de 2026</div>
+        <div class="subtitulo">Recientemente hemos recibido mensajes sobre las dudas del sistema de Software Dark Zone en nuestro sitio web.<br>Cruger Corp emite la siguiente postura:</div>
+
+        <p>La naturaleza del Software Dark Zone Protocolo TITANIUM/PHANTOM sirve para que el USUARIO pueda manejar el volumen de su información de manera práctica e intuitiva.</p>
+        
+        <p>Diseñamos la arquitectura del sistema para que tenga lo mejor de los dos mundos (Diseño UI/UX trabajado para que los procesos técnicos y complejos de la arquitectura de cifrado, descifrado, triturado, validación y otros puedan coexistir de manera armónica con una INTERFAZ intuitiva, que sirva para que el USUARIO entienda cada función sin perderse entre botones, comandos o llamadas del sistema y permisos de administrador).</p>
+        
+        <p>El Software Dark Zone en cualquiera de sus modalidades permite al USUARIO gestionar información para Cifrarla, Descifrarla y Eliminarla, empleando métodos descritos más a detalle en nuestro sitio web, en el apartado del software. Así como la posibilidad de verificar si la información fue alterada por un tercero mediante firmas de tiempo incrustadas durante el cifrado.</p>
+        
+        <p>Los usos son varios, pero para ejemplificar las capacidades del sistema, al Cifrar un archivo con el Software Dark Zone, este pasa a ser un archivo con formato propietario y desarrollado por nuestra firma .dark, y se genera una llave de respuesta única para cada cifrado mediante otro archivo .key, ambos son necesarios para que el Software Dark Zone pueda descifrar la información. Si una Empresa, Dependencia o Gobierno, requiere mantener fuera del alcance DATOS importantes, está es la mejor manera de hacerlo, ya que el sistema genera caos profundo mediante alta entropía y modelos adicionales al cifrar un archivo.</p>
+        
+        <p>El archivo cifrado puede ser enviado por canales inseguros como el correo electrónico, redes sociales o mensajería instantánea sin el riesgo que supone que sea expuesta la información, ya que el archivo .dark es indistinguible de ruido aleatorio, permitiendo el resguardo, envío y recepción de archivos sin la preocupación de que un tercero vulnere el archivo. Adicional, el sistema posee la capacidad de verificar individualmente cada archivo cifrado .dark para validar que no se haya alterado, modificado o corrompido durante el proceso de envío o resguardo.</p>
+        
+        <p>Esto es útil para información crítica de empresas, firmas, gobiernos, dependencias y actores preocupados por la seguridad real de la información.</p>
+        
+        <p>El sistema posee capacidad de descifrado de datos, así como una trituradora de datos para eliminación con procesos eficientes para memorias mecánicas HDD o electricas SSD y sus derivados. Empleando en el modelo Dark Zone las capacidades para que sea el USUARIO quien decida los procesos a seguir de la destrucción lógica de los archivos y la remanencia magnética o la carga residual, incluyendo procesos de saturación de memoria.</p>
+        
+        <p>Nuestros procesos no son complicados. Vendemos directamente a través de una validación de clientes potenciales, una firma de CONTRATO y la entrega de EL ACTIVO. nuestro Software NO se puede descargar de internet, no almacenamos copias de su información ni tenemos acceso mediante puertas traseras (backdoors) por lo que el USUARIO es el único responsable de su información y de lo que almacena, sean datos, documentos, fotografías, música, películas, o cualquier activo digital que posee el USUARIO.</p>
+        
+        <p>Nuestro Software NO requiere internet para funcionar, todo lo hace el equipo del USUARIO, entregamos una llave de validación certificada por nuestra Firma, dentro de maletines Hard Case para evitar manipulación de terceros y entrega directa y personalmente. Documentos digitales e impresos según corresponda.</p>
+        
+        <p>Contamos con un proceso de validación, modelo de venta que entrega además un MANUAL DE USUARIO práctico y atención telefónica y vía correo electrónico (la atención varía desacuerdo al CONTRATO pero dejamos en claro que toda comunicación con Cruger Corp es de manera profesional y atendida por personal capacitado, no usamos procesos de chat bot o contestadoras).</p>
+        
+        <p>El Software tiene un costo unitario que incluye una licencia anual misma que puede ser expandida por el USUARIO, sin cargos adicionales por cuotas superadas. Así mismo contamos con planes multianuales y CONTRATOS de mejora de precios según el volumen de licencias a Contratar, con opciones de +50 y +100.</p>
+        
+        <p>El costo por proteger sus activos digitales mediante el cifrado de nuestro Software es símbolo en comparación con cualquier otro sistema de implementación actualmente disponible, mismos que muchas veces requieren gastos en personal calificado para operación y materiales adicionales sobre servidores y montaje. Cruger Corp le otorga el sistema listo para usarlo, es intransferible, no se pueden usar las llaves en otro sistema y contamos con modelos de protección adicionales para que el sistema sea seguro al usuario incluyendo seguridad por doble factor 2FA en las llaves de acceso al ACTIVO.</p>
+        
+        <p>La velocidad de procesamiento de la información está íntegramente relacionada al procesamiento de la unidad donde se instala el sistema, pero hemos desarrollado procesos para que equipos de gama de entrada y tecnología considerada por la industria como "vieja" pueda operar nuestro sistema bajo condiciones normales de uso, con tiempos de respuesta de 4 minutos por GB procesado incluyendo mas no limitando, procesadores como AMD Turion x2 e Intel Celeron considerados poco eficientes. (Los tiempos de respuesta varían según la operatividad y el sistema, véase el aparato sobre 100 días de estrés y pruebas de rendimiento publicado en la página oficial en formato PDF).</p>
+        
+        <p>Es decir, el sistema será más rápido cuánto mayor procesamiento pueda hacer su dispositivo, esto como medida de uso para dependencias y oficinas que no han actualizado sus computadoras o cuentan con equipos heredados. Actualmente trabajamos solo con el Sistema Operativo Windows, que es el sistema más utilizados en industrias, oficinas y dependencias en el mundo, pero estamos trabajando en soluciones y validando oportunidades para expandir las capacidades del sistema a otros Sistemas Operativos, incluyendo PhT (desarrollo propietario en fase).</p>
+        
+        <p>Cruger Corp mantiene la operatividad  y las capacidades para que el sistema no sea un problema. El Software es también útil para entornos hostiles dónde las comunicaciones son vitales. En este sentido, preferimos el desarrollo de datos cifrados que es posible enviar a través de redes inseguras, que mediante dispositivos "comerciales" de bajo costo mismos que no tienen la capacidad de enviarse de manera inmediata, o bien, están limitados a la capacidad de almacenamiento de la unidad de memoria.</p>
+        
+        <p>No es un sistema de Software comercial masivo, está diseñado para entidades y personas que valoran la información y que priorizan la seguridad de la información.</p>
+        
+        <p>En unos días estaremos emitiendo una nueva postura sobre precios por unidad de licencia sobre EL ACTIVO, y adicionalmente abriremos espacios para la verificación de los vectores de seguridad diseñados en nuestra red cifrada de extremo a extremo (solo por invitación bajo reservación).</p>
+
+        <div class="web-link">
+            <a href="https://www.CrugerCorp.com" target="_blank">www.CrugerCorp.com</a>
+        </div>
+    </main>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>
