@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postura: Independencia Financiera y Filosofía | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #d1d5db;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-title {
+            color: var(--primary-color); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;
+            text-transform: uppercase; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 120px 20px 50px 20px;
+        }
+
+        img.logo {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .fecha {
+            text-align: center;
+            color: #9ca3af;
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 1.15em;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+        
+        h2 {
+            color: #ffffff;
+            font-size: 1.4em;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        p { margin-bottom: 20px; text-align: justify; }
+        strong { color: #ffffff; }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
+            background-color: #050A14;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="content-wrapper">
+        <img src="logo.png" alt="Cruger Corp Logo" class="logo">
+
+        <h1>Independencia Financiera y Filosofía de Desarrollo</h1>
+        <div class="fecha">Abril de 2026</div>
+        <div class="subtitulo">
+            En respuesta a las interrogantes sobre nuestro modelo de crecimiento, estructura y levantamiento de capital, Cruger Corp emite el siguiente comunicado abierto estableciendo nuestras áreas innegociables.
+        </div>
+
+        <h2>Soberanía Financiera frente al Modelo de "Crecimiento Artificial"</h2>
+        <p>Cruger Corp se define bajo una filosofía de desarrollo empresarial sólida. Funcionamos como una iniciativa privada impulsada estrictamente por nuestra propiedad intelectual y tecnología protegida bajo secreto industrial. Nos desmarcamos categóricamente de las mal llamadas <em>"startups"</em> contemporáneas, entidades cuyo único modelo de negocio parece ser el hipercrecimiento a costa de terceros.</p>
+        
+        <p>En el ecosistema tecnológico actual, se ha normalizado la quema irresponsable de dinero para asegurar la permanencia artificial del negocio, a menudo sin entregar resultados tangibles, seguridad real o rentabilidad. Cruger Corp no busca financiamiento externo de riesgo para su funcionamiento operativo. No buscamos ser la empresa que crece únicamente por el depósito continuo de dinero de fondos de inversión que diluyen la visión técnica; buscamos el crecimiento mediante el desarrollo de alto nivel, la rentabilidad comprobada y el posicionamiento estratégico de nuestra tecnología.</p>
+
+        <h2>El Liderazgo a través de la Resiliencia y las Ciencias Aplicadas</h2>
+        <p>Creemos firmemente que la solidez de Cruger Corp debe sus pilares a áreas que, bajo la visión de nuestro FUNDADOR, son absolutamente no negociables. Nuestra dirección no nace de la improvisación técnica, sino de la disciplina financiera y el rigor analítico. Haber forjado una trayectoria como gerente bancario, asesor corporativo y consultor independiente le otorgó a nuestro fundador una comprensión profunda sobre la gestión del riesgo real, la protección de activos críticos y la estructura del capital.</p>
+
+        <p>Hoy, esa misma experiencia lidera nuestra firma. Hemos trasladado el rigor del sector financiero a la ciberseguridad, operando bajo modelos de resiliencia, estrategia, innovación y ciencias aplicadas en el desarrollo. Entendemos el valor de la información porque sabemos exactamente cómo se mueve y se protege en los entornos corporativos más hostiles y exigentes.</p>
+
+        <h2>Corporativismo Eficiente vs. Burocracia y Nepotismo</h2>
+        <p>Es vital establecer una distinción: en Cruger Corp no estamos peleados con el orden corporativo. Por el contrario, el rigor empresarial, los procesos milimétricos y los contratos blindados son el núcleo de nuestra legalidad y operatividad. Nuestro rechazo frontal es hacia la <strong>burocracia institucionalizada</strong>.</p>
+        
+        <p>Nos oponemos a las estructuras rígidas que utilizan la "burocracia" como un escudo para disfrazar el nepotismo, la ineficiencia y la falta de resultados. No somos una entidad que solo sigue procedimientos obsoletos por costumbre. Creemos firmemente que la innovación proviene de lo disruptivo. La creatividad estructural es lo que nos permite diferenciarnos, movernos más rápido que las dependencias saturadas y seguir desarrollando verdadera innovación tecnológica.</p>
+
+        <h2>Autofinanciamiento y Proyección 2026</h2>
+        <p>Nuestros modelos no son solo iniciativas en papel para atraer inversionistas; son realidades comerciales y proyectos viables en los que ya estamos trabajando, con modelos de arquitectura en desarrollo y fases BETA comprobables. Todos nuestros productos de portafolio, la investigación continua, así como las iniciativas de nuestro catálogo de software y herramientas FREEWARE, son financiadas exclusivamente por nuestro fondo privado <strong>Cruger Corp I+D</strong>.</p>
+        
+        <p>Esta postura de total soberanía no significa que estemos cerrados a la colaboración. Sabemos que las alianzas estratégicas nos hacen más grandes, pero dictamos nuestras propias reglas de juego. Nuestra proyección para 2026 está centrada inquebrantablemente en la visión fundacional: la expansión operativa de nuestro concepto de seguridad total y el desarrollo autónomo de nuestros proyectos.</p>
+    </main>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>
