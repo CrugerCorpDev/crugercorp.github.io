@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con Nosotros | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --bg-dark: #050A14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020408 0%, #0A1525 100%);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* === HEADER Y MENÚ === */
+        header {
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        /* === BOTONES UNIVERSALES === */
+        .btn {
+            padding: 12px 25px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            color: var(--primary-color); background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--primary-color); text-decoration: none; transition: all 0.3s ease;
+            letter-spacing: 1px; display: inline-block; text-align: center; cursor: pointer;
+        }
+        .btn:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 15px rgba(0, 168, 232, 0.4); }
+
+        /* === ESTRUCTURA DE LA PÁGINA === */
+        .page-header { padding: 140px 30px 40px; max-width: 900px; margin: 0 auto; text-align: left; }
+        .page-header h1 {
+            font-size: clamp(2.5rem, 4vw, 3.8rem); color: #FFF; margin: 0 0 10px 0;
+            line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
+        }
+
+        .feed-container { max-width: 900px; margin: 0 auto 80px auto; padding: 0 30px; }
+
+        /* === PANEL DE AVISO (SIN VACANTES / PRIVACIDAD) === */
+        .alert-box {
+            background: rgba(0, 168, 232, 0.05);
+            border: 1px solid var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 35px 40px;
+            border-radius: 4px;
+            margin-bottom: 50px;
+            text-align: justify;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .alert-box h3 { color: var(--primary-color); margin-top: 0; text-transform: uppercase; letter-spacing: 1px; font-size: 1.2rem; margin-bottom: 20px; }
+        .alert-box p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px; }
+        .alert-box p:last-child { margin-bottom: 0; }
+
+        /* === TARJETAS DE VACANTES COMPACTAS === */
+        .job-card {
+            background: rgba(0, 0, 0, 0.4); 
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--glass-border); /* Color neutro cuando está inactiva */
+            margin-bottom: 25px; 
+            border-radius: 4px;
+            padding: 30px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .job-card.active { border-left-color: var(--primary-color); box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
+        .job-card.active:hover { transform: translateX(5px); border-color: rgba(0, 168, 232, 0.4); }
+        
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .job-title { font-size: 1.3rem; color: #FFF; margin: 0; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .job-location { color: var(--primary-color); font-size: 0.8rem; font-family: monospace; letter-spacing: 1px; margin-top: 5px; display: block; }
+        .job-status { font-size: 0.75rem; padding: 4px 10px; border-radius: 50px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+        .status-closed { background: rgba(255, 255, 255, 0.1); color: #888; border: 1px solid #444; }
+        .status-open { background: rgba(0, 168, 232, 0.1); color: var(--primary-color); border: 1px solid var(--primary-color); }
+        
+        .job-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 10px 0 0 0; }
+        .job-footer { display: flex; justify-content: flex-end; margin-top: 15px; }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .job-header { flex-direction: column; gap: 10px; }
+            .job-footer { justify-content: stretch; }
+            .job-footer .btn { width: 100%; box-sizing: border-box; }
+            .alert-box { padding: 25px; }
+            .page-header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="bitacora.html">Bitácora</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <a href="index.html">Inicio</a>
+        <a href="bitacora.html">Bitácora</a>
+        <a href="#">Empleos</a>
+    </div>
+
+    <section class="page-header">
+        <span style="color: var(--text-muted); font-size: 0.85rem; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block;">Únete a nuestro equipo</span>
+        <h1>TRABAJA CON NOSOTROS</h1>
+        <h2 style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--primary-color); margin: 0; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;">Oportunidades en Cruger Corp</h2>
+        <p style="color: var(--text-muted); max-width: 800px; margin-top: 20px; line-height: 1.8; font-size: 0.95rem;">
+            Descubre las posiciones abiertas para formar parte de nuestros desarrollos tecnológicos e iniciativas de ciberseguridad soberana.
+        </p>
+    </section>
+
+    <section class="feed-container">
+
+        <div class="alert-box">
+            <h3>Aviso de Reclutamiento</h3>
+            <p><strong>Por el momento Cruger Corp no cuenta con vacantes disponibles,</strong> todas nuestras posiciones se encuentran cubiertas. Esperamos que nuestra visión y liderazgo nos permita expandir nuestros desarrollos a nuevas oportunidades y con ello sumar más fuerza laboral a nuestros proyectos.</p>
+            <p>No manejamos lista de espera. Toda la información que nos envíe será tratada con profesionalismo y conforme a la vacante. La información no procedente o que no se ajuste a nuestros criterios será descartada inmediatamente. <strong>No almacenamos copias de la información de candidatos no seleccionados,</strong> toda información no solicitada será eliminada.</p>
+            <p>Toda información enviada a nuestro correo electrónico solicitada para una vacante será tratada bajo nuestro AVISO DE PRIVACIDAD. <em>(Deberá aceptar nuestro Aviso de Privacidad de conformidad para proceder con la recepción de información).</em></p>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Ingeniero de Ciberseguridad (Fase I+D)</h3>
+                    <span class="job-location">Presencial / Ensenada, B.C.</span>
+                </div>
+                <span class="job-status status-closed">POSICIÓN CUBIERTA</span>
+            </div>
+            <p class="job-desc">
+                Desarrollo y auditoría de protocolos criptográficos en entornos Air-Gap. Se requiere experiencia comprobable en análisis de vulnerabilidades, arquitecturas de tolerancia a fallos y manejo de protocolos de encriptación de alta densidad.
+            </p>
+            <div class="job-footer">
+                <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">CONTINUAR A LA VACANTE</a>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Analista OSINT (Inteligencia de Fuentes Abiertas)</h3>
+                    <span class="job-location">Remoto / Híbrido</span>
+                </div>
+                <span class="job-status status-closed">POSICIÓN CUBIERTA</span>
+            </div>
+            <p class="job-desc">
+                Extracción, perfilamiento y análisis de datos en la red. Documentación de vectores de riesgo y elaboración de informes de inteligencia estratégica para infraestructuras operativas.
+            </p>
+            <div class="job-footer">
+                <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">CONTINUAR A LA VACANTE</a>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p>Ensenada, Baja California, México.</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            if(sidebar && overlay) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+        }
+    </script>
+    <script src="menu.js"></script>
+</body>
+  </html>
