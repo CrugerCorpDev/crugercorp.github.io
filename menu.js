@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="fundador.html" ${isActive('fundador.html')}>El Fundador</a>
             <a href="freeware.html" ${isActive('freeware.html')}>Software Freeware</a>
             <a href="america_latina.html" ${isActive('america_latina.html')}>América Latina</a>
+            <a href="empleos.html" ${isActive('empleos.html')}>Trabaja con Nosotros</a>
             <a href="contacto.html" ${isActive('contacto.html')}>Agenda y Contacto</a>
             <a href="privacidad.html" ${isActive('privacidad.html')}>Aviso de Privacidad</a>
         </div>
