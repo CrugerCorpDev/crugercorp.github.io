@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* === HEADER Y MENÚ === */
+        /* === ESTILOS DEL MENÚ (Requeridos por menu.js) === */
         header {
             padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
             border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
@@ -70,6 +70,7 @@
             border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
         }
         .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+        .sidebar-title { color: #00A8E8; font-family: monospace; font-size: 0.85rem; letter-spacing: 3px; border-bottom: 1px solid rgba(0,168,232,0.2); padding-bottom: 10px; margin-bottom: 20px; }
 
         /* === BOTONES UNIVERSALES === */
         .btn {
@@ -81,13 +82,13 @@
         .btn:hover { background: var(--primary-color); color: #000; box-shadow: 0 0 15px rgba(0, 168, 232, 0.4); }
 
         /* === ESTRUCTURA DE LA PÁGINA === */
-        .page-header { padding: 140px 30px 40px; max-width: 900px; margin: 0 auto; text-align: left; }
+        .page-header { padding: 140px 30px 40px; max-width: 1000px; margin: 0 auto; text-align: left; }
         .page-header h1 {
             font-size: clamp(2.5rem, 4vw, 3.8rem); color: #FFF; margin: 0 0 10px 0;
             line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
         }
 
-        .feed-container { max-width: 900px; margin: 0 auto 80px auto; padding: 0 30px; }
+        .feed-container { max-width: 1000px; margin: 0 auto 80px auto; padding: 0 30px; }
 
         /* === PANEL DE AVISO (SIN VACANTES / PRIVACIDAD) === */
         .alert-box {
@@ -104,11 +105,11 @@
         .alert-box p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px; }
         .alert-box p:last-child { margin-bottom: 0; }
 
-        /* === TARJETAS DE VACANTES COMPACTAS === */
+        /* === TARJETAS DE VACANTES === */
         .job-card {
             background: rgba(0, 0, 0, 0.4); 
             border: 1px solid var(--glass-border);
-            border-left: 4px solid var(--glass-border); /* Color neutro cuando está inactiva */
+            border-left: 4px solid var(--glass-border);
             margin-bottom: 25px; 
             border-radius: 4px;
             padding: 30px; 
@@ -118,14 +119,13 @@
             transition: transform 0.3s, border-color 0.3s;
         }
         .job-card.active { border-left-color: var(--primary-color); box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
-        .job-card.active:hover { transform: translateX(5px); border-color: rgba(0, 168, 232, 0.4); }
         
         .job-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
-        .job-title { font-size: 1.3rem; color: #FFF; margin: 0; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .job-title { font-size: 1.2rem; color: #FFF; margin: 0; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
         .job-location { color: var(--primary-color); font-size: 0.8rem; font-family: monospace; letter-spacing: 1px; margin-top: 5px; display: block; }
-        .job-status { font-size: 0.75rem; padding: 4px 10px; border-radius: 50px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+        
+        .job-status { font-size: 0.7rem; padding: 4px 10px; border-radius: 50px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
         .status-closed { background: rgba(255, 255, 255, 0.1); color: #888; border: 1px solid #444; }
-        .status-open { background: rgba(0, 168, 232, 0.1); color: var(--primary-color); border: 1px solid var(--primary-color); }
         
         .job-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 10px 0 0 0; }
         .job-footer { display: flex; justify-content: flex-end; margin-top: 15px; }
@@ -146,27 +146,12 @@
 </head>
 <body>
 
-    <header>
-        <nav class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="bitacora.html">Bitácora</a>
-        </nav>
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </header>
-    <div class="sidebar-overlay" onclick="toggleMenu()"></div>
-    <div class="sidebar">
-        <button class="close-btn" onclick="toggleMenu()">×</button>
-        <a href="index.html">Inicio</a>
-        <a href="bitacora.html">Bitácora</a>
-        <a href="#">Empleos</a>
-    </div>
-
     <section class="page-header">
-        <span style="color: var(--text-muted); font-size: 0.85rem; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block;">Únete a nuestro equipo</span>
+        <span style="color: var(--text-muted); font-size: 0.85rem; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block;">Talento y Perfiles Corporativos</span>
         <h1>TRABAJA CON NOSOTROS</h1>
         <h2 style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--primary-color); margin: 0; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;">Oportunidades en Cruger Corp</h2>
         <p style="color: var(--text-muted); max-width: 800px; margin-top: 20px; line-height: 1.8; font-size: 0.95rem;">
-            Descubre las posiciones abiertas para formar parte de nuestros desarrollos tecnológicos e iniciativas de ciberseguridad soberana.
+            Presentamos los perfiles estratégicos que impulsan nuestra visión tecnológica. Aunque nuestras posiciones actuales se encuentran cubiertas, valoramos el talento alineado a nuestra filosofía.
         </p>
     </section>
 
@@ -175,20 +160,20 @@
         <div class="alert-box">
             <h3>Aviso de Reclutamiento</h3>
             <p><strong>Por el momento Cruger Corp no cuenta con vacantes disponibles,</strong> todas nuestras posiciones se encuentran cubiertas. Esperamos que nuestra visión y liderazgo nos permita expandir nuestros desarrollos a nuevas oportunidades y con ello sumar más fuerza laboral a nuestros proyectos.</p>
-            <p>No manejamos lista de espera. Toda la información que nos envíe será tratada con profesionalismo y conforme a la vacante. La información no procedente o que no se ajuste a nuestros criterios será descartada inmediatamente. <strong>No almacenamos copias de la información de candidatos no seleccionados,</strong> toda información no solicitada será eliminada.</p>
-            <p>Toda información enviada a nuestro correo electrónico solicitada para una vacante será tratada bajo nuestro AVISO DE PRIVACIDAD. <em>(Deberá aceptar nuestro Aviso de Privacidad de conformidad para proceder con la recepción de información).</em></p>
+            <p>No manejamos lista de espera. Toda la información que nos envíe será tratada con profesionalismo y conforme a la vacante. La información no procedente o que no se ajuste a nuestros criterios será descartada inmediatamente. <strong>No almacenamos copias de la información de candidatos no seleccionados</strong>; toda información no solicitada será eliminada.</p>
+            <p>Toda información enviada a nuestro correo electrónico solicitada para una vacante será tratada bajo nuestro <strong>AVISO DE PRIVACIDAD</strong>. <em>(Deberá aceptar nuestro Aviso de Privacidad de conformidad para proceder con la recepción de información).</em></p>
         </div>
 
         <div class="job-card">
             <div class="job-header">
                 <div>
-                    <h3 class="job-title">Ingeniero de Ciberseguridad (Fase I+D)</h3>
-                    <span class="job-location">Presencial / Ensenada, B.C.</span>
+                    <h3 class="job-title">Asistente de Dirección</h3>
+                    <span class="job-location">Presencial / Administrativo</span>
                 </div>
                 <span class="job-status status-closed">POSICIÓN CUBIERTA</span>
             </div>
             <p class="job-desc">
-                Desarrollo y auditoría de protocolos criptográficos en entornos Air-Gap. Se requiere experiencia comprobable en análisis de vulnerabilidades, arquitecturas de tolerancia a fallos y manejo de protocolos de encriptación de alta densidad.
+                Funciones: Asistir directamente al Director General / CEO en juntas, gestión de trámites y administración corporativa general. Se requiere un perfil con conocimientos sólidos en contabilidad y organización de procesos directivos.
             </p>
             <div class="job-footer">
                 <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">CONTINUAR A LA VACANTE</a>
@@ -198,13 +183,61 @@
         <div class="job-card">
             <div class="job-header">
                 <div>
-                    <h3 class="job-title">Analista OSINT (Inteligencia de Fuentes Abiertas)</h3>
-                    <span class="job-location">Remoto / Híbrido</span>
+                    <h3 class="job-title">Programador Jr. (3 Vacantes)</h3>
+                    <span class="job-location">I+D Tecnológico</span>
                 </div>
                 <span class="job-status status-closed">POSICIÓN CUBIERTA</span>
             </div>
             <p class="job-desc">
-                Extracción, perfilamiento y análisis de datos en la red. Documentación de vectores de riesgo y elaboración de informes de inteligencia estratégica para infraestructuras operativas.
+                Conocimientos técnicos en lenguajes C, Java, HTML, R y sistemas Linux. El perfil debe contar con experiencia comprobable en desarrollo de PCB (Placas de Circuito Impreso) y un mínimo de 3 años de trayectoria en el sector.
+            </p>
+            <div class="job-footer">
+                <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">CONTINUAR A LA VACANTE</a>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Gerente de Relaciones Comerciales</h3>
+                    <span class="job-location">Negocios Internacionales</span>
+                </div>
+                <span class="job-status status-closed">POSICIÓN CUBIERTA</span>
+            </div>
+            <p class="job-desc">
+                Buscamos un perfil especializado en Negocios Internacionales con al menos 3 años de experiencia comprobable. Es indispensable la fluidez en varios idiomas (no limitado al inglés) para la gestión y expansión de relaciones comerciales extranjeras.
+            </p>
+            <div class="job-footer">
+                <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">CONTINUAR A LA VACANTE</a>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Especialista en Ciencia aplicada a Tecnología</h3>
+                    <h4 class="job-location">Estrategia e Innovación</h4>
+                </div>
+                <span class="job-status status-closed">POSICIÓN CUBIERTA</span>
+            </div>
+            <p class="job-desc">
+                Perfil analítico capaz de interpretar los requerimientos de la Dirección General y la visión del CEO para la transformación y optimización de nuevos procesos de desarrollo, investigación y soberanía tecnológica.
+            </p>
+            <div class="job-footer">
+                <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">CONTINUAR A LA VACANTE</a>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Especialista en Trámites y Contabilidad</h3>
+                    <span class="job-location">Legal / IP / Fiscal</span>
+                </div>
+                <span class="job-status status-closed">POSICIÓN CUBIERTA</span>
+            </div>
+            <p class="job-desc">
+                Enfoque en cumplimiento de procesos, registros e implementaciones. Especialización en Propiedad Intelectual (IP) y gestión de permisos ante dependencias gubernamentales con un mínimo de 3 años de experiencia en el área.
             </p>
             <div class="job-footer">
                 <a href="#" class="btn" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">CONTINUAR A LA VACANTE</a>
@@ -224,16 +257,6 @@
         </p>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.querySelector('.sidebar-overlay');
-            if(sidebar && overlay) {
-                sidebar.classList.toggle('active');
-                overlay.classList.toggle('active');
-            }
-        }
-    </script>
     <script src="menu.js"></script>
 </body>
-  </html>
+</html>
