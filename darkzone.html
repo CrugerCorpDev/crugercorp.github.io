@@ -196,6 +196,33 @@
             margin-top: 50px;
         }
 
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         /* === NUEVOS ESTILOS PARA TARJETAS MODERNAS (BURBUJAS) === */
         .modern-card {
             background: #0d1117; /* Fondo oscuro estilo GitHub/IA */
@@ -533,7 +560,7 @@
                 <div class="algo-card-text">
                     <h3 style="color: var(--primary-color); font-size: 1.1rem; margin-top: 0; margin-bottom: 15px;">MOTOR DE TRITURADO DE DATOS: HDD/SSD </h3>
                     <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; text-align: justify; margin: 0;">
-                        La eliminación de archivos ordinaria deja rastros recuperables. El motor de triturado de Dark Zone aplica un modelo de termodinámica de datos. Calcula la integral del espacio ocupado y ejecuta iteraciones (<i>&lambda;</i>) de inyección de ruido y patrones diferenciales (<i>P<sub>p</sub>(t)</i>) para asfixiar la remanencia magnética (<i>&nabla;<sub>mag</sub></i>) PROTOCOLO DoD 5220.22-M o purgar las celdas estáticas de unidades SSD (<i>&Upsilon;<sub>trim</sub></i>), reduciendo la posibilidad de recuperación a cero (<i>&empty;</i>) o el limite permitido por la unidad de memoria.
+                        La eliminación de archivos ordinaria deja rastros recuperables. El motor de triturado de Dark Zone aplica un modelo de termodinámica de datos. Calcula la integral del espacio ocupado y ejecuta iteraciones (<i>&lambda;</i>) de inyección de ruido y patrones differentials (<i>P<sub>p</sub>(t)</i>) para asfixiar la remanencia magnética (<i>&nabla;<sub>mag</sub></i>) PROTOCOLO DoD 5220.22-M o purgar las celdas estáticas de unidades SSD (<i>&Upsilon;<sub>trim</sub></i>), reduciendo la posibilidad de recuperación a cero (<i>&empty;</i>) o el limite permitido por la unidad de memoria.
                     </p>
                 </div>
             </div>
@@ -685,11 +712,59 @@
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #FFF; text-transform: uppercase;">Adquisición y Modelo Comercial</h2>
             <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 0 auto 20px auto;"></div>
             <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 800px; margin: 0 auto; line-height: 1.8; text-align: justify;">
-                El modelo de negocio de Dark Zone <strong>no se basa en descargas masivas de internet</strong>, sino en la entrega física y el control riguroso de los activos. Se proporciona como una solución corporativa "Llave en Mano", lista para operar en el momento de su entrega.
+                El modelo de negocio de Dark Zone <strong>no se basa en descargas masivas de internet</strong>, sino en la entrega física y el control riguroso de los activos. Se proporciona como una solución corporativa "lista para operar en el momento de su entrega".
             </p>
         </div>
 
-        <div class="grid-container" style="margin-top: 30px;">
+        <div class="grid-container" style="grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; margin-bottom: 10px;">
+            
+            <div class="modern-card">
+                <span class="modern-card-category">NIVEL 1 INDIVIDUAL</span>
+                <h3 class="modern-card-title" style="color: var(--primary-color); margin-bottom: 5px;">PRECIO UNITARIO VIP</h3>
+                <p class="modern-card-title" style="font-size: 1.3rem; color: #FFF; margin-top: 0; margin-bottom: 10px;">$45,000.00 MXN + IVA</p>
+                <p class="modern-card-text" style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+                    Precio unitario de Software + Licencia.<br>
+                    <strong style="color: #FFF;">Costo diario de seguridad $123.28 MXN + IVA</strong>
+                </p>
+            </div>
+
+            <div class="modern-card">
+                <span class="modern-card-category">NIVEL 2 (+10)</span>
+                <h3 class="modern-card-title" style="color: var(--primary-color); margin-bottom: 5px;">PAQUETE INTRODUCCIÓN</h3>
+                <p class="modern-card-title" style="font-size: 1.3rem; color: #FFF; margin-top: 0; margin-bottom: 10px;">$38,000.00 MXN + IVA</p>
+                <p class="modern-card-text" style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+                    Precio unitario de Software + Licencia. Paquete de introducción al canal seguro a partir de <strong style="color: #FFF;">+10 licencias</strong>.<br>
+                    <strong style="color: #FFF;">Costo diario $104.11 MXN + IVA (unitario)</strong>
+                </p>
+            </div>
+
+            <div class="modern-card">
+                <span class="modern-card-category">NIVEL 3 (+50)</span>
+                <h3 class="modern-card-title" style="color: var(--primary-color); margin-bottom: 5px;">CORPORATIVOS Y DEPENDENCIAS</h3>
+                <p class="modern-card-title" style="font-size: 1.3rem; color: #FFF; margin-top: 0; margin-bottom: 10px;">$33,300.00 MXN + IVA</p>
+                <p class="modern-card-text" style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+                    Precio unitario de Software + Licencia. Ideal para corporativos y dependencias precio a partir de <strong style="color: #FFF;">50 unidades</strong>.<br>
+                    <strong style="color: #FFF;">Costo de seguridad diario $91.23 MXN + IVA</strong>
+                </p>
+            </div>
+
+            <div class="modern-card">
+                <span class="modern-card-category">NIVEL 4 GOB (+100)</span>
+                <h3 class="modern-card-title" style="color: var(--primary-color); margin-bottom: 5px;">FISCALÍAS Y GOBIERNO</h3>
+                <p class="modern-card-title" style="font-size: 1.3rem; color: #FFF; margin-top: 0; margin-bottom: 10px;">$28,500.00 MXN + IVA</p>
+                <p class="modern-card-text" style="font-size: 0.7rem; line-height: 1.5; text-align: left;">
+                    Precio unitario de Software + Licencia. Ideal para fiscalías, conglomerados, dependencias y gobierno, sujeto a aprobación, mínimo a partir de <strong style="color: #FFF;">100 unidades contratadas</strong>.<br>
+                    <strong style="color: #FFF;">Costo diario $78.08 MXN + IVA</strong>
+                </p>
+            </div>
+
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.7rem; line-height: 1.6; text-align: justify; margin-bottom: 50px; margin-top: 0; max-width: 1000px; margin-left: auto; margin-right: auto; padding: 0 20px;">
+            * Sujeto a disponibilidad y aprobación, firma del contrato y acuerdos comerciales. Los precios indicados son individuales unitarios se debe hacer el calculo porla cantidad de licencias a contratar, los costos totales se encuentran reflejados en el contrato firmado entre las partes. Los precios diarios son estimados del costo de seguridad de implementar el Software Dark Zone y el modelo de seguridad de datos cifrados de la firma bajo las condiciones descritas en el manual de usuario y contrato. Los precios pueden variar según las condiciones de contratación, consulte los precios oficiales al día al momento de contratar.
+        </p>
+
+        <div class="grid-container" style="margin-top: 0px;">
             
             <div class="modern-card">
                 <h3 class="modern-card-title" style="color: var(--primary-color);">LICENCIAMIENTO UNITARIO</h3>
