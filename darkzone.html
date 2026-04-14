@@ -196,33 +196,6 @@
             margin-top: 50px;
         }
 
-        .card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 40px;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
         /* === NUEVOS ESTILOS PARA TARJETAS MODERNAS (BURBUJAS) === */
         .modern-card {
             background: #0d1117; /* Fondo oscuro estilo GitHub/IA */
@@ -263,7 +236,7 @@
         }
 
         .modern-card-category {
-            color: var(--text-muted);
+            color: var(--primary-color); /* Cambiado a azul */
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -503,17 +476,17 @@
 
     <section class="section" style="padding-top: 0; padding-bottom: 0;">
         <div class="grid-container" style="margin-top: 0; margin-bottom: 40px;">
-            <div class="card">
-                <h3>01. Protocolo TITANIUM</h3>
-                <p>SOFTWARE Avanzado de Cifrado generador de entropía de ruido capaz de generar más de 8 Millones de bits. Matemáticamente superior a los estándares comerciales AES-256 y el Estandar MILITAR.</p>
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">01. Protocolo TITANIUM</h3>
+                <p class="modern-card-text">SOFTWARE Avanzado de Cifrado generador de entropía de ruido capaz de generar más de 8 Millones de bits. Matemáticamente superior a los estándares comerciales AES-256 y el Estandar MILITAR.</p>
             </div>
-            <div class="card">
-                <h3>02. Activo Físico (TOKEN/SKey)</h3>
-                <p>El software valida la presencia de hardware propietario. Mejorando la seguridad del usuario con modelos kill switch.</p>
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">02. Activo Físico (TOKEN/SKey)</h3>
+                <p class="modern-card-text">El software valida la presencia de hardware propietario. Mejorando la seguridad del usuario con modelos kill switch.</p>
             </div>
-            <div class="card">
-                <h3>03. Air-Gap Operation</h3>
-                <p>Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red dentro del sistema del Usuario.</p>
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">03. Air-Gap Operation</h3>
+                <p class="modern-card-text">Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red dentro del sistema del Usuario.</p>
             </div>
         </div>
     </section>
@@ -585,26 +558,24 @@
         </div>
         
         <div style="margin-top: 40px; padding: 40px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-top: 3px solid var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-            <h3 style="color: #FFF; font-size: 1.3rem; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
-                Arquitectura Criptográfica Propietaria: El Estándar <span style="color: var(--primary-color);">.dark</span>
-            </h3>
+            <strong style="color: var(--primary-color); font-size: 0.85rem; display:block; margin-bottom:5px;">ARQUITECTURA CRIPTOGRÁFICA PROPIETARIA: EL ESTÁNDAR .DARK</strong>
             
-            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 20px; text-align: justify;">
+            <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin-bottom: 20px; text-align: justify;">
                 Dark Zone no utiliza contenedores genéricos, el Software utiliza formatos propietarios .dark, .dzr y .inst, así como de otras de las metodologías detrás del desarrollo propietario para optimizar el flujo de funciones. <strong>Angel Cruger es el creador y arquitecto exclusivo de los formatos propietarios .dark, .dzr y .inst, así como de otras de las metodologías detrás del desarrollo propietario</strong>.
             </p>
             
-            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+            <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin-bottom: 25px; text-align: justify;">
                 A diferencia de los sistemas de cifrado tradicionales que dependen de contraseñas memorizables, el motor de cifrado genera un ecosistema binario asimétrico. Cada vez que se protege un documento, el sistema crea dos componentes inseparables:
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                 <div style="background: rgba(0,0,0,0.4); padding: 20px; border-left: 2px solid var(--primary-color);">
-                    <strong style="color: #FFF; font-size: 1rem; display: block; margin-bottom: 5px;">El Archivo .dark</strong>
-                    <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.6; margin: 0;">El archivo cifrado alberga la información mediante matrices tensoriales de sustitución dinámica.</p>
+                    <strong style="color: #FFF; font-size: 0.9rem; display: block; margin-bottom: 5px;">El Archivo .dark</strong>
+                    <p style="color: #A0AAB5; font-size: 0.8rem; line-height: 1.6; margin: 0;">El archivo cifrado alberga la información mediante matrices tensoriales de sustitución dinámica.</p>
                 </div>
                 <div style="background: rgba(0,0,0,0.4); padding: 20px; border-left: 2px solid #00FF41;">
-                    <strong style="color: #FFF; font-size: 1rem; display: block; margin-bottom: 5px;">La Llave de Entropía .key</strong>
-                    <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.6; margin: 0;">Un archivo de ruido estático puro con más de 8 millones de bits de entropía (1 MB), generado algorítmicamente en el instante exacto del cifrado.</p>
+                    <strong style="color: #FFF; font-size: 0.9rem; display: block; margin-bottom: 5px;">La Llave de Entropía .key</strong>
+                    <p style="color: #A0AAB5; font-size: 0.8rem; line-height: 1.6; margin: 0;">Un archivo de ruido estático puro con más de 8 millones de bits de entropía (1 MB), generado algorítmicamente en el instante exacto del cifrado.</p>
                 </div>
             </div>
         </div>
@@ -621,7 +592,7 @@
                 VECTORES DE IMPLEMENTACIÓN
             </h3>
             
-            <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.8; margin-bottom: 40px; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.8; margin-bottom: 40px; text-align: justify; max-width: 900px; margin-left: auto; margin-right: auto;">
                 El modelo de cifrado <strong>Dark Zone (Protocolo TITANIUM)</strong> no está diseñado para el usuario promedio. Su arquitectura de alta entropía está optimizada para garantizar la integridad de datos y comunicaciones en sectores donde una filtración es inaceptable. Permite Cifrar, Descifrar y Triturar datos (sin pasar por la Memoria RAM o la Papelera).
             </p>
 
@@ -713,7 +684,7 @@
         <div style="text-align: center; margin-bottom: 50px;">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #FFF; text-transform: uppercase;">Adquisición y Modelo Comercial</h2>
             <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 0 auto 20px auto;"></div>
-            <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 800px; margin: 0 auto; line-height: 1.8; text-align: justify;">
                 El modelo de negocio de Dark Zone <strong>no se basa en descargas masivas de internet</strong>, sino en la entrega física y el control riguroso de los activos. Se proporciona como una solución corporativa "Llave en Mano", lista para operar en el momento de su entrega.
             </p>
         </div>
@@ -724,14 +695,14 @@
                 <h3 class="modern-card-title" style="color: var(--primary-color);">LICENCIAMIENTO UNITARIO</h3>
                 <p class="modern-card-text" style="margin-bottom: 15px;">Cada licencia adquirida corresponde a un (1) <span class="highlight-text">"Activo Operativo"</span>, el cual consta de:</p>
                 <ul style="color: var(--text-muted); font-size: 0.8rem; padding-left: 15px; margin: 0; line-height: 1.6;">
-                    <li><span class="highlight-text">Software de Cifrado de alta entropía Dark Zone Protocolo TITANIUM v24</span> </li>
+                    <li><span class="highlight-text">Software de Cifrado de alta entropía Dark Zone Protocolo TITANIUM v24</span></li>
                     <li><span class="highlight-text">TOKEN</span> Físico de Autenticación emparejado.</li>
-                    <li> Licencia con vigencia de 365 días.</li>
-                    <li> Maletín HARD CASE (Varía según la cantidad contratada).</li>
-                    <li> Estuche rigído para la Llave TOKEN<li>
-                    <li> Manual de usuario<li>
-                    <li> Manual de certificado .cer <li>
-                    <li> Contrato<li>
+                    <li>Licencia con vigencia de 365 días.</li>
+                    <li>Maletín HARD CASE (Varía según la cantidad contratada).</li>
+                    <li>Estuche rígido para la Llave TOKEN</li>
+                    <li>Manual de usuario</li>
+                    <li>Manual de certificado .cer</li>
+                    <li>Contrato</li>
                 </ul>
             </div>
 
