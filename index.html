@@ -304,6 +304,66 @@
             margin-top: 50px;
         }
 
+        /* === CLASES MODERN CARD AÑADIDAS DESDE DARKZONE === */
+        .modern-card {
+            background: #0d1117;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 168, 232, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+
+        .modern-card-category {
+            color: var(--primary-color);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .modern-card-title {
+            color: #FFF;
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .modern-card-text {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin: 0;
+            text-align: justify;
+        }
+
         .card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -641,35 +701,38 @@
                 <img src="logo.png" alt="Cruger Corp Logo" class="center-logo">
             </div>
         </div>
+
         <div style="
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 3px solid #00A8E8;
-            padding: 40px;
-            max-width: 900px;
+            padding: 30px 40px;
+            max-width: 1000px;
             margin: 20px auto 50px auto; 
             backdrop-filter: blur(5px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            text-align: justify;
+            box-sizing: border-box;
         ">
             <p style="
                 text-align: justify;
-                color: #FFF;
-                font-size: 1.05rem;
+                color: var(--text-muted);
+                font-size: 0.85rem;
                 font-weight: 400;
-                line-height: 1.8;
+                line-height: 1.7;
                 margin: 0;
             ">
                 Trabajamos bajo estándares científicos enfocados en mejorar la tecnología defensiva y las medidas de seguridad. 
                 No usamos métodos estandarizados, sino propietarios desarrollados con rigor científico y validación del entorno. 
-                Ofreciendo el primer servicio de cifrado de alta entropía de más de 8 millones de bits, superando el estándar 
+                Ofreciendo el primer servicio de cifrado de alta entropía de más de <strong style="color: #FFF;">8 millones de bits</strong>, superando el estándar 
                 militar tradicional AES-256. Desarrollamos Tecnologías de Defensa de Información, Ciberseguridad y modelos 
                 anti practicas conocidas como ¨Nearshoring¨ para Corporativos, Gobierno, Agencias de seguridad y fondos que busquen 
-                privacidad real y seguridad digital. Ofrecemos Soberanía de Datos, al ser una firma Mexicana nuestro modelo solo 
+                privacidad real y seguridad digital. Ofrecemos <strong style="color: #FFF;">Soberanía de Datos</strong>, al ser una firma Mexicana nuestro modelo solo 
                 puede ser adquirido mediante contratos y entregado mediante protocolos (Dark Zone y nuestro Software especializado 
                 no puede ser descargado, se entrega bajo protocolos evitando manipulación de terceros).
             </p>
         </div>
+    </section>
 
     <section class="section" style="padding-top: 20px; padding-bottom: 60px;">
         
@@ -677,26 +740,52 @@
             <img src="banner-darkzone-ops.jpg" alt="Dark Zone: Comunicación Estratégica y Operaciones Tácticas" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 500px;">
         </div>
 
-        <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px; max-width: 900px; margin: 0 auto; text-align: left; border-left: 4px solid #00A8E8; backdrop-filter: blur(10px);">
+        <div style="max-width: 1100px; margin: 0 auto;">
             
-            <h3 style="color: #FFF; font-size: 1.5rem; margin-top: 0; text-transform: uppercase; letter-spacing: 1px;">
+            <h3 style="color: #FFF; font-size: 1.5rem; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
                 VECTORES DE IMPLEMENTACIÓN CRÍTICA
             </h3>
             
-            <p style="color: #A0AAB5; font-size: 1rem; line-height: 1.8; margin-bottom: 30px;">
+            <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.8; margin-bottom: 40px; text-align: justify; max-width: 900px; margin-left: auto; margin-right: auto;">
                 El modelo de cifrado <strong>Dark Zone (Protocolo TITANIUM)</strong> no está diseñado para el usuario promedio. Su arquitectura de alta entropía está optimizada para garantizar la integridad de datos y comunicaciones en sectores donde una filtración es inaceptable. Permite Cifrar, Descifrar y Triturar datos (sin pasar por la Memoria RAM o la Papelera).
             </p>
 
-            <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding-left: 20px; color: #FFF;">
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Seguridad Corporativa e Inteligencia:</strong> Protección contra espionaje industrial y filtración de secretos comerciales.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Gobierno y Soberanía:</strong> Blindaje de comunicaciones estratégicas y datos sensibles del estado.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Farmacéutica e Integridad de Datos:</strong> Protección de propiedad intelectual (IP) y datos de ensayos clínicos o patentes.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Manufactura Avanzada:</strong> Seguridad en planos, diseños industriales y secretos de producción.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Operaciones Tácticas:</strong> Comunicaciones seguras en campo sin dependencia de infraestructura de red convencional.</li>
-                </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                
+                <div class="modern-card">
+                    <span class="modern-card-category">SEGURIDAD CORPORATIVA</span>
+                    <h3 class="modern-card-title">Protección Comercial</h3>
+                    <p class="modern-card-text">Protección contra espionaje industrial y filtración de secretos comerciales.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">GOBIERNO Y SOBERANÍA</span>
+                    <h3 class="modern-card-title">Blindaje Estratégico</h3>
+                    <p class="modern-card-text">Blindaje de comunicaciones estratégicas y datos sensibles del estado.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">FARMACÉUTICA</span>
+                    <h3 class="modern-card-title">Integridad de Datos</h3>
+                    <p class="modern-card-text">Protección de propiedad intelectual (IP) y datos de ensayos clínicos o patentes.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">MANUFACTURA AVANZADA</span>
+                    <h3 class="modern-card-title">Seguridad Industrial</h3>
+                    <p class="modern-card-text">Seguridad en planos, diseños industriales y secretos de producción.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">OPERACIONES TÁCTICAS</span>
+                    <h3 class="modern-card-title">Comunicaciones en Campo</h3>
+                    <p class="modern-card-text">Comunicaciones seguras en campo sin dependencia de infraestructura de red convencional.</p>
+                </div>
+
+            </div>
              
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                <p style="color: #FFF; font-weight: 600; font-size: 1.1rem;">
+            <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: justify;">
+                <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.7; margin: 0;">
                     El software Dark Zone no solo cifra archivos y carpetas contenedoras, también descifra y elimina bajo un motor de trituración propietario.
                     Posee una superioridad estructural y mecanismos que previenen el análisis de datos frente a las implementaciones comerciales de AES-256 o ChaCha20.
                     <span style="color: var(--primary-color);">Despliega llaves ofuscadas de más de 8 Millones de bits mediante capas y procesos algorítmicos de cifrado. Actualmente no hay ningún otro modelo de cifrado con este nivel de tecnología defensiva.</span>
@@ -712,18 +801,18 @@
             <div style="width: 50px; height: 2px; background: var(--primary-color); margin: 0 auto;"></div>
         </div>
 
-        <div class="grid-container">
-            <div class="card">
-                <h3>01. Protocolo TITANIUM</h3>
-                <p>SOFTWARE Avanzado de Cifrado generador de entropía de ruido capaz de generar más de 8 Millones de bits. Matemáticamente superior a los estándares comerciales AES-256 y el Estandar MILITAR.</p>
+        <div class="grid-container" style="margin-top: 0; margin-bottom: 40px;">
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">01. Protocolo TITANIUM</h3>
+                <p class="modern-card-text">SOFTWARE Avanzado de Cifrado generador de entropía de ruido capaz de generar más de 8 Millones de bits. Matemáticamente superior a los estándares comerciales AES-256 y el Estandar MILITAR.</p>
             </div>
-            <div class="card">
-                <h3>02. Activo Físico (TOKEN/SKey)</h3>
-                <p>El software valida la presencia de hardware propietario. Mejorando la seguridad del usuario con modelos kill switch.</p>
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">02. Activo Físico (TOKEN/SKey)</h3>
+                <p class="modern-card-text">El software valida la presencia de hardware propietario. Mejorando la seguridad del usuario con modelos kill switch.</p>
             </div>
-            <div class="card">
-                <h3>03. Air-Gap Operation</h3>
-                <p>Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red dentro del sistema del Usuario.</p>
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">03. Air-Gap Operation</h3>
+                <p class="modern-card-text">Diseñado para operar 100% fuera de línea. Inmune a ataques remotos, ransomware o desconexiones de red dentro del sistema del Usuario.</p>
             </div>
         </div>
 
@@ -817,7 +906,7 @@
                     <img src="logo.png" alt="Cruger Corp Logo Mini" style="width: 70px; height: auto;">
                 </div>
                 <div class="announcement-text">
-                    <h3>VALIDACIÓN OPERATIVA COMPLETADA</h3>
+                    <h3>VALIDACIÓN DE OPERACIÓN Y RESULTADOS</h3>
                     <div class="date" style="color: #00FF41;">Resultados de Pruebas</div>
                     <p>Anunciamos la obtención de resultados exitosos de las pruebas prácticas realizadas a nuestro ecosistema de cifrado. El documento de evaluación técnica <strong>"100 DÍAS DE ESTRÉS Y VALIDACIÓN OPERATIVA"</strong> se encuentra finalizado y ya está disponible para solicitar su descarga en nuestro sitio.</p>
                     <a href="https://www.crugercorp.com/darkzone.html" class="btn" style="padding: 10px 25px; font-size: 0.75rem; min-width: auto; border-color: #00FF41; color: #00FF41;" onmouseover="this.style.background='#00FF41'; this.style.color='#000'" onmouseout="this.style.background='transparent'; this.style.color='#00FF41'">
@@ -834,10 +923,10 @@
                     <span>SEC</span>
                 </div>
                 <div class="timer-segments" style="color: #00FF41; text-shadow: 0 0 10px #00FF41, 0 0 20px #00b32d;">
-                    <span>00</span><span class="separator" style="color: #00b32d;">:</span>
-                    <span>00</span><span class="separator" style="color: #00b32d;">:</span>
-                    <span>00</span><span class="separator" style="color: #00b32d;">:</span>
-                    <span>00</span><span class="miliseconds-decimal" style="color: #00FF41;">.000</span>
+                    <span id="d">00</span><span class="separator" style="color: #00b32d;">:</span>
+                    <span id="h">00</span><span class="separator" style="color: #00b32d;">:</span>
+                    <span id="m">00</span><span class="separator" style="color: #00b32d;">:</span>
+                    <span id="s">00</span><span class="miliseconds-decimal" style="color: #00FF41;" id="ms">.000</span>
                 </div>
             </div>
 
@@ -851,7 +940,7 @@
         const elM = document.getElementById('m');
         const elS = document.getElementById('s');
         const elMs = document.getElementById('ms');
-        const segmentsContainer = document.getElementById('segments-container');
+        const segmentsContainer = document.querySelector('.timer-segments');
 
         // Fecha objetivo: 14 de Abril de 2026 a las 00:00:00
         const targetDate = new Date('2026-04-14T00:00:00').getTime();
@@ -879,7 +968,7 @@
         }
 
         function renderTime(difference) {
-            if(!elD) return; // Evitar errores si no carga el DOM
+            if(!elD) return; 
             const d = Math.floor(difference / 86400000);
             const h = Math.floor((difference % 86400000) / 3600000);
             const m = Math.floor((difference % 3600000) / 60000);
@@ -890,7 +979,7 @@
             elH.innerText = pad(h, 2);
             elM.innerText = pad(m, 2);
             elS.innerText = pad(s, 2);
-            elMs.innerText = pad(ms, 3);
+            elMs.innerText = "." + pad(ms, 3);
         }
         requestAnimationFrame(updateClock);
     </script>
