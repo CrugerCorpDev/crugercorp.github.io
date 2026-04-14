@@ -223,6 +223,76 @@
             line-height: 1.6;
         }
 
+        /* === NUEVOS ESTILOS PARA TARJETAS MODERNAS (BURBUJAS) === */
+        .modern-card {
+            background: #0d1117; /* Fondo oscuro estilo GitHub/IA */
+            border: 1px solid var(--glass-border);
+            border-radius: 12px; /* Bordes redondeados */
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Efecto de resplandor azul en la parte superior */
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 168, 232, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+
+        .modern-card-category {
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .modern-card-title {
+            color: #FFF;
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .modern-card-text {
+            color: var(--text-muted);
+            font-size: 0.8rem; /* Ajustado al tamaño de la Campaña de validación */
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Clase auxiliar para resaltar palabras clave en blanco claro */
+        .highlight-text {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+        /* ======================================================== */
+
         .title-container {
             display: flex;
             align-items: center;
@@ -546,25 +616,51 @@
             <img src="banner-darkzone-ops.jpg" alt="Dark Zone: Comunicación Estratégica y Operaciones Tácticas" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 500px;">
         </div>
 
-        <div style="background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); padding: 40px; max-width: 900px; margin: 0 auto; text-align: left; border-left: 4px solid #00A8E8; backdrop-filter: blur(10px);">
-            <h3 style="color: #FFF; font-size: 1.5rem; margin-top: 0; text-transform: uppercase; letter-spacing: 1px;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h3 style="color: #FFF; font-size: 1.5rem; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
                 VECTORES DE IMPLEMENTACIÓN
             </h3>
             
-            <p style="color: #A0AAB5; font-size: 1rem; line-height: 1.8; margin-bottom: 30px;">
+            <p style="color: #A0AAB5; font-size: 0.85rem; line-height: 1.8; margin-bottom: 40px; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
                 El modelo de cifrado <strong>Dark Zone (Protocolo TITANIUM)</strong> no está diseñado para el usuario promedio. Su arquitectura de alta entropía está optimizada para garantizar la integridad de datos y comunicaciones en sectores donde una filtración es inaceptable. Permite Cifrar, Descifrar y Triturar datos (sin pasar por la Memoria RAM o la Papelera).
             </p>
 
-            <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding-left: 20px; color: #FFF;">
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Seguridad Corporativa e Inteligencia:</strong> Protección contra espionaje industrial y filtración de secretos comerciales.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Gobierno y Soberanía:</strong> Blindaje de comunicaciones estratégicas y datos sensibles del estado.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Farmacéutica e Integridad de Datos:</strong> Protección de propiedad intelectual (IP) y datos de ensayos clínicos o patentes.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Manufactura Avanzada:</strong> Seguridad en planos, diseños industriales y secretos de producción.</li>
-                <li style="margin-bottom: 10px;"><strong style="color: var(--primary-color);">Operaciones Tácticas:</strong> Comunicaciones seguras en campo sin dependencia de infraestructura de red convencional.</li>
-            </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                
+                <div class="modern-card">
+                    <span class="modern-card-category">SEGURIDAD CORPORATIVA</span>
+                    <h3 class="modern-card-title">Protección Comercial</h3>
+                    <p class="modern-card-text">Protección contra espionaje industrial y filtración de secretos comerciales.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">GOBIERNO Y SOBERANÍA</span>
+                    <h3 class="modern-card-title">Blindaje Estratégico</h3>
+                    <p class="modern-card-text">Blindaje de comunicaciones estratégicas y datos sensibles del estado.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">FARMACÉUTICA</span>
+                    <h3 class="modern-card-title">Integridad de Datos</h3>
+                    <p class="modern-card-text">Protección de propiedad intelectual (IP) y datos de ensayos clínicos o patentes.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">MANUFACTURA AVANZADA</span>
+                    <h3 class="modern-card-title">Seguridad Industrial</h3>
+                    <p class="modern-card-text">Seguridad en planos, diseños industriales y secretos de producción.</p>
+                </div>
+
+                <div class="modern-card">
+                    <span class="modern-card-category">OPERACIONES TÁCTICAS</span>
+                    <h3 class="modern-card-title">Comunicaciones en Campo</h3>
+                    <p class="modern-card-text">Comunicaciones seguras en campo sin dependencia de infraestructura de red convencional.</p>
+                </div>
+
+            </div>
              
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                <p style="color: #FFF; font-weight: 600; font-size: 1.1rem;">
+            <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: justify;">
+                <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.7; margin: 0;">
                     El software Dark Zone no solo cifra archivos y carpetas contenedoras, también descifra y elimina bajo un motor de trituración propietario.
                     Posee una superioridad estructural y mecanismos que previenen el análisis de datos frente a las implementaciones comerciales de AES-256 o ChaCha20.
                     <span style="color: var(--primary-color);">Despliega llaves ofuscadas de más de 8 Millones de bits mediante capas y procesos algorítmicos de cifrado. Actualmente no hay ningún otro modelo de cifrado con este nivel de tecnología defensiva.</span>
@@ -623,35 +719,36 @@
         </div>
 
         <div class="grid-container" style="margin-top: 30px;">
-            <div class="card" style="border-top: 3px solid var(--primary-color); border-left: 1px solid var(--glass-border);">
-                <h3 style="font-size: 1.1rem; margin-top: 0; color: var(--primary-color);">LICENCIAMIENTO UNITARIO</h3>
-                <p style="text-align: justify; margin-bottom: 15px;">Cada licencia adquirida corresponde a un (1) <strong>"Activo Operativo"</strong>, el cual consta de:</p>
-                <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 15px; margin: 0; line-height: 1.6;">
-                    <li>Motor Dark Zone compilado y sellado.</li>
-                    <li>TOKEN Físico de Autenticación emparejado.</li>
+            
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">LICENCIAMIENTO UNITARIO</h3>
+                <p class="modern-card-text" style="margin-bottom: 15px;">Cada licencia adquirida corresponde a un (1) <span class="highlight-text">"Activo Operativo"</span>, el cual consta de:</p>
+                <ul style="color: var(--text-muted); font-size: 0.8rem; padding-left: 15px; margin: 0; line-height: 1.6;">
+                    <li><span class="highlight-text">Software de Cifrado de alta entropía Dark Zone Protocolo TITANIUM v24</span> compilado y sellado.</li>
+                    <li><span class="highlight-text">TOKEN</span> Físico de Autenticación emparejado.</li>
                     <li>Archivo maestro de validación de vigencia.</li>
                 </ul>
             </div>
 
-            <div class="card" style="border-top: 3px solid var(--primary-color); border-left: 1px solid var(--glass-border);">
-                <h3 style="font-size: 1.1rem; margin-top: 0; color: var(--primary-color);">VIGENCIA Y RENOVACIÓN (365)</h3>
-                <p style="text-align: justify; margin-bottom: 0;">
-                    Para garantizar la integridad del esquema de seguridad y el soporte a contramedidas de nueva generación, las licencias se emiten con una vigencia estricta de <strong>365 días</strong>. Al término, EL CLIENTE debe ponerse en contacto con Cruger Corp para solicitar una renovación sobre su CONTRATO para mantener la operatividad de su infraestructura.
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">VIGENCIA Y RENOVACIÓN (365)</h3>
+                <p class="modern-card-text" style="text-align: justify; margin-bottom: 0;">
+                    Para garantizar la integridad del esquema de seguridad y el soporte a contramedidas de nueva generación, las licencias se emiten con una vigencia estricta de <span class="highlight-text">365 días</span>. Al término, <span class="highlight-text">EL CLIENTE</span> debe ponerse en contacto con <span class="highlight-text">Cruger Corp</span> para solicitar una renovación sobre su <span class="highlight-text">CONTRATO</span> para mantener la operatividad de su infraestructura.
                 </p>
             </div>
 
-            <div class="card" style="border-top: 3px solid var(--primary-color); border-left: 1px solid var(--glass-border);">
-                <h3 style="font-size: 1.1rem; margin-top: 0; color: var(--primary-color);">ESCALABILIDAD</h3>
-                <p style="text-align: justify; margin-bottom: 15px;">Modelos de escalabilidad para Fiscalías, Industrias y Corporativos:</p>
-                <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 15px; margin: 0; line-height: 1.6; margin-bottom: 15px;">
-                    <li><strong>INDIVIDUAL:</strong> Unidades aisladas con costo único fijo.</li>
-                    <li><strong>Volumen (+50 o +100):</strong> Contratos estructurados con mejoras de precio.</li>
+            <div class="modern-card">
+                <h3 class="modern-card-title" style="color: var(--primary-color);">ESCALABILIDAD</h3>
+                <p class="modern-card-text" style="margin-bottom: 15px;">Modelos de escalabilidad para Fiscalías, Industrias y Corporativos:</p>
+                <ul style="color: var(--text-muted); font-size: 0.8rem; padding-left: 15px; margin: 0; line-height: 1.6; margin-bottom: 15px;">
+                    <li><span class="highlight-text">INDIVIDUAL:</span> Unidades aisladas con costo único fijo.</li>
+                    <li><span class="highlight-text">Volumen (+50 o +100):</span> Contratos estructurados con mejoras de precio.</li>
                 </ul>
                 
-                <div style="background: rgba(0, 168, 232, 0.05); border: 1px dashed var(--primary-color); padding: 12px; border-radius: 4px; display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 1.8rem; line-height: 1;">&#128193;</span>
+                <div style="background: rgba(0, 168, 232, 0.05); border: 1px dashed var(--primary-color); padding: 12px; border-radius: 4px; display: flex; align-items: center; gap: 12px; margin-top: auto;">
+                    <span style="font-size: 1.5rem; line-height: 1;">&#128193;</span>
                     <p style="color: var(--text-muted); font-size: 0.75rem; margin: 0; line-height: 1.4; text-align: left;">
-                        Para contratar debe ponerse en contacto con Cruger Corp, y será necesario firmar un acuerdo de licencia (<strong>CONTRATO</strong>) entre las partes.
+                        Para contratar debe ponerse en contacto con <span class="highlight-text">Cruger Corp</span>, y será necesario firmar un acuerdo de licencia (<span class="highlight-text">CONTRATO</span>) entre las partes.
                     </p>
                 </div>
             </div>
