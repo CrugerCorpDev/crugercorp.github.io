@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER Y MENU (Se mantiene intacto) */
+        /* HEADER Y MENU */
         header {
             padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
             border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
@@ -82,9 +82,10 @@
             padding: 120px 20px 50px 20px;
         }
 
+        /* LOGO CENTRADO */
         .header-logo-container {
             margin-bottom: 30px;
-            text-align: left; /* Alineado a la izquierda para emparejar con título y fecha */
+            text-align: center; 
         }
 
         img.logo {
@@ -92,6 +93,7 @@
             width: 100%;
             height: auto;
             display: block;
+            margin: 0 auto;
         }
 
         .fecha-publicacion {
@@ -101,6 +103,7 @@
             letter-spacing: 1px;
             margin-top: 10px;
             text-transform: uppercase;
+            text-align: center;
         }
 
         h1 {
@@ -124,25 +127,16 @@
             text-transform: uppercase;
         }
 
-        /* FORMATO DE TEXTO */
+        /* TEXTO BASE GLOBAL (Tamaño del Marco Teórico) */
         p, li { 
+            font-size: 0.8em; 
+            color: #c7cdd4;
+            line-height: 1.8;
             margin-bottom: 20px; 
-            text-align: justify; /* Justificación forzosa en todo el texto */
+            text-align: justify; 
         }
         
         strong { color: #ffffff; }
-
-        .destacado {
-            font-size: 1.05em;
-            color: var(--text-main);
-            margin-bottom: 25px;
-        }
-
-        .texto-pequeno, .texto-pequeno p, .texto-pequeno li {
-            font-size: 0.8em; /* Tamaño reducido para cuerpos analíticos */
-            line-height: 1.8;
-            text-align: justify;
-        }
 
         ul, ol {
             margin-left: 20px;
@@ -151,6 +145,23 @@
         
         li {
             margin-bottom: 12px;
+        }
+
+        /* TÍTULOS INTERIORES LIGERAMENTE MÁS GRANDES */
+        .titulo-interior {
+            font-size: 1.15em; /* Ligeramente mayor al 0.8em base */
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .subtitulo-bloque {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            display: block;
         }
 
         /* RECUADRO DESCARGA PDF */
@@ -185,23 +196,25 @@
         }
 
         .download-content p.resumen {
-            font-size: 0.85em;
+            font-size: 0.85em; /* Mantiene su tamaño original */
             color: var(--text-main);
             margin-bottom: 15px;
             margin-top: 0;
             line-height: 1.6;
+            text-align: left; /* Sin justificar */
         }
 
         .download-content p.cita {
-            font-size: 0.7em;
+            font-size: 0.7em; /* Mantiene su tamaño original */
             color: var(--text-muted);
             font-style: italic;
             margin-bottom: 25px;
             word-break: break-word;
+            text-align: left; /* Sin justificar */
         }
 
         .btn-download {
-            align-self: flex-start; /* Alineado a la izquierda */
+            align-self: flex-start;
             padding: 10px 22px; 
             font-size: 0.75rem; 
             font-weight: 600; 
@@ -239,7 +252,7 @@
 
         .marco-teorico-subtitle {
              color: var(--text-main);
-             font-size: 0.85em;
+             font-size: 1.05em;
              margin-bottom: 10px;
              display: block;
              font-weight: 600;
@@ -247,14 +260,9 @@
 
         .marco-teorico-date {
              color: var(--primary-color);
-             font-size: 0.75em;
+             font-size: 0.9em;
              margin-bottom: 25px;
              display: block;
-        }
-
-        .marco-teorico p {
-            font-size: 0.8em; /* Letra más chica dentro del recuadro */
-            color: #c7cdd4;
         }
 
         /* IMAGENES Y TABLAS */
@@ -268,6 +276,15 @@
             height: auto;
             border: 1px solid var(--glass-border);
             box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+        }
+
+        /* REFERENCIAS */
+        .referencias p {
+            font-size: 0.75em; /* Mantiene su tamaño original */
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: left; /* Sin justificar */
+            margin-bottom: 15px;
         }
 
         footer {
@@ -301,9 +318,9 @@
 
         <h1>CIBERATAQUES EN MÉXICO EN AUMENTO, LAS TENDENCIAS COMO RESPUESTA SUGIEREN FALTA DE EFECTIVIDAD.</h1>
 
-        <p class="destacado">En Cruger Corp reconocemos la exigencia corporativa e institucional por mejorar y optimizar sus infraestructuras tecnológicas. Sin embargo, el modelo actual para la defensa de la información es inherentemente ineficiente. Los análisis de incidentes recientes demuestran que la adopción de tecnologías orientadas a la conveniencia operativa frecuentemente facilita la exposición de activos críticos y simplifica el trabajo de los atacantes.</p>
+        <p>En Cruger Corp reconocemos la exigencia corporativa e institucional por mejorar y optimizar sus infraestructuras tecnológicas. Sin embargo, el modelo actual para la defensa de la información es inherentemente ineficiente. Los análisis de incidentes recientes demuestran que la adopción de tecnologías orientadas a la conveniencia operativa frecuentemente facilita la exposición de activos críticos y simplifica el trabajo de los atacantes.</p>
 
-        <p class="destacado">Estas vulnerabilidades son empíricamente medibles: existe una correlación directa donde la probabilidad de compromiso aumenta al "modernizar" la tecnología sin la debida arquitectura de implementación.</p>
+        <p>Estas vulnerabilidades son empíricamente medibles: existe una correlación directa donde la probabilidad de compromiso aumenta al "modernizar" la tecnología sin la debida arquitectura de implementación.</p>
 
         <div class="download-banner">
             <div class="img-container">
@@ -327,107 +344,100 @@
             <p>En conclusión, la teoría de la infraestructura resiliente debe abandonar definitivamente la falacia peligrosa de la hiperconectividad comercial. La seguridad efectiva no es un producto que se superpone a redes abiertas, sino una propiedad emergente del diseño arquitectónico restrictivo. Para mitigar las amenazas modernas de manera sistemática, resulta imperativo estructurar los ecosistemas digitales estrictamente bajo principios inquebrantables de compartimentación extrema y validación nula. Solo mediante el rechazo analítico de la conveniencia operativa y la adopción de esquemas de aislamiento físico riguroso será verdaderamente posible neutralizar la ventaja táctica inherente que el modelo actual otorga a los atacantes, garantizando siempre la integridad operativa en absolutamente todos los niveles críticos corporativos.</p>
         </div>
 
-        <p class="texto-pequeno">El desglose técnico sobre estos vectores y la evidencia sobre la falta de viabilidad de las soluciones convencionales empleadas por el sector corporativo, está disponible en nuestro informe completo en <a href="http://www.CrugerCorp.com" style="color: var(--primary-color);">www.CrugerCorp.com</a>.</p>
+        <p>El desglose técnico sobre estos vectores y la evidencia sobre la falta de viabilidad de las soluciones convencionales empleadas por el sector corporativo, está disponible en nuestro informe completo en <a href="http://www.CrugerCorp.com" style="color: var(--primary-color);">www.CrugerCorp.com</a>.</p>
 
-        <p class="destacado">A continuación, desglosamos tres vectores críticos que evidencian esta falla sistémica:</p>
+        <p>A continuación, desglosamos tres vectores críticos que evidencian esta falla sistémica:</p>
 
-        <ol class="texto-pequeno">
-            <li><strong>LA ILUSIÓN DE LA NUBE Y LA CENTRALIZACIÓN DE DATOS:</strong> Una muestra clara de este fallo es la exposición de bases de datos críticas alojadas en servicios de nube (centros de datos o computadoras de terceros donde no existe el secreto como tal ante procesos o requerimientos). Diseñadas bajo la premisa de "facilitar" el acceso para optimizar procesos y hacerlos más intuitivos para perfiles no técnicos, estas implementaciones suelen carecer de un aislamiento adecuado. La conveniencia administrativa genera tráfico directo que, al no contar con controles de acceso rigurosos o segmentación por diseño, resulta en una vulnerabilidad crítica. La recurrente exfiltración de bases de datos masivas es consecuencia directa de priorizar la accesibilidad sobre el rigor criptográfico.</li>
-            <li><strong>PROLIFERACIÓN IOT Y RIESGOS EN CADENAS DE CUSTODIA (VIDEOVIGILANCIA):</strong> Otro vector de riesgo severo es el despliegue de hardware conectado, como cámaras de seguridad de red o inalámbricas. La promesa de una instalación rápida y gestión remota oculta un riesgo estructural profundo: al no implementar redes aisladas (VLANs restrictivas supervisadas y aún en esos casos), estos dispositivos se convierten en puentes de acceso. La centralización de su control en paneles externos vulnerables permite a terceros no autorizados el secuestro de infraestructuras enteras, demostrando el riesgo de depender de plataformas de gestión de terceros sin validación interna.</li>
-            <li><strong>LA DELEGACIÓN DE LA RESILIENCIA A LA INTELIGENCIA ARTIFICIAL:</strong> De manera alarmante, observamos una tendencia corporativa a delegar la toma de decisiones y la protección de datos a herramientas de automatización e Inteligencia Artificial. Asumir que las soluciones "de tendencia" garantizan protección es un error de cálculo. Las infraestructuras que confían su lógica de seguridad a modelos de lenguaje o chatbots están abriendo vectores de explotación altamente sofisticados, como la manipulación de flujos de datos (prompt injection) y el secuestro de funciones automatizadas. Depender de la IA para la gestión de acceso no elimina la vulnerabilidad; simplemente la traslada a un sistema de caja negra que la empresa no controla, no entiende o no puede intervenir de manera directa.</li>
+        <ol>
+            <li><strong class="titulo-interior">LA ILUSIÓN DE LA NUBE Y LA CENTRALIZACIÓN DE DATOS:</strong> Una muestra clara de este fallo es la exposición de bases de datos críticas alojadas en servicios de nube (centros de datos o computadoras de terceros donde no existe el secreto como tal ante procesos o requerimientos). Diseñadas bajo la premisa de "facilitar" el acceso para optimizar procesos y hacerlos más intuitivos para perfiles no técnicos, estas implementaciones suelen carecer de un aislamiento adecuado. La conveniencia administrativa genera tráfico directo que, al no contar con controles de acceso rigurosos o segmentación por diseño, resulta en una vulnerabilidad crítica. La recurrente exfiltración de bases de datos masivas es consecuencia directa de priorizar la accesibilidad sobre el rigor criptográfico.</li>
+            <li><strong class="titulo-interior">PROLIFERACIÓN IOT Y RIESGOS EN CADENAS DE CUSTODIA (VIDEOVIGILANCIA):</strong> Otro vector de riesgo severo es el despliegue de hardware conectado, como cámaras de seguridad de red o inalámbricas. La promesa de una instalación rápida y gestión remota oculta un riesgo estructural profundo: al no implementar redes aisladas (VLANs restrictivas supervisadas y aún en esos casos), estos dispositivos se convierten en puentes de acceso. La centralización de su control en paneles externos vulnerables permite a terceros no autorizados el secuestro de infraestructuras enteras, demostrando el riesgo de depender de plataformas de gestión de terceros sin validación interna.</li>
+            <li><strong class="titulo-interior">LA DELEGACIÓN DE LA RESILIENCIA A LA INTELIGENCIA ARTIFICIAL:</strong> De manera alarmante, observamos una tendencia corporativa a delegar la toma de decisiones y la protección de datos a herramientas de automatización e Inteligencia Artificial. Asumir que las soluciones "de tendencia" garantizan protección es un error de cálculo. Las infraestructuras que confían su lógica de seguridad a modelos de lenguaje o chatbots están abriendo vectores de explotación altamente sofisticados, como la manipulación de flujos de datos (prompt injection) y el secuestro de funciones automatizadas. Depender de la IA para la gestión de acceso no elimina la vulnerabilidad; simplemente la traslada a un sistema de caja negra que la empresa no controla, no entiende o no puede intervenir de manera directa.</li>
         </ol>
 
-        <div class="texto-pequeno">
-            <p><strong>EL ENFOQUE BASADO EN DATOS:</strong> Podríamos continuar enumerando las brechas que diariamente saturan los medios, pero no somos un portal de divulgación; somos una Firma Tecnológica. Por ello, utilizamos la evaluación de vectores y análisis de datos para predecir tendencias y estimar riesgos basado en la implementación, esto recabado de múltiples incidentes en el sector para generar inteligencia accionable. Extraemos el ruido mediático para enfocarnos en las estadísticas de vectores y fallos de implementación. Los números son verificables: los incidentes no son producto de atacantes invisibles, sino de arquitecturas deficientes o la falta de entendimiento sobre contratos muchas veces más caros que los problemas que supuestamente se resuelven y que terminan en la exposición de datos y daños elevados de sus contratantes.</p>
-            <p>La falta de efectividad en materia de ciberseguridad sugiere directamente que los modelos comerciales no están cubriendo la base principal del diseño seguro. Estas soluciones empaquetadas, lejos de prevenir, actúan como un gasto inflacionario para las empresas, generando una falsa sensación de protección, pero nula efectividad en el bloqueo del canal de ataque, situación verificable ante el creciente aumento de incidentes en sectores que deberían ser seguros, que se ve efectivo cuando surgen las evidencias del daño ocasionado.</p>
-        </div>
+        <p><strong class="titulo-interior">EL ENFOQUE BASADO EN DATOS:</strong> Podríamos continuar enumerando las brechas que diariamente saturan los medios, pero no somos un portal de divulgación; somos una Firma Tecnológica. Por ello, utilizamos la evaluación de vectores y análisis de datos para predecir tendencias y estimar riesgos basado en la implementación, esto recabado de múltiples incidentes en el sector para generar inteligencia accionable. Extraemos el ruido mediático para enfocarnos en las estadísticas de vectores y fallos de implementación. Los números son verificables: los incidentes no son producto de atacantes invisibles, sino de arquitecturas deficientes o la falta de entendimiento sobre contratos muchas veces más caros que los problemas que supuestamente se resuelven y que terminan en la exposición de datos y daños elevados de sus contratantes.</p>
+        
+        <p>La falta de efectividad en materia de ciberseguridad sugiere directamente que los modelos comerciales no están cubriendo la base principal del diseño seguro. Estas soluciones empaquetadas, lejos de prevenir, actúan como un gasto inflacionario para las empresas, generando una falsa sensación de protección, pero nula efectividad en el bloqueo del canal de ataque, situación verificable ante el creciente aumento de incidentes en sectores que deberían ser seguros, que se ve efectivo cuando surgen las evidencias del daño ocasionado.</p>
 
         <div class="grafico-container">
             <img src="TabladeCiberataquesenMexico04152026.jpg" alt="Gráfico de Comparativa por Año de Ciberataques en México (2020-2026)">
         </div>
 
-        <div class="texto-pequeno">
-            <p>Se han procesado las tendencias estimadas de incidentes, alcance y severidad desde 2020 hasta el primer trimestre de 2026, consolidándolas en un <strong>Índice de alcance e impacto relativo (0 - 100)</strong>. Es la única forma analítica de graficar en la misma escala la exfiltración masiva de datos (que ocurre por millones) y los ataques a infraestructura crítica (que son menos en volumen, pero de impacto devastador) dentro de un gráfico de ejemplo comprensible sin ser técnico.</p>
-            <p>El <strong>Índice de alcance e impacto relativo (escala de 0 a 100)</strong> es una métrica compuesta diseñada exactamente para resolver este problema: permite ponderar y graficar vectores de ataque dispares bajo un mismo estándar de riesgo macroeconómico y de seguridad.</p>
-            <p>El índice representa el <strong>nivel de severidad integral</strong> de un vector de ataque en un año determinado. <strong>¿Cómo se mide? (Desglose de Variables)</strong> Para llegar al valor de 0 a 100, el índice evalúa dos dimensiones principales. En el análisis de riesgos moderno (basado en metodologías como FAIR o CVSS adaptado a nivel macro), el impacto suele tener un peso ligeramente mayor que el alcance.</p>
-        </div>
+        <p>Se han procesado las tendencias estimadas de incidentes, alcance y severidad desde 2020 hasta el primer trimestre de 2026, consolidándolas en un <strong>Índice de alcance e impacto relativo (0 - 100)</strong>. Es la única forma analítica de graficar en la misma escala la exfiltración masiva de datos (que ocurre por millones) y los ataques a infraestructura crítica (que son menos en volumen, pero de impacto devastador) dentro de un gráfico de ejemplo comprensible sin ser técnico.</p>
+        
+        <p>El <strong>Índice de alcance e impacto relativo (escala de 0 a 100)</strong> es una métrica compuesta diseñada exactamente para resolver este problema: permite ponderar y graficar vectores de ataque dispares bajo un mismo estándar de riesgo macroeconómico y de seguridad.</p>
+        
+        <p>El índice representa el <strong>nivel de severidad integral</strong> de un vector de ataque en un año determinado. <strong>¿Cómo se mide? (Desglose de Variables)</strong> Para llegar al valor de 0 a 100, el índice evalúa dos dimensiones principales. En el análisis de riesgos moderno (basado en metodologías como FAIR o CVSS adaptado a nivel macro), el impacto suele tener un peso ligeramente mayor que el alcance.</p>
 
-        <h2 class="texto-pequeno" style="border: none; padding: 0; margin-top: 20px;">1. ALCANCE (FRECUENCIA Y DISPERSIÓN) - <em>PESO SUGERIDO: 40%</em></h2>
-        <div class="texto-pequeno">
-            <p>Esta variable mide la huella del vector de ataque. Se evalúa del 0 al 100 basándose en:</p>
-            <ul>
-                <li><strong>Volumen de incidentes:</strong> ¿Hablamos de decenas de ataques dirigidos (APT) o de millones de intentos automatizados?</li>
-                <li><strong>Tasa de propagación:</strong> La velocidad a la que el ataque puede replicarse de una red a otra sin intervención humana (como los gusanos en el ransomware).</li>
-                <li><strong>Accesibilidad de la herramienta:</strong> ¿Requiere el atacante conocimientos avanzados (alta barrera de entrada) o es un ataque que se puede comprar como servicio en la dark web (Ransomware-as-a-Service, DDoS-as-a-Service)?</li>
-            </ul>
-        </div>
+        <span class="subtitulo-bloque">1. ALCANCE (FRECUENCIA Y DISPERSIÓN) - <em style="font-weight: 400; font-size: 0.9em;">PESO SUGERIDO: 40%</em></span>
+        <p>Esta variable mide la huella del vector de ataque. Se evalúa del 0 al 100 basándose en:</p>
+        <ul>
+            <li><strong>Volumen de incidentes:</strong> ¿Hablamos de decenas de ataques dirigidos (APT) o de millones de intentos automatizados?</li>
+            <li><strong>Tasa de propagación:</strong> La velocidad a la que el ataque puede replicarse de una red a otra sin intervención humana (como los gusanos en el ransomware).</li>
+            <li><strong>Accesibilidad de la herramienta:</strong> ¿Requiere el atacante conocimientos avanzados (alta barrera de entrada) o es un ataque que se puede comprar como servicio en la dark web (Ransomware-as-a-Service, DDoS-as-a-Service)?</li>
+        </ul>
 
-        <h2 class="texto-pequeno" style="border: none; padding: 0; margin-top: 20px;">2. IMPACTO (DAÑO TANGIBLE E INTANGIBLE) - <em>PESO SUGERIDO: 60%</em></h2>
-        <div class="texto-pequeno">
-            <p>Esta es la variable crítica que eleva vectores como el secuestro de infraestructura a la cima del gráfico, a pesar de su menor frecuencia. Se evalúa del 0 al 100 basándose en:</p>
-            <ul>
-                <li><strong>Impacto Operacional (Downtime):</strong> Tiempo en el que la organización o servicio queda paralizado.</li>
-                <li><strong>Pérdida Financiera:</strong> Costos directos (rescates pagados, dinero robado) e indirectos (pérdida de contratos, multas regulatorias, honorarios legales).</li>
-                <li><strong>Sensibilidad de los Datos:</strong> Exfiltración de credenciales básicas vs. robo de propiedad intelectual (patentes) o historiales médicos confidenciales.</li>
-                <li><strong>Daño Físico / Seguridad Nacional:</strong> Este es el multiplicador máximo. Si el ataque compromete vidas humanas (ej. alteración de sistemas en hospitales, redes eléctricas o vehículos autónomos), el puntaje de impacto se dispara automáticamente al percentil más alto.</li>
-            </ul>
+        <span class="subtitulo-bloque">2. IMPACTO (DAÑO TANGIBLE E INTANGIBLE) - <em style="font-weight: 400; font-size: 0.9em;">PESO SUGERIDO: 60%</em></span>
+        <p>Esta es la variable crítica que eleva vectores como el secuestro de infraestructura a la cima del gráfico, a pesar de su menor frecuencia. Se evalúa del 0 al 100 basándose en:</p>
+        <ul>
+            <li><strong>Impacto Operacional (Downtime):</strong> Tiempo en el que la organización o servicio queda paralizado.</li>
+            <li><strong>Pérdida Financiera:</strong> Costos directos (rescates pagados, dinero robado) e indirectos (pérdida de contratos, multas regulatorias, honorarios legales).</li>
+            <li><strong>Sensibilidad de los Datos:</strong> Exfiltración de credenciales básicas vs. robo de propiedad intelectual (patentes) o historiales médicos confidenciales.</li>
+            <li><strong>Daño Físico / Seguridad Nacional:</strong> Este es el multiplicador máximo. Si el ataque compromete vidas humanas (ej. alteración de sistemas en hospitales, redes eléctricas o vehículos autónomos), el puntaje de impacto se dispara automáticamente al percentil más alto.</li>
+        </ul>
 
-            <p><strong>EJEMPLO DE APLICACIÓN PRÁCTICA</strong></p>
-            
-            <p><strong>Caso A: Ataques de Ingeniería Social (Phishing común)</strong></p>
-            <ul>
-                <li><strong>Alcance:</strong> 95/100 (Masivo, ocurre millones de veces al día, herramientas baratas).</li>
-                <li><strong>Impacto:</strong> 30/100 (El usuario individual pierde el acceso a una cuenta o fondos limitados; rara vez paraliza a una empresa entera por sí solo).</li>
-                <li><strong>Índice Final:</strong> Alto en la gráfica, pero estabilizado, impulsado puramente por su volumen.</li>
-            </ul>
+        <p><strong class="titulo-interior">EJEMPLO DE APLICACIÓN PRÁCTICA</strong></p>
+        
+        <p><strong>Caso A: Ataques de Ingeniería Social (Phishing común)</strong></p>
+        <ul>
+            <li><strong>Alcance:</strong> 95/100 (Masivo, ocurre millones de veces al día, herramientas baratas).</li>
+            <li><strong>Impacto:</strong> 30/100 (El usuario individual pierde el acceso a una cuenta o fondos limitados; rara vez paraliza a una empresa entera por sí solo).</li>
+            <li><strong>Índice Final:</strong> Alto en la gráfica, pero estabilizado, impulsado puramente por su volumen.</li>
+        </ul>
 
-            <p><strong>Caso B: Ransomware a Infraestructura Crítica (ej. Planta eléctrica)</strong></p>
-            <ul>
-                <li><strong>Alcance:</strong> 15/100 (Pocos incidentes al año, requiere actores patrocinados por estados o grupos cibercriminales de élite).</li>
-                <li><strong>Impacto:</strong> 100/100 (Paralización de ciudades, riesgo de pérdida de vidas, impacto económico a nivel estatal).</li>
-                <li><strong>Índice Final:</strong> Escala rápidamente en la gráfica debido al daño catastrófico, superando a los ataques masivos en prioridad de mitigación.</li>
-            </ul>
+        <p><strong>Caso B: Ransomware a Infraestructura Crítica (ej. Planta eléctrica)</strong></p>
+        <ul>
+            <li><strong>Alcance:</strong> 15/100 (Pocos incidentes al año, requiere actores patrocinados por estados o grupos cibercriminales de élite).</li>
+            <li><strong>Impacto:</strong> 100/100 (Paralización de ciudades, riesgo de pérdida de vidas, impacto económico a nivel estatal).</li>
+            <li><strong>Índice Final:</strong> Escala rápidamente en la gráfica debido al daño catastrófico, superando a los ataques masivos en prioridad de mitigación.</li>
+        </ul>
 
-            <p><strong>Notas clave:</strong></p>
-            <p><strong>La Divergencia de la Exfiltración:</strong> Se observa que la exfiltración de datos al público promedio crece de manera constante, pero la enfocada en dependencias tuvo un comportamiento volátil (con una vertiente en pico en 2022). Esto demuestra que los atacantes gubernamentales/hacktivistas actúan por campañas de oportunidad y vulnerabilidades zero-day, mientras que el cibercrimen considerado como tradicional o común opera como un negocio continuo.</p>
-        </div>
+        <p><strong class="titulo-interior">NOTAS CLAVE:</strong></p>
+        <p><strong>La Divergencia de la Exfiltración:</strong> Se observa que la exfiltración de datos al público promedio crece de manera constante, pero la enfocada en dependencias tuvo un comportamiento volátil (con una vertiente en pico en 2022). Esto demuestra que los atacantes gubernamentales/hacktivistas actúan por campañas de oportunidad y vulnerabilidades zero-day, mientras que el cibercrimen considerado como tradicional o común opera como un negocio continuo.</p>
 
-        <ol class="texto-pequeno">
+        <ol>
             <li><strong>El Factor Humano:</strong> Es el único vector que se mantiene constante o con una ligera tendencia a la baja. A medida que las empresas invierten millones en software de seguridad, el "eslabón más débil" sigue siendo el empleado que cae en una suplantación de identidad o comete un error de configuración en la nube. Así mismo el reflejo de las dependencias de usuario enfocadas en Ingeniería social reflejan un punto en este vector.</li>
             <li><strong>El nuevo paradigma (IA):</strong> El vector de inyección de código a chatbots y modelos de IA ha pasado de ser un riesgo teórico en 2022 a una de las amenazas de más rápido crecimiento en 2025 y principios de 2026. Los atacantes están logrando que las IAs corporativas revelen datos sensibles de clientes simplemente mediante ingeniería de prompts.</li>
             <li><strong>Infraestructura Crítica:</strong> Aunque su volumen total es menor comparado con ataques bancarios, el impacto es asimétrico. Los ataques a redes eléctricas o sistemas hospitalarios han dejado de ser exclusivos de actores estatales y ahora son utilizados por grupos de ransomware buscando pagos millonarios bajo la amenaza de daño en el mundo real.</li>
         </ol>
 
-        <div class="texto-pequeno">
-            <p>El análisis de los vectores nos muestra de manera clara una única respuesta, lejos de solucionarse con tendencias del mercado e implementación de procesos "seguros" basados en la moda de empresas de etiqueta blanca, revendedores de servicios o novedad de desarrollo como los "modelos de IA", la tendencia muestra un aumento significativo en todos los canales de análisis para la muestra. Del mismo modo que la tendencia por la innovación alcanza a las PyMEs tradicionales, corporativos, dependencias y unidades seguras, lo hace para los que buscan el punto vulnerable de infraestructura, y no precisan de los modelos más avanzados de cómputo, sino de la indiferencia de los usuarios por arreglar el problema de raíz por la comodidad de emplear modelos automatizados o simplificados con la esperanza de que eso funcione como barrera de contención.</p>
-            <p>En cuanto a los modelos de análisis críticos, sobre infraestructura de seguridad nacional, el margen de datos es gris, debido a la opacidad con la que se manejan esos datos fuera de las esferas donde se comparte la información y donde los medios especializados obtienen cifras que muchas veces son maquilladas por otros para evitar confrontación de contraste con la realidad en materia del alcance de perdida, ya sea de análisis de exposición, de vulnerabilidad, de perdida de vidas o donde la seguridad de una infraestructura se ve comprometida por falta de medidas de seguridad lo que seria visto como una ineficiencia. Lo que es seguro es que una exfiltración de datos es un tema serio, ya que, para firmas, corporativos, fideicomisos, dependencias o industrias puede representar la perdida de contratos, exposición de material sensible, datos que ponen en peligro la vida o costos millonarios o irreparables por perdida de inversión.</p>
-        </div>
+        <p>El análisis de los vectores nos muestra de manera clara una única respuesta, lejos de solucionarse con tendencias del mercado e implementación de procesos "seguros" basados en la moda de empresas de etiqueta blanca, revendedores de servicios o novedad de desarrollo como los "modelos de IA", la tendencia muestra un aumento significativo en todos los canales de análisis para la muestra. Del mismo modo que la tendencia por la innovación alcanza a las PyMEs tradicionales, corporativos, dependencias y unidades seguras, lo hace para los que buscan el punto vulnerable de infraestructura, y no precisan de los modelos más avanzados de cómputo, sino de la indiferencia de los usuarios por arreglar el problema de raíz por la comodidad de emplear modelos automatizados o simplificados con la esperanza de que eso funcione como barrera de contención.</p>
+        
+        <p>En cuanto a los modelos de análisis críticos, sobre infraestructura de seguridad nacional, el margen de datos es gris, debido a la opacidad con la que se manejan esos datos fuera de las esferas donde se comparte la información y donde los medios especializados obtienen cifras que muchas veces son maquilladas por otros para evitar confrontación de contraste con la realidad en materia del alcance de perdida, ya sea de análisis de exposición, de vulnerabilidad, de perdida de vidas o donde la seguridad de una infraestructura se ve comprometida por falta de medidas de seguridad lo que seria visto como una ineficiencia. Lo que es seguro es que una exfiltración de datos es un tema serio, ya que, para firmas, corporativos, fideicomisos, dependencias o industrias puede representar la perdida de contratos, exposición de material sensible, datos que ponen en peligro la vida o costos millonarios o irreparables por perdida de inversión.</p>
 
         <h2>El Costo Real de la "Moda Tecnológica" y el Colapso de la Cadena de Confianza</h2>
         
-        <div class="texto-pequeno">
-            <p>La adopción impulsiva de tecnologías bajo la premisa de la innovación ha creado un ecosistema global que prioriza la velocidad sobre la integridad. Este fenómeno no es exclusivo de un país; es una pandemia tecnocrática donde se confía ciegamente en infraestructuras y dispositivos cuya arquitectura subyacente es un misterio para quienes los operan. Esta "moda rápida" tecnológica tiene un costo financiero devastador. Tema que abordamos en otro de nuestros análisis sobre mercado y tendencias que están impulsados más por agendas que por la innovación y que responden a intereses no declarados al público.</p>
-            <p>Al remover el impacto mediático, los datos puros revelan que el daño económico no proviene de multas regulatorias, sino de la paralización operativa y la pérdida de activos críticos:</p>
+        <p>La adopción impulsiva de tecnologías bajo la premisa de la innovación ha creado un ecosistema global que prioriza la velocidad sobre la integridad. Este fenómeno no es exclusivo de un país; es una pandemia tecnocrática donde se confía ciegamente en infraestructuras y dispositivos cuya arquitectura subyacente es un misterio para quienes los operan. Esta "moda rápida" tecnológica tiene un costo financiero devastador. Tema que abordamos en otro de nuestros análisis sobre mercado y tendencias que están impulsados más por agendas que por la innovación y que responden a intereses no declarados al público.</p>
+        
+        <p>Al remover el impacto mediático, los datos puros revelan que el daño económico no proviene de multas regulatorias, sino de la paralización operativa y la pérdida de activos críticos:</p>
 
-            <ul>
-                <li><strong>El impacto financiero global:</strong> De acuerdo con los informes de la industria (como el <em>costo de exposición</em>), el costo promedio global de una filtración de datos supera los 4.4 millones de dólares por incidente. En el contexto nacional, el Instituto Nacional de Estadística y Geografía (INEGI) reporta consistentemente que los ciberataques son una de las principales causas de pérdidas económicas en el sector corporativo, no solo por el robo de información, sino por la interrupción prolongada de las operaciones y la fuga de capital de inversión por desconfianza.</li>
-                <li><strong>La vulnerabilidad en la cadena de suministro (El caso Android):</strong> La confianza ciega en el hardware de consumo ha introducido caballos de Troya directamente en redes corporativas y domésticas. El descubrimiento reciente de operaciones como "Badbox" evidenció que millones de cajas de <em>streaming</em> (Android TV boxes) de bajo costo fueron distribuidas a nivel global con <em>malware</em> integrado desde su fabricación en Asia. Estos dispositivos, conectados a redes corporativas por empleados buscando conveniencia, operaban como nodos de una red criminal (botnet) antes de salir de su empaque, burlando cualquier firewall perimetral tradicional.</li>
-                <li><strong>La ilusión de las redes herméticas (Ataques físicos a infraestructura):</strong> La creencia de que desconectar un sistema de la red pública garantiza su seguridad es una negligencia comprobada. El histórico ataque <em>Stuxnet</em> a la planta de enriquecimiento nuclear en Natanz destruyó físicamente las centrifugadoras de la instalación alterando la lógica de los controladores industriales (PLCs), todo mientras los sistemas de monitoreo reportaban normalidad. La planta era completamente hermética (aislada de internet), pero falló por carecer de políticas de validación nula en sus procesos internos.</li>
-                <li><strong>El colapso del IoT (Cámaras IP y vectores de entrada):</strong> La hiperconectividad de dispositivos de bajo perfil técnico ha escalado exponencialmente las superficies de ataque. La explotación de vulnerabilidades en cámaras de seguridad IP inalámbricas (mediante el secuestro de credenciales o la inyección de comandos) ha permitido a los atacantes no solo el espionaje corporativo, sino utilizar estos dispositivos como plataformas de lanzamiento para ataques masivos (como botnets tipo Mirai) que paralizan servicios críticos a nivel global.</li>
-            </ul>
-        </div>
+        <ul>
+            <li><strong>El impacto financiero global:</strong> De acuerdo con los informes de la industria (como el <em>costo de exposición</em>), el costo promedio global de una filtración de datos supera los 4.4 millones de dólares por incidente. En el contexto nacional, el Instituto Nacional de Estadística y Geografía (INEGI) reporta consistentemente que los ciberataques son una de las principales causas de pérdidas económicas en el sector corporativo, no solo por el robo de información, sino por la interrupción prolongada de las operaciones y la fuga de capital de inversión por desconfianza.</li>
+            <li><strong>La vulnerabilidad en la cadena de suministro (El caso Android):</strong> La confianza ciega en el hardware de consumo ha introducido caballos de Troya directamente en redes corporativas y domésticas. El descubrimiento reciente de operaciones como "Badbox" evidenció que millones de cajas de <em>streaming</em> (Android TV boxes) de bajo costo fueron distribuidas a nivel global con <em>malware</em> integrado desde su fabricación en Asia. Estos dispositivos, conectados a redes corporativas por empleados buscando conveniencia, operaban como nodos de una red criminal (botnet) antes de salir de su empaque, burlando cualquier firewall perimetral tradicional.</li>
+            <li><strong>La ilusión de las redes herméticas (Ataques físicos a infraestructura):</strong> La creencia de que desconectar un sistema de la red pública garantiza su seguridad es una negligencia comprobada. El histórico ataque <em>Stuxnet</em> a la planta de enriquecimiento nuclear en Natanz destruyó físicamente las centrifugadoras de la instalación alterando la lógica de los controladores industriales (PLCs), todo mientras los sistemas de monitoreo reportaban normalidad. La planta era completamente hermética (aislada de internet), pero falló por carecer de políticas de validación nula en sus procesos internos.</li>
+            <li><strong>El colapso del IoT (Cámaras IP y vectores de entrada):</strong> La hiperconectividad de dispositivos de bajo perfil técnico ha escalado exponencialmente las superficies de ataque. La explotación de vulnerabilidades en cámaras de seguridad IP inalámbricas (mediante el secuestro de credenciales o la inyección de comandos) ha permitido a los atacantes no solo el espionaje corporativo, sino utilizar estos dispositivos como plataformas de lanzamiento para ataques masivos (como botnets tipo Mirai) que paralizan servicios críticos a nivel global.</li>
+        </ul>
 
         <h2>La Solución Arquitectónica de Cruger Corp</h2>
         
-        <div class="texto-pequeno">
-            <p>El análisis de estos vectores nos lleva a una conclusión incontrovertible: las soluciones comerciales convencionales, basadas en reaccionar ante la amenaza una vez que está dentro de la red, han fracasado. Operan como un gasto inflacionario que otorga una falsa sensación de protección mientras los costos por filtraciones siguen rompiendo récords históricos año con año.</p>
-            <p>En Cruger Corp, determinamos que la única defensa viable contra la explotación de esta infraestructura hiperconectada es el rechazo absoluto de la confianza por defecto. La verdadera resiliencia no se compra en un software de monitoreo, se construye desde la base del diseño de la red. Mediante la implementación de <strong>arquitecturas de Confianza Cero (Zero Trust), compartimentación extrema y segmentación física y lógica</strong>, garantizamos que el compromiso de un nodo periférico, un dispositivo IoT comprometido de fábrica o un error humano, jamás se traduzca en una escalada de privilegios hacia los datos vitales de la organización.</p>
-            <p>Protegemos el núcleo del negocio no sumando capas de herramientas ineficientes, sino restando matemáticamente la posibilidad de que el atacante pueda moverse dentro de la red.</p>
-        </div>
-
-        <h2 class="texto-pequeno" style="border: none; padding: 0; margin-top: 50px; text-transform: uppercase;">CITAS Y REFERENCIAS:</h2>
+        <p>El análisis de estos vectores nos lleva a una conclusión incontrovertible: las soluciones comerciales convencionales, basadas en reaccionar ante la amenaza una vez que está dentro de la red, han fracasado. Operan como un gasto inflacionario que otorga una falsa sensación de protección mientras los costos por filtraciones siguen rompiendo récords históricos año con año.</p>
         
-        <div class="texto-pequeno" style="font-size: 0.75em; color: var(--text-muted); font-style: italic;">
+        <p>En Cruger Corp, determinamos que la única defensa viable contra la explotación de esta infraestructura hiperconectada es el rechazo absoluto de la confianza por defecto. La verdadera resiliencia no se compra en un software de monitoreo, se construye desde la base del diseño de la red. Mediante la implementación de <strong>arquitecturas de Confianza Cero (Zero Trust), compartimentación extrema y segmentación física y lógica</strong>, garantizamos que el compromiso de un nodo periférico, un dispositivo IoT comprometido de fábrica o un error humano, jamás se traduzca en una escalada de privilegios hacia los datos vitales de la organización.</p>
+        
+        <p>Protegemos el núcleo del negocio no sumando capas de herramientas ineficientes, sino restando matemáticamente la posibilidad de que el atacante pueda moverse dentro de la red.</p>
+
+        <h2 style="border: none; padding: 0; margin-top: 50px; text-transform: uppercase;">CITAS Y REFERENCIAS:</h2>
+        
+        <div class="referencias">
             <p>Wikipedia La enciclopedia libre (2025). Stuxnet. Recuperado el 05 de Abril de 2026. De Wikipedia, La enciclopedia libre. Website: <a href="https://es.wikipedia.org/wiki/Stuxnet" style="color: var(--primary-color);">https://es.wikipedia.org/wiki/Stuxnet</a></p>
             <p>Harán, Juan Manuel (2023). Android TV Box comprado en Amazon venía con malware precargado (Investigación sobre el hallazgo de Daniel Milisic y el troyano Triada). Recuperado el 05 de Abril de 2026. De WeLiveSecurity (ESET Latinoamérica). <a href="https://www.welivesecurity.com/la-es/2023/01/16/android-tv-box-comprado-amazon-con-malware/" style="color: var(--primary-color);">https://www.welivesecurity.com/la-es/2023/01/16/android-tv-box-comprado-amazon-con-malware/</a></p>
             <p>Banco de México (Banxico). (2018). Reporte de análisis forense sobre la vulneración al SPEI y acciones correctivas. Recuperado el 06 de Abril de 2026. De Banxico Oficial. Website: <a href="https://www.banxico.org.mx/spei/d/%7B4A977A24-0889-3F24-A717-DF9DBBA118C1%7D.pdf" style="color: var(--primary-color);">https://www.banxico.org.mx/spei/d/%7B4A977A24-0889-3F24-A717-DF9DBBA118C1%7D.pdf</a></p>
@@ -447,7 +457,7 @@
         <div style="margin-bottom: 20px;">
              <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
         </div>
-        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px; text-align: center;">
             CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
             Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
         </p>
