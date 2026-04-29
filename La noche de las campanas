@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración Abierta: La Noche de las Campanas | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #d1d5db;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* HEADER Y MENU (Mantenidos para congruencia con el sitio) */
+        header {
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
+        }
+        
+        /* CONTENIDO PRINCIPAL */
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 120px 20px 50px 20px;
+        }
+
+        .header-logo-container {
+            margin-bottom: 30px;
+            text-align: center; 
+        }
+
+        img.logo {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .fecha-publicacion {
+            color: var(--primary-color);
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 2.1em;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #ffffff;
+            font-size: 1.3em;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+
+        /* TEXTO BASE GLOBAL */
+        p, li { 
+            font-size: 0.8em; 
+            color: #c7cdd4;
+            line-height: 1.8;
+            margin-bottom: 20px; 
+            text-align: justify; 
+        }
+        
+        strong { color: #ffffff; }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+        }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
+            background-color: #050A14;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="content-wrapper">
+        
+        <div class="header-logo-container">
+            <img src="logo.png" alt="Cruger Corp Logo" class="logo">
+            <div class="fecha-publicacion">Publicado: 28 de Abril de 2026</div>
+        </div>
+
+        <h1>DECLARACIÓN ABIERTA: LA NOCHE DE LAS CAMPANAS Y NUESTRO PORTAFOLIO DE SEGURIDAD</h1>
+
+        <h2>DOCUMENTACIÓN DEL INCIDENTE: LA NOCHE DE LAS CAMPANAS</h2>
+
+        <p>Entre el 18 y la madrugada del 20 de abril de 2026, nuestra infraestructura experimentó un intento reiterado y sistémico de intrusión, un evento al que internamente hemos denominado "La noche de las campanas" (debido a la escalada principal ocurrida el 19 de abril alrededor de las 10:30 p.m.).</p>
+
+        <p>Estos incidentes comenzaron minutos después de la publicación de nuestro informe <em>"Análisis de vulnerabilidades en la cadena de custodia digital"</em> (que abordaba el registro telefónico en México) y tras la gestión de una solicitud de cancelación de datos mediante Derechos ARCO a una entidad partidista. Durante este periodo, registramos cuatro tipos de ataques sistémicos que evidencian las vulnerabilidades de las instituciones que manejan información sensible.</p>
+
+        <p>Los vectores de ataque documentados incluyeron:</p>
+        <ul>
+            <li>Llamadas de intento de conexión Ping (validación) a una línea personal no expuesta en registros públicos.</li>
+            <li>Mensajes directos a números privados inmediatamente después de la publicación de nuestro análisis.</li>
+            <li>Intentos de intrusión a cuentas de redes sociales y correos electrónicos personales vinculados.</li>
+            <li>Intentos de secuestro de sesión activa.</li>
+            <li>Intentos de vulneración dirigidos a cuatro dispositivos personales diferentes.</li>
+        </ul>
+
+        <p>Mediante la implementación de una estrategia de contención y aislamiento (Honey Pot) en una cuenta específica, logramos resultados exitosos que nos permitieron cruzar datos de rastreo de IPs —mismas que, mediante el cruce de información y analizando fuentes de información OSINT, podemos relacionar con contratos otorgados a diferentes entidades con capacidades amplias, según Mexicanos Contra la Corrupción y la Impunidad— y alinear tendencias de censura vinculadas a intereses de terceros. Asimismo, por protocolos de seguridad, el hardware comprometido está siendo sometido a diagnóstico mediante herramientas de análisis de malware proporcionadas por Amnistía Internacional para descartar riesgos residuales.</p>
+
+        <h2>POSTURA OFICIAL SOBRE EL ECOSISTEMA CRUGER CORP</h2>
+
+        <p>Nuestra postura sobre la noche de las campanas comunicada hace unos días no es ajena, responde a una serie de eventos trazables y analizables que marcan un antes y un después dentro de nuestro ecosistema.</p>
+
+        <p>Eso nos permitió evaluar en campo nuestra herramienta "PHANTOM" y pese a tener un desempeño óptimo, nos dimos cuenta que en manos equivocadas, la herramienta podría ser usada como ventaja sobre actores malintencionados, por lo que hemos tomado la mejor decisión para el futuro de la seguridad de todos los involucrados, al separar las herramientas digitales que brindan seguridad a los usuarios y protección sobre aquellas que tienen el potencial de convertirse en herramientas de ataque avanzado.</p>
+
+        <p>En vista de ello y dado la naturaleza de los resultados, comunicamos qué: Dark Zone Protocolo PHANTOM no formará parte de nuestro portafolio comercial (PHANTOM todavía no se comercializaba como herramienta de servicio sin embargo el evento ocurrido desde el 18 al 20 de Abril de 2026 nos permitió evaluar las capacidades de su implementación y es por demás que excede las expectativas), no podemos simplemente permitir que una herramienta de este calibre esté disponible para grupos, entidades o actores estatales en cualquier nivel y nos reservamos el derecho de retirarlo de nuestro portafolio, al igual que otras herramientas digitales desarrolladas por Cruger Corp, PHANTOM continuará siendo parte de nuestro ecosistema, ya que ha demostrado ser más que eficaz contra vectores de ataque y otras amenazas de red.</p>
+
+        <p>Es por ello que, antes de lanzar las capacidades de ambas herramientas se probaron y diagnosticaron en nuestro centro de desarrollo I+D, para verificar la eficiencia de cada herramienta, mientras que el Protocolo TITANIUM continuará siendo parte de nuestro portafolio comercial actual solo en su versión v.24 (debido al mismo tema es que no ofrecemos las versiones modificadas de la herramienta).</p>
+
+        <p>Dark Zone Protocolo TITANIUM es una herramienta de software con la capacidad de Cifrar, Descifrar y Triturar archivos. Sin embargo, las capacidades técnicas de PHANTOM son por otra parte, muy diferentes y representan un riesgo para cualquiera que no comparta la visión de nuestra firma.</p>
+
+        <h2>CONSIDERACIONES FINALES</h2>
+
+        <p>Recordamos a la comunidad que la protección de datos, los peligros de la Inteligencia Artificial sin supervisión, la obsolescencia programada y el secuestro de datos personales por parte de las industrias, no son temas para dejar a la ligera. Incomodan porque son negocio.</p> 
+
+        <p>Actualmente, continuamos realizando análisis exhaustivos en materia de rastreo mediante identificadores de publicidad (Ad ID), demostrando cómo los dispositivos conectados a internet rastrean y filtran datos de posición a bases de venta de terceros incluso con el GPS apagado. El comercio indiscriminado de datos de geolocalización es tan crítico como la exposición directa de la información de los usuarios.</p>
+
+        <p><strong>Cruger Corp no hace un señalamiento directo, mantenemos una postura de neutralidad; sin embargo, dejamos en claro que no permitiremos el ataque, el intento de intrusión o cualquier vulneración por cualquier medio y de quien venga, independientemente de su postura. Se nos ha relacionado con algunos temas que, desde luego, no sustentamos ni afirmamos tener vínculos relacionados con posturas ajenas a nuestra filosofía, cualquier coincidencia es por demás casualidad.</strong></p>
+
+    </main>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px; text-align: center;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+</body>
+</html>
