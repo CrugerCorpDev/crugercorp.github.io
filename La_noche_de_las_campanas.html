@@ -26,13 +26,55 @@
             overflow-x: hidden;
         }
 
-        /* HEADER Y MENU (Mantenidos para congruencia con el sitio) */
+        /* ESTILOS DEL HEADER Y MENU (Necesarios para lo que inyecta menu.js) */
         header {
             padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
             border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
             position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
         }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
         
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        .sidebar-title {
+            color: var(--primary-color); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;
+            text-transform: uppercase; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 10px;
+        }
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
         /* CONTENIDO PRINCIPAL */
         .content-wrapper {
             max-width: 850px;
@@ -84,7 +126,6 @@
             text-transform: uppercase;
         }
 
-        /* TEXTO BASE GLOBAL */
         p, li { 
             font-size: 0.8em; 
             color: #c7cdd4;
@@ -108,6 +149,10 @@
             padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
             color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
             background-color: #050A14;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
         }
     </style>
 </head>
@@ -145,7 +190,7 @@
 
         <p>Eso nos permitió evaluar en campo nuestra herramienta "PHANTOM" y pese a tener un desempeño óptimo, nos dimos cuenta que en manos equivocadas, la herramienta podría ser usada como ventaja sobre actores malintencionados, por lo que hemos tomado la mejor decisión para el futuro de la seguridad de todos los involucrados, al separar las herramientas digitales que brindan seguridad a los usuarios y protección sobre aquellas que tienen el potencial de convertirse en herramientas de ataque avanzado.</p>
 
-        <p>En vista de ello y dado la naturaleza de los resultados, comunicamos qué: Dark Zone Protocolo PHANTOM no formará parte de nuestro portafolio comercial (PHANTOM todavía no se comercializaba como herramienta de servicio sin embargo el evento ocurrido desde el 18 al 20 de Abril de 2026 nos permitió evaluar las capacidades de su implementación y es por demás que excede las expectativas), no podemos simplemente permitir que una herramienta de este calibre esté disponible para grupos, entidades o actores estatales en cualquier nivel y nos reservamos el derecho de retirarlo de nuestro portafolio, al igual que otras herramientas digitales desarrolladas por Cruger Corp, PHANTOM continuará siendo parte de nuestro ecosistema, ya que ha demostrado ser más que eficaz contra vectores de ataque y otras amenazas de red.</p>
+        <p>En vista de ello y dado la naturaleza de los resultados, comunicamos qué: Dark Zone Protocolo PHANTOM no formará parte de nuestro portafolio comercial (PHANTOM todavía no se comercializaba como herramienta de servicio sin embargo el evento ocurrido desde el 18 hasta el 26 de Abril de 2026 nos permitió evaluar las capacidades de su implementación y es por demás que excede las expectativas), no podemos simplemente permitir que una herramienta de este calibre esté disponible para grupos, entidades o actores estatales en cualquier nivel y nos reservamos el derecho de retirarlo de nuestro portafolio, al igual que otras herramientas digitales desarrolladas por Cruger Corp, PHANTOM continuará siendo parte de nuestro ecosistema, ya que ha demostrado ser más que eficaz contra vectores de ataque y otras amenazas de red.</p>
 
         <p>Es por ello que, antes de lanzar las capacidades de ambas herramientas se probaron y diagnosticaron en nuestro centro de desarrollo I+D, para verificar la eficiencia de cada herramienta, mientras que el Protocolo TITANIUM continuará siendo parte de nuestro portafolio comercial actual solo en su versión v.24 (debido al mismo tema es que no ofrecemos las versiones modificadas de la herramienta).</p>
 
@@ -171,5 +216,6 @@
         </p>
     </footer>
 
+    <script src="menu.js"></script>
 </body>
 </html>
