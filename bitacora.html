@@ -97,9 +97,21 @@
         }
         .news-card:hover { transform: translateX(5px); border-color: rgba(0, 168, 232, 0.4); }
 
-        .news-image { flex: 0 0 33%; background: #000; position: relative; }
+        /* NUEVAS REGLAS DE IMAGEN PARA ESTANDARIZAR TAMAÑOS */
+        .news-image { 
+            flex: 0 0 33%; 
+            background: #050A14; 
+            position: relative; 
+            border-right: 1px solid var(--glass-border);
+        }
         .news-image img {
             width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; top: 0; left: 0;
+        }
+        /* Clase especial para Logos y Gráficos */
+        .news-image.image-contain img {
+            object-fit: contain; 
+            padding: 40px; 
+            box-sizing: border-box;
         }
 
         .news-content {
@@ -149,8 +161,24 @@
     <section class="feed-container">
 
         <div class="news-card" style="border-left-color: var(--primary-color);">
-            <div class="news-image">
-                <img src="TabladeCiberataquesenMexico04152026.jpg" alt="Gráfico de Vulnerabilidades y Tendencias" style="object-fit: contain; background: #050A14; padding: 30px; box-sizing: border-box;">
+            <div class="news-image image-contain">
+                <img src="logo.png" alt="Cruger Corp Logo">
+            </div>
+            <div class="news-content">
+                <span class="news-category" style="color: var(--primary-color);">28 ABRIL 2026 | COMUNICADO OFICIAL</span>
+                <h3>La Noche de las Campanas y Nuestro Portafolio</h3>
+                <p>
+                    Tras documentar un intento de intrusión sistémico a nuestra infraestructura ("La noche de las campanas"), Cruger Corp fija postura oficial. Compartimos los vectores analizados mediante OSINT y anunciamos la separación definitiva de Dark Zone Protocolo PHANTOM de nuestro portafolio comercial.
+                </p>
+                <div class="news-footer">
+                    <a href="La_noche_de_las_campanas.html" class="btn">SEGUIR LEYENDO</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-card" style="border-left-color: var(--primary-color);">
+            <div class="news-image image-contain">
+                <img src="TabladeCiberataquesenMexico04152026.jpg" alt="Gráfico de Vulnerabilidades y Tendencias">
             </div>
             <div class="news-content">
                 <span class="news-category" style="color: var(--primary-color);">15 ABRIL 2026 | ANÁLISIS ESTRATÉGICO</span>
@@ -165,8 +193,8 @@
         </div>
         
         <div class="news-card" style="border-left-color: var(--primary-color);">
-            <div class="news-image">
-                <img src="logo.png" alt="Cruger Corp Logo" style="object-fit: contain; background: #050A14; padding: 30px; box-sizing: border-box;">
+            <div class="news-image image-contain">
+                <img src="logo.png" alt="Cruger Corp Logo">
             </div>
             <div class="news-content">
                 <span class="news-category" style="color: var(--primary-color);">12 ABRIL 2026 | ANÁLISIS ESTRATÉGICO</span>
@@ -181,8 +209,8 @@
         </div>
        
         <div class="news-card">
-            <div class="news-image">
-                <img src="logo.png" alt="Cruger Corp Logo" style="object-fit: contain; background: #050A14; padding: 30px; box-sizing: border-box;">>
+            <div class="news-image image-contain">
+                <img src="logo.png" alt="Cruger Corp Logo">
             </div>
             <div class="news-content">
                 <span class="news-category">06 ABRIL 2026 | FILOSOFÍA CORPORATIVA</span>
@@ -197,8 +225,8 @@
         </div>
         
         <div class="news-card" style="border-left-color: var(--primary-color);">
-            <div class="news-image">
-                <img src="logo.png" alt="Cruger Corp Logo" style="object-fit: contain; background: #050A14; padding: 30px; box-sizing: border-box;">
+            <div class="news-image image-contain">
+                <img src="logo.png" alt="Cruger Corp Logo">
             </div>
             <div class="news-content">
                 <span class="news-category" style="color: var(--primary-color);">28 MARZO 2026 | COMUNICADO OFICIAL</span>
@@ -213,8 +241,8 @@
         </div>
         
         <div class="news-card" style="border-left-color: #E80000;">
-            <div class="news-image">
-                <img src="logo.png" alt="Cruger Corp Logo" style="object-fit: contain; background: #050A14; padding: 30px; box-sizing: border-box;">
+            <div class="news-image image-contain">
+                <img src="logo.png" alt="Cruger Corp Logo">
             </div>
             <div class="news-content">
                 <span class="news-category" style="color: #E80000;">27 MARZO 2026 | COMUNICADO OFICIAL</span>
@@ -229,8 +257,8 @@
         </div>
         
         <div class="news-card">
-            <div class="news-image">
-                <img src="logo.png" alt="Cruger Corp Logo" style="object-fit: contain; background: #050A14; padding: 30px; box-sizing: border-box;">
+            <div class="news-image image-contain">
+                <img src="logo.png" alt="Cruger Corp Logo">
             </div>
             <div class="news-content">
                 <span class="news-category">23 MARZO 2026 | COMUNICADO OFICIAL</span>
@@ -245,7 +273,7 @@
         </div>
 
         <div class="news-card" style="border-left-color: #00FF41;">
-            <div class="news-image" style="display: flex; align-items: center; justify-content: center; background: #050A14; border-right: 1px solid var(--glass-border);">
+            <div class="news-image" style="display: flex; align-items: center; justify-content: center; z-index: 2;">
                 <span style="font-size: 4rem; text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);">🛠️</span>
             </div>
             <div class="news-content">
@@ -309,8 +337,8 @@
         </div>
 
         <div class="news-card">
-            <div class="news-image">
-                <img src="MetodologiasInteligencia1.jpg" alt="Metodología de Inteligencia Vol 1" style="object-fit: contain; background: #050A14; padding: 15px; box-sizing: border-box;">
+            <div class="news-image image-contain">
+                <img src="MetodologiasInteligencia1.jpg" alt="Metodología de Inteligencia Vol 1">
             </div>
             <div class="news-content">
                 <span class="news-category">29 ENERO 2026 | INVESTIGACIÓN DOC.</span>
