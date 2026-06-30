@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo_de_Unidad_de Memoria_SMSD | CRUGER CORP</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00A8E8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-muted: #A0AAB5;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #d1d5db;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 15px 30px; display: flex; justify-content: flex-end; align-items: center;
+            border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; box-sizing: border-box; background: rgba(5, 10, 20, 0.85);
+        }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-btn {
+            background: none; border: none; color: var(--text-main); font-size: 1.8rem;
+            cursor: pointer; margin-left: 30px; transition: color 0.3s; display: flex; align-items: center; padding: 0;
+        }
+        .menu-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
+            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100vh;
+            background: rgba(5, 10, 20, 0.95); border-left: 1px solid var(--primary-color);
+            z-index: 999; transition: right 0.4s ease; padding: 80px 30px 30px;
+            box-sizing: border-box; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8); 
+            display: flex; flex-direction: column; gap: 10px; overflow-y: auto;
+        }
+        .sidebar.active { right: 0; }
+        .sidebar .close-btn {
+            position: absolute; top: 20px; right: 25px; background: none; border: none;
+            color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: color 0.3s; line-height: 1;
+        }
+        .sidebar .close-btn:hover { color: var(--primary-color); }
+        
+        .sidebar-title {
+            color: var(--primary-color); font-size: 0.8rem; font-weight: bold; letter-spacing: 2px;
+            text-transform: uppercase; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: var(--text-main); text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; padding: 10px 0;
+            border-bottom: 1px solid var(--glass-border); transition: all 0.3s;
+        }
+        .sidebar a:hover { color: var(--primary-color); padding-left: 10px; border-bottom-color: var(--primary-color); }
+
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 120px 20px 50px 20px;
+        }
+
+        img.logo {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .fecha {
+            text-align: center;
+            color: #9ca3af;
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 1.15em;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+        
+        h2 {
+            color: #ffffff;
+            font-size: 1.4em;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        p { margin-bottom: 20px; text-align: justify; }
+        strong { color: #ffffff; }
+        
+        ul { margin-bottom: 20px; padding-left: 20px; text-align: justify; }
+        li { margin-bottom: 15px; }
+        
+        .contacto-link { color: var(--primary-color); text-decoration: none; font-weight: bold; }
+        .contacto-link:hover { text-decoration: underline; }
+
+        footer {
+            padding: 50px; text-align: center; border-top: 1px solid var(--glass-border);
+            color: var(--text-muted); font-size: 0.8rem; margin-top: 40px;
+            background-color: #050A14;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="content-wrapper">
+        <img src="logo.png" alt="Cruger Corp Logo" class="logo">
+
+        <h1>COMUNICADO ABIERTO</h1>
+        <div class="fecha">25 de junio de 2026</div>
+        <div class="subtitulo">
+            Apertura de Inversión de riesgo compartido para el desarrollo de una nueva unidad de memoria basada en formato tipo flash/electrónica sin partes mecánicas con título de proyecto <strong>SMSD</strong>.
+        </div>
+
+        <h2>Información del Desarrollo</h2>
+        <p><strong>Cruger Corp</strong> anuncia por este medio la apertura para recibir propuestas de inversión bajo el modelo de riesgo compartido, orientadas al desarrollo conjunto de nuestra nueva unidad de memoria <strong>SMSD</strong>. Esta tecnología, basada en formato tipo flash/electrónica y libre de partes mecánicas, se encuentra en una fase madura, contando ya con los planos de desarrollo y el concepto del prototipo completamente aterrizado, funcional y pensado para próximas tecnologías, este desarrollo esta gestionado para mitigar el impacto negativo industrial a nivel global que genera el desarrollo basado en la obsolescencia programada.</p>
+        
+        <h2>Por Qué es Diferente</h2>
+        <p>La unidad <strong>SMSD</strong> representa un cambio de paradigma frente a los elevados costos de la tecnología actual. Hemos demostrado que no se requiere de los equipos de manufactura más caros para innovar, sino de una optimización inteligente de los recursos. Este modelo está diseñado para sustituir a los discos duros y unidades de memoria actuales o futuros, ofreciendo las siguientes ventajas competitivas:</p>
+        <ul>
+            <li><strong>Escalabilidad modular:</strong> El modelo escala según las necesidades del usuario, permitiendo cambiar o ampliar la capacidad de memoria y sustituir sectores defectuosos sin necesidad de reemplazar toda la unidad.</li>
+            <li><strong>Sistema inteligente de prevención:</strong> Posee capacidad avanzada de análisis sobre datos dañados o sectores con presencia de daño lógico, físico o de escritura por estrés. Esto permite enviar alertas de estado al usuario antes de que ocurra una falla crítica.</li>
+            <li><strong>Resiliencia de datos:</strong> Cuenta con memoria de reemplazo integrada para evitar la pérdida de información por corrupción.</li>
+            <li><strong>Diseño óptimo:</strong> Es un equipo sumamente portátil, silencioso y cuenta con un sistema de enfriamiento integrado. Esta diseñado para ser ligero, portátil, resistente, y delgado, pudiendo incorporarse fácilmente a otros proyectos o bien, incorporarse al tamaño de espacio de discos duros y otras unidades de memoria mediante aditamentos que no limitan su capacidad de lectura / escritura / seguridad.</li>
+        </ul>
+
+        <h2>Marco Estratégico y Ubicación del Proyecto</h2>
+        <p>Debido a que actualmente las leyes y el marco jurídico en <strong>México</strong> no garantizan un desarrollo soberano ni una protección a la innovación "real" dentro del país (dato que pudimos comprobar al no encontrar favorable el desarrollo e innovación de otros de nuestros proyectos), <strong>Cruger Corp</strong> contempla la reubicación del proyecto. Estamos dispuestos a desarrollar el <strong>SMSD</strong> en conjunto con el interesado (Particular, Grupo, Sector, Institución, Gobierno, etc.), incluso si este opera desde otro país, adaptándonos para garantizar el mejor entorno para el desarrollo de la innovación y la tecnología. El desarrollo puede NO llevarse a cabo en <strong>Mexico</strong> ya que como se menciono no cuentan con un marco jurídico, leyes o regulatorio que realmente garantice o favorezca el desarrollo de innovación o tecnología soberana, por lo que estamos dispuestos a reubicar el desarrollo y fabricación del <strong>SMSD</strong> o la entidad encargada de su gestión en algún otro país que contemple el marco regulatorio favorable que permita el diseño, desarrollo y la innovación que caracterizan a nuestra firma tecnológica, eso incluye la nula presencia de <strong>BACKDOORS</strong> o leyes que generen rastreo de <strong>METADATOS</strong> dentro de las unidades de almacenamiento, código o desarrollo como la Cloud Act o la Patriot Act de <strong>Estados Unidos</strong>.</p>
+
+        <h2>Nota Sobre Propiedad Intelectual</h2>
+        <p>Preferentemente, buscamos NO negociar con entidades gubernamentales, a menos que se encuentre un punto de balance excepcional que no comprometa la Propiedad Intelectual ni el Secreto Industrial Privado, evitando cualquier riesgo de nacionalización, salvo que se cuente con un acuerdo excepcional entre las partes.</p>
+
+        <h2>Proyección a Futuro</h2>
+        <p>Dependiendo de los acuerdos alcanzados, existe la posibilidad de invitar a nuestro socio estratégico al desarrollo conjunto de nuestro <strong>CHIP OB DE BASE DE CERÁMICA</strong>. Cabe destacar que este desarrollo no está incluido en el convenio inicial del <strong>SMSD</strong>, se menciona solo debido a que el presente acuerdo no está sujeto a negociación directa sobre otros proyectos o desarrollos de nuestra empresa, eso incluye los desarrollos mencionados o los que comercializa nuestra empresa, así como aquellos que se pudieran mencionar sobre la marcha durante el desarrollo del <strong>SMSD</strong>.</p>
+
+        <h2>Próximos Pasos y Contacto</h2>
+        <p>El inicio de este desarrollo requiere la firma de un convenio de confidencialidad y colaboración entre las partes. Actualmente nos encontramos analizando propuestas y contamos con los modelos de desarrollo sobre el <strong>SMSD</strong>.</p>
+        <p>Para presentar una intención formal de participación, por favor envíe un correo electrónico a:<br>
+        <a href="mailto:Servicios@CrugerCorp.com" class="contacto-link"><strong>Servicios@CrugerCorp.com</strong></a><br>
+        En Asunto deberá colocar el siguiente título: <strong>Intensión de participación en SMSD México</strong></p>
+    </main>
+
+    <footer>
+        <div style="margin-bottom: 20px;">
+             <span style="font-weight: 700; color: #FFF; letter-spacing: 2px;">CRUGER CORP</span>
+        </div>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 30px;">
+            CONFIDENTIALITY NOTICE: The technology described herein is proprietary. 
+            Unauthorized reverse engineering is prohibited. © 2026 Angel Cruger.
+        </p>
+    </footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>
